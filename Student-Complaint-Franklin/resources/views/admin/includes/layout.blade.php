@@ -4,7 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Complaint-Management-System</title>
+    <title>Internship-Management-System</title>
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{asset('asset/fontawesome/css/all.min.css')}}">
     <link rel="stylesheet" href="{{asset('asset/css/adminlte.min.css')}}">
@@ -51,7 +52,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('admin.logout') }}">
+                    <a class="nav-link" href="#">
                         <i class="fas fa-sign-out-alt"></i>
                     </a>
                 </li>
@@ -68,7 +69,7 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
                         <li class="nav-item">
-                            <a href="{{ route('show.dashboard') }}" class="nav-link">
+                            <a href="{{ route('admin.dashboard') }}" class="nav-link">
                                 <img src="{{asset('asset/img/dashboard.png')}}" width="30">
                                 <p>
                                     Dashboard
@@ -109,7 +110,7 @@
                         {{-- @if (Auth::guard('admin')->check() && Auth::guard('admin')->user()->role === 'hod' ||
                         Auth::guard('admin')->user()->role === 'super') --}}
                         <li class="nav-item">
-                            <a href="{{ route('show.course') }}" class="nav-link">
+                            <a href="{{route('admin.institution')}}" class="nav-link">
                                 <img src="{{asset('asset/img/department.png')}}" width="30">
                                 <p>
                                     Institutions
@@ -120,7 +121,7 @@
 
                         {{-- @if (Auth::guard('admin')->check() && Auth::guard('admin')->user()->role === 'super') --}}
                         <li class="nav-item">
-                            <a href="{{ route('show.admin') }}" class="nav-link">
+                            <a href="#" class="nav-link">
                                 <img src="{{asset('asset/img/stakeholder.png')}}" width="30">
                                 <p>
                                     Users
@@ -130,7 +131,7 @@
                         {{-- @endif --}}
 
                         <li class="nav-item">
-                            <a href="{{ route('show.department') }}" class="nav-link">
+                            <a href="#" class="nav-link">
                                 <img src="{{asset('asset/img/course.png')}}" width="30">
                                 <p>
                                     Applications

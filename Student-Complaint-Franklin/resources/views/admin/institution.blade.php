@@ -127,6 +127,83 @@
         </div>
     </section>
 
+
+
+    {{-- //Add Institution Modal --}}
+    <div class="modal fade" id="addInstitutionModal" tabindex="-1" role="dialog" aria-labelledby="addInstitutionModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <form action="{{route('admin.add.institution')}}" method="POST">
+                    @csrf
+                    <div class="modal-header bg-success">
+                        <h5 class="modal-title" id="addInstitutionModalLabel">Add New Institution (Bamenda)</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-6 form-group">
+                                <label>Institution Name</label>
+                                <input type="text" name="name" class="form-control" placeholder="Enter institution name" required>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label>Industry</label>
+                                <input type="text" class="form-control" name="industry" placeholder="e.g., Technology, Education, NGO"
+                                    required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 form-group">
+                                <label>Location</label>
+                                <input type="text" class="form-control" name="location" placeholder="e.g., Nkwen, Bamenda" required>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label>Website</label>
+                                <input type="url" class="form-control" name="website" placeholder="https://www.example.com">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 form-group">
+                                <label>Contact Person</label>
+                                <input type="text" class="form-control" name="person" placeholder="Full Name">
+                            </div>
+                            <div class="col-md-4 form-group">
+                                <label>Contact Email</label>
+                                <input type="email" class="form-control" name="email" placeholder="email@example.com">
+                            </div>
+                            <div class="col-md-4 form-group">
+                                <label>Contact Phone</label>
+                                <input type="tel" class="form-control" name="tell" placeholder="+237 6XX XXX XXX">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 form-group">
+                                <label>Password</label>
+                                <input type="password" class="form-control" name="password" placeholder="*********" required>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label>Confirm Password</label>
+                                <input type="password" class="form-control" name="password_confirmation" placeholder="*********" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Description</label>
+                            <textarea class="form-control" name="description" rows="3"
+                                placeholder="Brief description of the institution..."></textarea>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-success">Add Institution</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <div class="modal fade" id="viewInstitutionModal" tabindex="-1" role="dialog"
         aria-labelledby="viewInstitutionModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
@@ -173,67 +250,8 @@
         </div>
     </div>
 
-    <div class="modal fade" id="addInstitutionModal" tabindex="-1" role="dialog" aria-labelledby="addInstitutionModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <form action="#" method="POST">
-                    <div class="modal-header bg-success">
-                        <h5 class="modal-title" id="addInstitutionModalLabel">Add New Institution (Bamenda)</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-md-6 form-group">
-                                <label>Institution Name</label>
-                                <input type="text" class="form-control" placeholder="Enter institution name" required>
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label>Industry</label>
-                                <input type="text" class="form-control" placeholder="e.g., Technology, Education, NGO"
-                                    required>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6 form-group">
-                                <label>Location</label>
-                                <input type="text" class="form-control" placeholder="e.g., Nkwen, Bamenda" required>
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label>Website</label>
-                                <input type="url" class="form-control" placeholder="https://www.example.com">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-4 form-group">
-                                <label>Contact Person</label>
-                                <input type="text" class="form-control" placeholder="Full Name">
-                            </div>
-                            <div class="col-md-4 form-group">
-                                <label>Contact Email</label>
-                                <input type="email" class="form-control" placeholder="email@example.com">
-                            </div>
-                            <div class="col-md-4 form-group">
-                                <label>Contact Phone</label>
-                                <input type="tel" class="form-control" placeholder="+237 6XX XXX XXX">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label>Description</label>
-                            <textarea class="form-control" rows="3"
-                                placeholder="Brief description of the institution..."></textarea>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-success">Add Institution</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+
+
 
     <div class="modal fade" id="editInstitutionModal" tabindex="-1" role="dialog"
         aria-labelledby="editInstitutionModalLabel" aria-hidden="true">
@@ -304,6 +322,7 @@
         </div>
     </div>
 
+
     <div class="modal fade" id="confirmActionModal" tabindex="-1" role="dialog" aria-labelledby="confirmActionModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -327,6 +346,8 @@
     </div>
 
 @endsection
+
+
 
 @push("scripts")
     <script>
