@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('person');
             $table->string('location');
             $table->string('Description')->nullable();
+            $table->foreignId('admin_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

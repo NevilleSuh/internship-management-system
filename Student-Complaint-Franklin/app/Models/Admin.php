@@ -50,8 +50,8 @@ class Admin extends Authenticatable
         ];
     }
 
-    public function courses(){
-        return $this->hasMany(Course::class);
+    public function institutions(){
+        return $this->hasMany(Institution::class);
     }
 
     public function department(){
