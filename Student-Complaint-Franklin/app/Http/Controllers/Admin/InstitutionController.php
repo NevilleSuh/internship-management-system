@@ -10,6 +10,7 @@ class InstitutionController extends Controller
 {
     public function showInstitution(){
         return view('admin.institution');
+
     }
 
     public function AddInstitution(Request $request){
@@ -18,6 +19,11 @@ class InstitutionController extends Controller
             'name' => 'required',
             'email' => 'required|unique:institutions',
             'password' => 'required|confirm:password_confirmation',
+        ]);
+
+        Institution::create([
+            'name' => $request->name,
+
         ]);
 
     }

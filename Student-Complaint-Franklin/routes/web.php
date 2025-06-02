@@ -11,3 +11,4 @@ Route::post('/login-perform', [AuthController::class, 'login'])->name('login.per
 
 include 'student.php';
 include 'admin.php';
+include 'institution.php';

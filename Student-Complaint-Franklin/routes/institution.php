@@ -2,7 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::prefix(prefix:'institution') ->group(callback: function(): void{
 
-    Route::get(uri:'login');
+Route::prefix('institution')->group(function(){
+
+    Route::get('login', function(){
+
+        return view('institution.auth.login');
+    });
 });
