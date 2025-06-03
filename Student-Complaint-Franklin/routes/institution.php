@@ -3,10 +3,15 @@
 use Illuminate\Support\Facades\Route;
 
 
-Route::prefix('institution')->group(function(){
+Route::prefix('institution')->group(function () {
 
-    Route::get('login', function(){
+    Route::get('login', function () {
 
         return view('institution.auth.login');
+    });
+
+    Route::get('post', function () {
+        
+        return view('institution.post');
     });
 });

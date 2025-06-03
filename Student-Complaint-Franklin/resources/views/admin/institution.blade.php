@@ -56,13 +56,13 @@
                                             <td>{{$institution->created_at->format('Y-m-d')}}</td>
                                             <td>
                                                 <button class="btn btn-xs btn-info" data-toggle="modal"
-                                                    data-target="#viewInstitutionModal{{$institution->id}}" title="View Details"><i
-                                                        class="fas fa-eye"></i></button>
+                                                    data-target="#viewInstitutionModal{{$institution->id}}"
+                                                    title="View Details"><i class="fas fa-eye"></i></button>
                                                 {{-- <button class="btn btn-xs btn-warning" data-toggle="modal"
                                                     data-target="#editInstitutionModal" title="Edit"><i
                                                         class="fas fa-edit"></i></button> --}}
                                                 <button class="btn btn-xs btn-danger" data-toggle="modal"
-                                                    data-target="#delete{{$institution->id}}" ><i
+                                                    data-target="#delete{{$institution->id}}"><i
                                                         class="fas fa-times-circle"></i></button>
                                             </td>
                                         </tr>
@@ -96,18 +96,20 @@
                         <div class="row">
                             <div class="col-md-6 form-group">
                                 <label>Institution Name</label>
-                                <input type="text" name="name" class="form-control" placeholder="Enter institution name" required>
+                                <input type="text" name="name" class="form-control" placeholder="Enter institution name"
+                                    required>
                             </div>
                             <div class="col-md-6 form-group">
                                 <label>Industry</label>
-                                <input type="text" class="form-control" name="industry" placeholder="e.g., Technology, Education, NGO"
-                                    required>
+                                <input type="text" class="form-control" name="industry"
+                                    placeholder="e.g., Technology, Education, NGO" required>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6 form-group">
                                 <label>Location</label>
-                                <input type="text" class="form-control" name="location" placeholder="e.g., Nkwen, Bamenda" required>
+                                <input type="text" class="form-control" name="location" placeholder="e.g., Nkwen, Bamenda"
+                                    required>
                             </div>
                             <div class="col-md-6 form-group">
                                 <label>Website</label>
@@ -125,17 +127,19 @@
                             </div>
                             <div class="col-md-4 form-group">
                                 <label>Contact Phone</label>
-                                <input type="tel" class="form-control" name="tell" placeholder="+237 6XX XXX XXX">
+                                <input type="tel" class="form-control" name="tell" placeholder="+237 650729916">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6 form-group">
                                 <label>Password</label>
-                                <input type="password" class="form-control" name="password" placeholder="*********" required>
+                                <input type="password" class="form-control" name="password" placeholder="*********"
+                                    required>
                             </div>
                             <div class="col-md-6 form-group">
                                 <label>Confirm Password</label>
-                                <input type="password" class="form-control" name="password_confirmation" placeholder="*********" required>
+                                <input type="password" class="form-control" name="password_confirmation"
+                                    placeholder="*********" required>
                             </div>
                         </div>
                         <div class="form-group">
@@ -155,14 +159,14 @@
     </div>
 
 
-@foreach ($institutions as $institution)
+    @foreach ($institutions as $institution)
         {{-- View Institution Modal --}}
         <div class="modal fade" id="viewInstitutionModal{{$institution->id}}" tabindex="-1" role="dialog"
             aria-labelledby="viewInstitutionModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header bg-info">
-                        <h5 class="modal-title" >{{$institution->name}}</h5>
+                        <h5 class="modal-title">{{$institution->name}}</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -172,10 +176,12 @@
                             <div class="col-md-6">
                                 <p><strong>Industry:</strong> {{$institution->industry}}</p>
                                 <p><strong>Location:</strong> {{$institution->location}}</p>
-                                <p><strong>Website:</strong> <a href="{{$institution->website}}" target="_blank">{{$institution->website}}</a> (Example)</p>
+                                <p><strong>Website:</strong> <a href="{{$institution->website}}"
+                                        target="_blank">{{$institution->website}}</a> (Example)</p>
                                 <p><strong>Contact Person:</strong> {{$institution->person}}</p>
-                                <p><strong>Contact Email:</strong> <a href="mailto:{{$institution->email}}">{{$institution->email}}</a>
-                                    </p>
+                                <p><strong>Contact Email:</strong> <a
+                                        href="mailto:{{$institution->email}}">{{$institution->email}}</a>
+                                </p>
                                 <p><strong>Contact Phone:</strong> {{$institution->tell}}</p>
                             </div>
                             <div class="col-md-6">
@@ -204,37 +210,37 @@
 
 
         {{-- Delete Institution Modal --}}
-        <div class="modal fade" id="delete{{$institution->id}}" tabindex="-1" role="dialog" aria-labelledby="confirmActionModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="confirmActionModalLabel">Confirm Action</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    Are you sure you want to <span id="action-type">Delete</span> this institution: <strong
-                        id="institution-name"> [{{$institution->name}}] </strong>?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <form action="{{route('admin.delete.institution', $institution->id)}}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger" id="confirmActionButton">Delete</button>
+        <div class="modal fade" id="delete{{$institution->id}}" tabindex="-1" role="dialog"
+            aria-labelledby="confirmActionModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="confirmActionModalLabel">Confirm Action</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure you want to <span id="action-type">Delete</span> this institution: <strong
+                            id="institution-name"> [{{$institution->name}}] </strong>?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <form action="{{route('admin.delete.institution', $institution->id)}}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger" id="confirmActionButton">Delete</button>
 
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-        </div>
 
 
 
 
-@endforeach
+    @endforeach
 
 
 
@@ -282,7 +288,7 @@
                             </div>
                             <div class="col-md-4 form-group">
                                 <label>Contact Phone</label>
-                                <input type="tel" class="form-control" value="+237 6XX XXX XXX">
+                                <input type="tel" class="form-control" value="+237 650729916">
                             </div>
                         </div>
                         <div class="form-group">
