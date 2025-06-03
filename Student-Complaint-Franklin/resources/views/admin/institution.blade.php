@@ -24,7 +24,7 @@
                 <div class="col-12">
                     <div class="card card-outline card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Registered Institutions List (Bamenda)</h3>
+                            <h3 class="card-title">Registered Institutions List</h3>
                             <div class="card-tools">
                                 <a href="#" class="btn btn-sm btn-success" data-toggle="modal"
                                     data-target="#addInstitutionModal">
@@ -45,79 +45,29 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>GilloTech Co Ltd</td>
-                                        <td>Technology / Web Development</td>
-                                        <td>Nkwen, Bamenda</td>
-                                        <td><span class="badge badge-success">Approved</span></td>
-                                        <td>2024-03-10</td>
-                                        <td>
-                                            <button class="btn btn-xs btn-info" data-toggle="modal"
-                                                data-target="#viewInstitutionModal" title="View Details"><i
-                                                    class="fas fa-eye"></i></button>
-                                            <button class="btn btn-xs btn-warning" data-toggle="modal"
-                                                data-target="#editInstitutionModal" title="Edit"><i
-                                                    class="fas fa-edit"></i></button>
-                                            <button class="btn btn-xs btn-danger" data-toggle="modal"
-                                                data-target="#confirmActionModal" data-action="reject"
-                                                data-name="GilloTech Co Ltd" title="Reject"><i
-                                                    class="fas fa-times-circle"></i></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Action Lab For Development</td>
-                                        <td>Non-profit / Development</td>
-                                        <td>Commercial Avenue, Bamenda</td>
-                                        <td><span class="badge badge-warning">Pending Approval</span></td>
-                                        <td>2024-05-22</td>
-                                        <td>
-                                            <button class="btn btn-xs btn-info" data-toggle="modal"
-                                                data-target="#viewInstitutionModal" title="View Details"><i
-                                                    class="fas fa-eye"></i></button>
-                                            <button class="btn btn-xs btn-success" data-toggle="modal"
-                                                data-target="#confirmActionModal" data-action="approve"
-                                                data-name="Action Lab For Development" title="Approve"><i
-                                                    class="fas fa-check-circle"></i></button>
-                                            <button class="btn btn-xs btn-danger" data-toggle="modal"
-                                                data-target="#confirmActionModal" data-action="reject"
-                                                data-name="Action Lab For Development" title="Reject"><i
-                                                    class="fas fa-times-circle"></i></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Hope For A Better Future (H4BF)</td>
-                                        <td>Non-profit / Education</td>
-                                        <td>Mile 3 Nkwen, Bamenda</td>
-                                        <td><span class="badge badge-success">Approved</span></td>
-                                        <td>2023-11-05</td>
-                                        <td>
-                                            <button class="btn btn-xs btn-info" data-toggle="modal"
-                                                data-target="#viewInstitutionModal" title="View Details"><i
-                                                    class="fas fa-eye"></i></button>
-                                            <button class="btn btn-xs btn-warning" data-toggle="modal"
-                                                data-target="#editInstitutionModal" title="Edit"><i
-                                                    class="fas fa-edit"></i></button>
-                                            <button class="btn btn-xs btn-danger" data-toggle="modal"
-                                                data-target="#confirmActionModal" data-action="reject"
-                                                data-name="Hope For A Better Future (H4BF)" title="Reject"><i
-                                                    class="fas fa-times-circle"></i></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Uncle Luke Digitals</td>
-                                        <td>Digital Services / Marketing</td>
-                                        <td>Food Market, Bamenda</td>
-                                        <td><span class="badge badge-danger">Rejected</span></td>
-                                        <td>2024-01-15</td>
-                                        <td>
-                                            <button class="btn btn-xs btn-info" data-toggle="modal"
-                                                data-target="#viewInstitutionModal" title="View Details"><i
-                                                    class="fas fa-eye"></i></button>
-                                            <button class="btn btn-xs btn-warning" data-toggle="modal"
-                                                data-target="#editInstitutionModal" title="Edit"><i
-                                                    class="fas fa-edit"></i></button>
-                                        </td>
-                                    </tr>
+
+
+                                    @foreach ($institutions as $institution)
+                                        <tr>
+                                            <td>{{$institution->name}}</td>
+                                            <td>{{$institution->industry}}</td>
+                                            <td>{{$institution->location}}</td>
+                                            <td><span class="badge badge-success">active</span></td>
+                                            <td>{{$institution->created_at->format('Y-m-d')}}</td>
+                                            <td>
+                                                <button class="btn btn-xs btn-info" data-toggle="modal"
+                                                    data-target="#viewInstitutionModal{{$institution->id}}" title="View Details"><i
+                                                        class="fas fa-eye"></i></button>
+                                                {{-- <button class="btn btn-xs btn-warning" data-toggle="modal"
+                                                    data-target="#editInstitutionModal" title="Edit"><i
+                                                        class="fas fa-edit"></i></button> --}}
+                                                <button class="btn btn-xs btn-danger" data-toggle="modal"
+                                                    data-target="#delete{{$institution->id}}" ><i
+                                                        class="fas fa-times-circle"></i></button>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+
                                 </tbody>
                             </table>
                         </div>
@@ -204,51 +154,87 @@
         </div>
     </div>
 
-    <div class="modal fade" id="viewInstitutionModal" tabindex="-1" role="dialog"
-        aria-labelledby="viewInstitutionModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
+
+@foreach ($institutions as $institution)
+        {{-- View Institution Modal --}}
+        <div class="modal fade" id="viewInstitutionModal{{$institution->id}}" tabindex="-1" role="dialog"
+            aria-labelledby="viewInstitutionModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header bg-info">
+                        <h5 class="modal-title" >{{$institution->name}}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p><strong>Industry:</strong> {{$institution->industry}}</p>
+                                <p><strong>Location:</strong> {{$institution->location}}</p>
+                                <p><strong>Website:</strong> <a href="{{$institution->website}}" target="_blank">{{$institution->website}}</a> (Example)</p>
+                                <p><strong>Contact Person:</strong> {{$institution->person}}</p>
+                                <p><strong>Contact Email:</strong> <a href="mailto:{{$institution->email}}">{{$institution->email}}</a>
+                                    </p>
+                                <p><strong>Contact Phone:</strong> {{$institution->tell}}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <p><strong>Status:</strong> Active</p>
+                                <p><strong>Joined Date:</strong>{{$institution->created_at->format('Y-m-d')}} </p>
+                                <p><strong>Added By:</strong>{{$institution->admin->first_name}}</p>
+                                {{-- <p><strong>Approval Date:</strong> 2024-03-11</p> --}}
+                            </div>
+                        </div>
+                        <hr>
+                        <h6>Description</h6>
+                        <p>{{$institution->Description}}</p>
+                        <hr>
+                        <h6>Posted Internships (2)</h6>
+                        <ul class="list-group">
+                            <li class="list-group-item">Junior Web Developer Intern (Active)</li>
+                            <li class="list-group-item">IT Support Intern (Active)</li>
+                        </ul>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        {{-- Delete Institution Modal --}}
+        <div class="modal fade" id="delete{{$institution->id}}" tabindex="-1" role="dialog" aria-labelledby="confirmActionModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-header bg-info">
-                    <h5 class="modal-title" id="viewInstitutionModalLabel">Institution Details: GilloTech Co Ltd</h5>
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmActionModalLabel">Confirm Action</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <p><strong>Industry:</strong> Technology / Web Development</p>
-                            <p><strong>Location:</strong> Nkwen, Bamenda, Cameroon</p>
-                            <p><strong>Website:</strong> <a href="#" target="_blank">www.gillotech.com</a> (Example)</p>
-                            <p><strong>Contact Person:</strong> Gilbert N.</p>
-                            <p><strong>Contact Email:</strong> <a href="mailto:info@gillotech.com">info@gillotech.com</a>
-                                (Example)</p>
-                            <p><strong>Contact Phone:</strong> +237 6XX XXX XXX</p>
-                        </div>
-                        <div class="col-md-6">
-                            <p><strong>Status:</strong> Approved</p>
-                            <p><strong>Joined Date:</strong> 2024-03-10</p>
-                            <p><strong>Approved By:</strong> Admin User</p>
-                            <p><strong>Approval Date:</strong> 2024-03-11</p>
-                        </div>
-                    </div>
-                    <hr>
-                    <h6>Description</h6>
-                    <p>GilloTech Co Ltd provides web development and IT solutions in Bamenda. Offering internships in
-                        frontend and backend development.</p>
-                    <hr>
-                    <h6>Posted Internships (2)</h6>
-                    <ul class="list-group">
-                        <li class="list-group-item">Junior Web Developer Intern (Active)</li>
-                        <li class="list-group-item">IT Support Intern (Active)</li>
-                    </ul>
+                    Are you sure you want to <span id="action-type">Delete</span> this institution: <strong
+                        id="institution-name"> [{{$institution->name}}] </strong>?
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <form action="{{route('admin.delete.institution', $institution->id)}}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger" id="confirmActionButton">Delete</button>
+
+                    </form>
                 </div>
             </div>
         </div>
-    </div>
+        </div>
+
+
+
+
+@endforeach
 
 
 
@@ -323,27 +309,7 @@
     </div>
 
 
-    <div class="modal fade" id="confirmActionModal" tabindex="-1" role="dialog" aria-labelledby="confirmActionModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="confirmActionModalLabel">Confirm Action</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    Are you sure you want to <span id="action-type">[approve/reject]</span> the institution: <strong
-                        id="institution-name">[Institution Name]</strong>?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary" id="confirmActionButton">Confirm</button>
-                </div>
-            </div>
-        </div>
-    </div>
+
 
 @endsection
 

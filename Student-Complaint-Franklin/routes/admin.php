@@ -16,5 +16,6 @@ Route::prefix('admin')->group(function () {
     // Institutions ROutes
     Route::get('institution', [InstitutionController::class, 'showInstitution'])->name('admin.institution');
     Route::post('add-institution', [InstitutionController::class, 'addInstitution'])->name('admin.add.institution');
+    Route::delete('delete-institution/{id}', [InstitutionController::class, 'deleteInstitution'])->name('admin.delete.institution');
 
 });

@@ -24,9 +24,10 @@ class Institution extends Authenticatable
         'website',
         'person',
         'industry',
-        'description',
+        'Description',
         'location',
         'password',
+        'admin_id',
     ];
 
     /**
@@ -52,8 +53,8 @@ class Institution extends Authenticatable
         ];
     }
 
-    public function courses(){
-        return $this->hasMany(Course::class);
+    public function admin(){
+        return $this->belongsTo(Admin::class);
     }
 
     public function department(){
