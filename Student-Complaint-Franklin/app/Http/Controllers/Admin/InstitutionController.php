@@ -43,7 +43,7 @@ class InstitutionController extends Controller
             return redirect()->back()->with('error', 'An Unknown error occurred while adding Institution');
         }
 
-        return redirect()->back()->with('success', 'Institution Added Successfully');
+        return redirect()->back()->with('message', 'Institution Added Successfully');
 
 
     }
@@ -53,7 +53,7 @@ class InstitutionController extends Controller
 
         $institution->delete();
 
-        return redirect()->back()->with('success', 'Institution Deleted Successfully');
+        return redirect()->back()->with('message', 'Institution Deleted Successfully');
     }
 
 
