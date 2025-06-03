@@ -1,14 +1,12 @@
 @extends('student.includes.layout')
 
 @section('content')
-
-
     <div class="content-header">
         <div class="container-fluid">
-            <div class="row mb-2">
+            <div class="row mb-2 animate__animated animate__fadeIn">
                 <div class="col-sm-6">
                     <h1 class="m-0">
-                        <iclass="fas fa-user-circle"></i> My Profile
+                        <i class="fas fa-user-circle"></i> My Profile
                     </h1>
                 </div>
                 <div class="col-sm-6">
@@ -24,84 +22,79 @@
     <section class="content">
         <div class="container-fluid">
             <div class="row">
-                <!-- Profile Information -->
                 <div class="col-md-4">
-                    <!-- Profile Card -->
-                    <div class="card card-primary card-outline">
+                    <div class="card card-indigo card-outline animate__animated animate__fadeInLeft">
                         <div class="card-body box-profile">
                             <div class="text-center">
-                                <img class="profile-user-img img-fluid img-circle" src="{{asset('asset/img/avatar.png')}}"
-                                    alt="User profile picture">
+                                <img class="profile-user-img img-fluid img-circle shadow"
+                                    src="{{asset('asset/img/avatar.png')}}" alt="User profile picture">
                             </div>
 
-                            <h3 class="profile-username text-center">Nfon Andrew Abang</h3>
+                            <h3 class="profile-username text-center mt-3">Nfon Andrew Abang</h3>
                             <p class="text-muted text-center">Student</p>
 
                             <ul class="list-group list-group-unbordered mb-3">
-                                <li class="list-group-item">
+                                <li class="list-group-item animate__animated animate__fadeIn" style="animation-delay: 0.1s">
                                     <b>Applications</b> <a class="float-right">3</a>
                                 </li>
-                                <li class="list-group-item">
+                                <li class="list-group-item animate__animated animate__fadeIn" style="animation-delay: 0.2s">
                                     <b>Accepted</b> <a class="float-right">1</a>
                                 </li>
-                                <li class="list-group-item">
+                                <li class="list-group-item animate__animated animate__fadeIn" style="animation-delay: 0.3s">
                                     <b>Pending</b> <a class="float-right">1</a>
                                 </li>
-                                <li class="list-group-item">
+                                <li class="list-group-item animate__animated animate__fadeIn" style="animation-delay: 0.4s">
                                     <b>Rejected</b> <a class="float-right">1</a>
                                 </li>
                             </ul>
 
-                            <button class="btn btn-primary btn-block" data-toggle="modal" data-target="#editProfileModal">
+                            <button class="btn btn-indigo btn-block shadow-sm animate__animated animate__fadeInUp"
+                                data-toggle="modal" data-target="#editProfileModal">
                                 <i class="fas fa-edit"></i> Edit Profile
                             </button>
                         </div>
                     </div>
 
-                    <!-- About Me Box -->
-                    <div class="card card-primary">
+                    <div class="card card-indigo animate__animated animate__fadeInLeft animate__delay-1s">
                         <div class="card-header">
-                            <h3 class="card-title">About Me</h3>
+                            <h3 class="card-title"><i class="fas fa-info-circle mr-1"></i> About Me</h3>
                         </div>
                         <div class="card-body">
                             <strong><i class="fas fa-map-marker-alt mr-1"></i> Location</strong>
                             <p class="text-muted">Buea, SW Region</p>
-
                             <hr>
 
                             <strong><i class="fas fa-graduation-cap mr-1"></i> Education</strong>
                             <p class="text-muted">BSc Computer Science (University of Buea)</p>
-
                             <hr>
 
                             <strong><i class="fas fa-phone mr-1"></i> Contact</strong>
                             <p class="text-muted">+237 650729916</p>
                             <p class="text-muted">andrew.nfon@email.com</p>
-
                             <hr>
 
                             <strong><i class="fas fa-pencil-alt mr-1"></i> Skills</strong>
                             <p class="text-muted">
-                                <span class="badge badge-info mr-1">Java</span>
-                                <span class="badge badge-info mr-1">Python</span>
-                                <span class="badge badge-info mr-1">SQL</span>
-                                <span class="badge badge-info mr-1">HTML</span>
-                                <span class="badge badge-info mr-1">CSS</span>
-                                <span class="badge badge-info">JavaScript</span>
+                                <span class="badge bg-teal mr-1 mb-1">Java</span>
+                                <span class="badge bg-teal mr-1 mb-1">Python</span>
+                                <span class="badge bg-teal mr-1 mb-1">SQL</span>
+                                <span class="badge bg-teal mr-1 mb-1">HTML</span>
+                                <span class="badge bg-teal mr-1 mb-1">CSS</span>
+                                <span class="badge bg-teal mb-1">JavaScript</span>
                             </p>
                         </div>
                     </div>
 
-                    <!-- Documents Box -->
-                    <div class="card card-primary">
+                    <div class="card card-indigo animate__animated animate__fadeInLeft animate__delay-2s">
                         <div class="card-header">
-                            <h3 class="card-title">My Documents</h3>
+                            <h3 class="card-title"><i class="fas fa-file-alt mr-1"></i> My Documents</h3>
                         </div>
                         <div class="card-body p-0">
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <li class="list-group-item d-flex justify-content-between align-items-center animate__animated animate__fadeIn"
+                                    style="animation-delay: 0.1s">
                                     <div>
-                                        <i class="fas fa-file-pdf mr-2"></i> Resume/CV
+                                        <i class="fas fa-file-pdf text-danger mr-2"></i> Resume/CV
                                     </div>
                                     <div>
                                         <a href="#" class="btn btn-xs btn-info mr-1">
@@ -113,9 +106,10 @@
                                         </button>
                                     </div>
                                 </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <li class="list-group-item d-flex justify-content-between align-items-center animate__animated animate__fadeIn"
+                                    style="animation-delay: 0.2s">
                                     <div>
-                                        <i class="fas fa-file-image mr-2"></i> ID Card
+                                        <i class="fas fa-file-image text-primary mr-2"></i> ID Card
                                     </div>
                                     <div>
                                         <a href="#" class="btn btn-xs btn-info mr-1">
@@ -127,9 +121,10 @@
                                         </button>
                                     </div>
                                 </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <li class="list-group-item d-flex justify-content-between align-items-center animate__animated animate__fadeIn"
+                                    style="animation-delay: 0.3s">
                                     <div>
-                                        <i class="fas fa-file-alt mr-2"></i> Academic Transcript
+                                        <i class="fas fa-file-alt text-success mr-2"></i> Academic Transcript
                                     </div>
                                     <div>
                                         <a href="#" class="btn btn-xs btn-info mr-1">
@@ -144,24 +139,24 @@
                             </ul>
                         </div>
                         <div class="card-footer">
-                            <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#addDocumentModal">
+                            <button class="btn btn-sm btn-indigo shadow-sm" data-toggle="modal"
+                                data-target="#addDocumentModal">
                                 <i class="fas fa-plus"></i> Add Document
                             </button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Application History -->
                 <div class="col-md-8">
-                    <div class="card card-primary card-outline">
+                    <div class="card card-indigo card-outline animate__animated animate__fadeInRight">
                         <div class="card-header">
-                            <h3 class="card-title">Application History</h3>
+                            <h3 class="card-title"><i class="fas fa-history mr-1"></i> Application History</h3>
                             <div class="card-tools">
                                 <div class="input-group input-group-sm" style="width: 150px;">
                                     <input type="text" name="table_search" class="form-control float-right"
                                         placeholder="Search">
                                     <div class="input-group-append">
-                                        <button type="submit" class="btn btn-default">
+                                        <button type="submit" class="btn btn-indigo">
                                             <i class="fas fa-search"></i>
                                         </button>
                                     </div>
@@ -171,7 +166,7 @@
                         <div class="card-body p-0">
                             <div class="table-responsive">
                                 <table class="table table-hover">
-                                    <thead>
+                                    <thead class="bg-indigo">
                                         <tr>
                                             <th>Position</th>
                                             <th>Company</th>
@@ -181,37 +176,37 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
+                                        <tr class="animate__animated animate__fadeIn" style="animation-delay: 0.1s">
                                             <td>Software Dev Intern</td>
                                             <td>GilloTech</td>
                                             <td>May 15, 2025</td>
                                             <td><span class="badge badge-info">Pending</span></td>
                                             <td>
-                                                <button class="btn btn-xs btn-primary" data-toggle="modal"
+                                                <button class="btn btn-xs btn-indigo" data-toggle="modal"
                                                     data-target="#viewApplicationModal">
                                                     <i class="fas fa-eye"></i> View
                                                 </button>
                                             </td>
                                         </tr>
-                                        <tr>
+                                        <tr class="animate__animated animate__fadeIn" style="animation-delay: 0.2s">
                                             <td>IT Support Intern</td>
                                             <td>H4BF</td>
                                             <td>May 10, 2025</td>
                                             <td><span class="badge badge-success">Accepted</span></td>
                                             <td>
-                                                <button class="btn btn-xs btn-primary" data-toggle="modal"
+                                                <button class="btn btn-xs btn-indigo" data-toggle="modal"
                                                     data-target="#viewApplicationModal">
                                                     <i class="fas fa-eye"></i> View
                                                 </button>
                                             </td>
                                         </tr>
-                                        <tr>
+                                        <tr class="animate__animated animate__fadeIn" style="animation-delay: 0.3s">
                                             <td>Web Intern</td>
                                             <td>Uncle Luke Digitals</td>
                                             <td>April 28, 2025</td>
                                             <td><span class="badge badge-danger">Rejected</span></td>
                                             <td>
-                                                <button class="btn btn-xs btn-primary" data-toggle="modal"
+                                                <button class="btn btn-xs btn-indigo" data-toggle="modal"
                                                     data-target="#viewApplicationModal">
                                                     <i class="fas fa-eye"></i> View
                                                 </button>
@@ -230,17 +225,16 @@
                         </div>
                     </div>
 
-                    <!-- Activity Timeline -->
-                    <div class="card card-primary card-outline">
+                    <div class="card card-indigo card-outline animate__animated animate__fadeInRight animate__delay-1s">
                         <div class="card-header">
-                            <h3 class="card-title">Recent Activity</h3>
+                            <h3 class="card-title"><i class="fas fa-bell mr-1"></i> Recent Activity</h3>
                         </div>
                         <div class="card-body">
                             <div class="timeline">
                                 <div class="time-label">
-                                    <span class="bg-primary">May 15, 2025</span>
+                                    <span class="bg-indigo">May 15, 2025</span>
                                 </div>
-                                <div>
+                                <div class="animate__animated animate__fadeIn" style="animation-delay: 0.1s">
                                     <i class="fas fa-paper-plane bg-blue"></i>
                                     <div class="timeline-item">
                                         <span class="time"><i class="fas fa-clock"></i> 10:30 AM</span>
@@ -255,7 +249,7 @@
                                 <div class="time-label">
                                     <span class="bg-success">May 12, 2025</span>
                                 </div>
-                                <div>
+                                <div class="animate__animated animate__fadeIn" style="animation-delay: 0.2s">
                                     <i class="fas fa-check-circle bg-green"></i>
                                     <div class="timeline-item">
                                         <span class="time"><i class="fas fa-clock"></i> 2:15 PM</span>
@@ -271,7 +265,7 @@
                                 <div class="time-label">
                                     <span class="bg-info">May 10, 2025</span>
                                 </div>
-                                <div>
+                                <div class="animate__animated animate__fadeIn" style="animation-delay: 0.3s">
                                     <i class="fas fa-paper-plane bg-blue"></i>
                                     <div class="timeline-item">
                                         <span class="time"><i class="fas fa-clock"></i> 9:45 AM</span>
@@ -286,7 +280,7 @@
                                 <div class="time-label">
                                     <span class="bg-danger">May 5, 2025</span>
                                 </div>
-                                <div>
+                                <div class="animate__animated animate__fadeIn" style="animation-delay: 0.4s">
                                     <i class="fas fa-times-circle bg-red"></i>
                                     <div class="timeline-item">
                                         <span class="time"><i class="fas fa-clock"></i> 11:20 AM</span>
@@ -302,7 +296,7 @@
                                 <div class="time-label">
                                     <span class="bg-info">April 28, 2025</span>
                                 </div>
-                                <div>
+                                <div class="animate__animated animate__fadeIn" style="animation-delay: 0.5s">
                                     <i class="fas fa-paper-plane bg-blue"></i>
                                     <div class="timeline-item">
                                         <span class="time"><i class="fas fa-clock"></i> 3:30 PM</span>
@@ -325,13 +319,12 @@
         </div>
     </section>
 
-    <!-- Edit Profile Modal -->
     <div class="modal fade" id="editProfileModal" tabindex="-1" role="dialog" aria-labelledby="editProfileModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <form id="profileForm">
-                    <div class="modal-header bg-primary">
+                    <div class="modal-header bg-indigo">
                         <h5 class="modal-title" id="editProfileModalLabel">Edit Profile</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
@@ -339,10 +332,12 @@
                     </div>
                     <div class="modal-body">
                         <div class="text-center mb-4">
-                            <img class="profile-user-img img-fluid img-circle" src="{{asset('asset/img/avatar.png')}}"
-                                alt="User profile picture">
+                            <img class="profile-user-img img-fluid img-circle shadow"
+                                src="{{asset('asset/img/avatar.png')}}" alt="User profile picture">
                             <div class="mt-2">
-                                <button type="button" class="btn btn-sm btn-info">Change Photo</button>
+                                <button type="button" class="btn btn-sm btn-info shadow-sm">
+                                    <i class="fas fa-camera"></i> Change Photo
+                                </button>
                             </div>
                         </div>
 
@@ -421,19 +416,20 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                        <button type="button" class="btn btn-primary" id="saveProfileChanges">Save Changes</button>
+                        <button type="button" class="btn btn-indigo" id="saveProfileChanges">
+                            <i class="fas fa-save"></i> Save Changes
+                        </button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 
-    <!-- View Application Modal -->
     <div class="modal fade" id="viewApplicationModal" tabindex="-1" role="dialog"
         aria-labelledby="viewApplicationModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
-                <div class="modal-header bg-primary">
+                <div class="modal-header bg-indigo">
                     <h5 class="modal-title" id="viewApplicationModalLabel">Application Details</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -442,7 +438,7 @@
                 <div class="modal-body">
                     <div class="row mb-4">
                         <div class="col-md-2">
-                            <img src="https://via.placeholder.com/80" alt="GilloTech" class="img-fluid">
+                            <img src="https://via.placeholder.com/80" alt="GilloTech" class="img-fluid rounded shadow">
                         </div>
                         <div class="col-md-10">
                             <h4>Software Dev Intern - GilloTech</h4>
@@ -455,9 +451,9 @@
                         </div>
                     </div>
 
-                    <div class="card card-outline card-primary mb-4">
+                    <div class="card card-outline card-indigo mb-4 animate__animated animate__fadeIn">
                         <div class="card-header">
-                            <h3 class="card-title">Application Summary</h3>
+                            <h3 class="card-title"><i class="fas fa-info-circle mr-1"></i> Application Summary</h3>
                         </div>
                         <div class="card-body">
                             <dl class="row">
@@ -473,9 +469,9 @@
                         </div>
                     </div>
 
-                    <div class="card card-outline card-primary mb-4">
+                    <div class="card card-outline card-indigo mb-4 animate__animated animate__fadeIn animate__delay-1s">
                         <div class="card-header">
-                            <h3 class="card-title">Submitted Information</h3>
+                            <h3 class="card-title"><i class="fas fa-file-alt mr-1"></i> Submitted Information</h3>
                         </div>
                         <div class="card-body">
                             <h5>Why are you interested in this internship?</h5>
@@ -494,15 +490,15 @@
                         </div>
                     </div>
 
-                    <div class="card card-outline card-primary">
+                    <div class="card card-outline card-indigo animate__animated animate__fadeIn animate__delay-2s">
                         <div class="card-header">
-                            <h3 class="card-title">Submitted Documents</h3>
+                            <h3 class="card-title"><i class="fas fa-file-download mr-1"></i> Submitted Documents</h3>
                         </div>
                         <div class="card-body p-0">
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
                                     <div>
-                                        <i class="fas fa-file-pdf mr-2"></i> Resume/CV
+                                        <i class="fas fa-file-pdf text-danger mr-2"></i> Resume/CV
                                     </div>
                                     <a href="#" class="btn btn-sm btn-info">
                                         <i class="fas fa-download"></i> Download
@@ -510,7 +506,7 @@
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
                                     <div>
-                                        <i class="fas fa-file-word mr-2"></i> Cover Letter
+                                        <i class="fas fa-file-word text-primary mr-2"></i> Cover Letter
                                     </div>
                                     <a href="#" class="btn btn-sm btn-info">
                                         <i class="fas fa-download"></i> Download
@@ -518,7 +514,7 @@
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
                                     <div>
-                                        <i class="fas fa-file-image mr-2"></i> ID Card
+                                        <i class="fas fa-file-image text-success mr-2"></i> ID Card
                                     </div>
                                     <a href="#" class="btn btn-sm btn-info">
                                         <i class="fas fa-download"></i> Download
@@ -530,13 +526,14 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-danger">Withdraw Application</button>
+                    <button type="button" class="btn btn-danger">
+                        <i class="fas fa-times"></i> Withdraw Application
+                    </button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Update Document Modal -->
     <div class="modal fade" id="updateDocumentModal" tabindex="-1" role="dialog" aria-labelledby="updateDocumentModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -570,18 +567,19 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-warning">Update Document</button>
+                    <button type="button" class="btn btn-warning">
+                        <i class="fas fa-sync-alt"></i> Update Document
+                    </button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Add Document Modal -->
     <div class="modal fade" id="addDocumentModal" tabindex="-1" role="dialog" aria-labelledby="addDocumentModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-header bg-primary">
+                <div class="modal-header bg-indigo">
                     <h5 class="modal-title" id="addDocumentModalLabel">Add New Document</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -620,21 +618,19 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary">Add Document</button>
+                    <button type="button" class="btn btn-indigo">
+                        <i class="fas fa-plus"></i> Add Document
+                    </button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Custom JavaScript -->
     <script>
         $(document).ready(function () {
-            // Initialize custom file input
             bsCustomFileInput.init();
 
-            // Handle profile save
             $('#saveProfileChanges').click(function () {
-                // Simple validation
                 let isValid = true;
                 const requiredFields = $('#profileForm').find('[required]');
 
@@ -648,10 +644,7 @@
                 });
 
                 if (isValid) {
-                    // Show success message
                     $('#editProfileModal').modal('hide');
-
-                    // Show toast notification
                     $(document).Toasts('create', {
                         class: 'bg-success',
                         title: 'Success',
@@ -662,7 +655,6 @@
                 }
             });
 
-            // Update document modal dynamic content
             $('#updateDocumentModal').on('show.bs.modal', function (event) {
                 const button = $(event.relatedTarget);
                 const documentType = button.data('document');
@@ -685,6 +677,12 @@
 
                 modal.find('.modal-title').text('Update ' + documentTitle);
                 modal.find('#documentType').val(documentTitle);
+            });
+
+            $('.card').hover(function () {
+                $(this).addClass('animate__animated animate__pulse');
+            }, function () {
+                $(this).removeClass('animate__animated animate__pulse');
             });
         });
     </script>
