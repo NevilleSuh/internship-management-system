@@ -19,10 +19,9 @@
 
     <section class="content">
         <div class="container-fluid">
-            <!-- Search and Filter Section -->
             <div class="row">
                 <div class="col-12">
-                    <div class="card card-info">
+                    <div class="card card-indigo">
                         <div class="card-header">
                             <h3 class="card-title"><i class="fas fa-search"></i> Find Your Perfect Internship</h3>
                         </div>
@@ -52,7 +51,7 @@
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label>&nbsp;</label>
-                                            <button type="submit" class="btn btn-info btn-block">
+                                            <button type="submit" class="btn btn-indigo btn-block">
                                                 <i class="fas fa-search"></i> Search
                                             </button>
                                         </div>
@@ -64,18 +63,16 @@
                 </div>
             </div>
 
-            <!-- Featured Internships Section -->
             <div class="row">
                 <div class="col-12">
-                    <div class="card card-outline card-primary">
+                    <div class="card card-outline card-teal">
                         <div class="card-header">
                             <h3 class="card-title">Featured Internships in Bamenda</h3>
                         </div>
                         <div class="card-body">
                             <div class="row">
-                                <!-- Internship Card 1 -->
                                 <div class="col-md-4">
-                                    <div class="card">
+                                    <div class="card animate__animated animate__fadeInUp">
                                         <div class="card-body">
                                             <div class="d-flex align-items-center mb-3">
                                                 <div class="mr-3">
@@ -88,7 +85,7 @@
                                                 </div>
                                             </div>
                                             <div class="mb-3">
-                                                <span class="badge badge-info mr-1">Full-time</span>
+                                                <span class="badge badge-teal mr-1">Full-time</span>
                                                 <span class="badge badge-success mr-1">Paid</span>
                                                 <span class="badge badge-warning">Featured</span>
                                             </div>
@@ -100,7 +97,7 @@
                                                 <span class="badge bg-light text-dark mr-1">JavaScript</span>
                                                 <span class="badge bg-light text-dark">Web Development</span>
                                             </div>
-                                            <button class="btn btn-outline-primary btn-block" data-toggle="modal"
+                                            <button class="btn btn-outline-teal btn-block" data-toggle="modal"
                                                 data-target="#internshipModal">
                                                 <i class="fas fa-eye"></i> View Details
                                             </button>
@@ -108,9 +105,8 @@
                                     </div>
                                 </div>
 
-                                <!-- Internship Card 2 -->
                                 <div class="col-md-4">
-                                    <div class="card">
+                                    <div class="card animate__animated animate__fadeInUp animate__delay-1s">
                                         <div class="card-body">
                                             <div class="d-flex align-items-center mb-3">
                                                 <div class="mr-3">
@@ -123,7 +119,7 @@
                                                 </div>
                                             </div>
                                             <div class="mb-3">
-                                                <span class="badge badge-info mr-1">Part-time</span>
+                                                <span class="badge badge-teal mr-1">Part-time</span>
                                                 <span class="badge badge-success mr-1">Paid</span>
                                             </div>
                                             <p><i class="fas fa-map-marker-alt mr-1"></i> Bamenda, Commercial Avenue</p>
@@ -134,7 +130,7 @@
                                                 <span class="badge bg-light text-dark mr-1">Hardware</span>
                                                 <span class="badge bg-light text-dark">Customer Service</span>
                                             </div>
-                                            <button class="btn btn-outline-primary btn-block" data-toggle="modal"
+                                            <button class="btn btn-outline-teal btn-block" data-toggle="modal"
                                                 data-target="#internshipModal">
                                                 <i class="fas fa-eye"></i> View Details
                                             </button>
@@ -142,9 +138,8 @@
                                     </div>
                                 </div>
 
-                                <!-- Internship Card 3 -->
                                 <div class="col-md-4">
-                                    <div class="card">
+                                    <div class="card animate__animated animate__fadeInUp animate__delay-2s">
                                         <div class="card-body">
                                             <div class="d-flex align-items-center mb-3">
                                                 <div class="mr-3">
@@ -157,7 +152,7 @@
                                                 </div>
                                             </div>
                                             <div class="mb-3">
-                                                <span class="badge badge-info mr-1">Full-time</span>
+                                                <span class="badge badge-teal mr-1">Full-time</span>
                                                 <span class="badge badge-secondary mr-1">Unpaid</span>
                                             </div>
                                             <p><i class="fas fa-map-marker-alt mr-1"></i> Bamenda, Nkwen</p>
@@ -168,7 +163,7 @@
                                                 <span class="badge bg-light text-dark mr-1">JavaScript</span>
                                                 <span class="badge bg-light text-dark">PHP</span>
                                             </div>
-                                            <button class="btn btn-outline-primary btn-block" data-toggle="modal"
+                                            <button class="btn btn-outline-teal btn-block" data-toggle="modal"
                                                 data-target="#internshipModal">
                                                 <i class="fas fa-eye"></i> View Details
                                             </button>
@@ -181,17 +176,16 @@
                 </div>
             </div>
 
-            <!-- Categories Section -->
             <div class="row">
                 <div class="col-12">
-                    <div class="card card-outline card-success">
+                    <div class="card card-outline card-purple">
                         <div class="card-header">
                             <h3 class="card-title">Browse By Category</h3>
                         </div>
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-3 col-6">
-                                    <div class="info-box bg-info">
+                                    <div class="info-box bg-gradient-indigo animate__animated animate__fadeIn">
                                         <span class="info-box-icon"><i class="fas fa-laptop-code"></i></span>
                                         <div class="info-box-content">
                                             <span class="info-box-text">Technology</span>
@@ -200,7 +194,8 @@
                                     </div>
                                 </div>
                                 <div class="col-md-3 col-6">
-                                    <div class="info-box bg-success">
+                                    <div
+                                        class="info-box bg-gradient-green animate__animated animate__fadeIn animate__delay-1s">
                                         <span class="info-box-icon"><i class="fas fa-chart-line"></i></span>
                                         <div class="info-box-content">
                                             <span class="info-box-text">Business</span>
@@ -209,7 +204,8 @@
                                     </div>
                                 </div>
                                 <div class="col-md-3 col-6">
-                                    <div class="info-box bg-warning">
+                                    <div
+                                        class="info-box bg-gradient-yellow animate__animated animate__fadeIn animate__delay-2s">
                                         <span class="info-box-icon"><i class="fas fa-heartbeat"></i></span>
                                         <div class="info-box-content">
                                             <span class="info-box-text">Healthcare</span>
@@ -218,7 +214,8 @@
                                     </div>
                                 </div>
                                 <div class="col-md-3 col-6">
-                                    <div class="info-box bg-danger">
+                                    <div
+                                        class="info-box bg-gradient-red animate__animated animate__fadeIn animate__delay-3s">
                                         <span class="info-box-icon"><i class="fas fa-paint-brush"></i></span>
                                         <div class="info-box-content">
                                             <span class="info-box-text">Arts & Design</span>
@@ -229,7 +226,8 @@
                             </div>
                             <div class="row mt-3">
                                 <div class="col-md-3 col-6">
-                                    <div class="info-box bg-primary">
+                                    <div
+                                        class="info-box bg-gradient-primary animate__animated animate__fadeIn animate__delay-1s">
                                         <span class="info-box-icon"><i class="fas fa-graduation-cap"></i></span>
                                         <div class="info-box-content">
                                             <span class="info-box-text">Education</span>
@@ -238,7 +236,8 @@
                                     </div>
                                 </div>
                                 <div class="col-md-3 col-6">
-                                    <div class="info-box bg-secondary">
+                                    <div
+                                        class="info-box bg-gradient-secondary animate__animated animate__fadeIn animate__delay-2s">
                                         <span class="info-box-icon"><i class="fas fa-gavel"></i></span>
                                         <div class="info-box-content">
                                             <span class="info-box-text">Legal</span>
@@ -247,7 +246,8 @@
                                     </div>
                                 </div>
                                 <div class="col-md-3 col-6">
-                                    <div class="info-box bg-info">
+                                    <div
+                                        class="info-box bg-gradient-info animate__animated animate__fadeIn animate__delay-3s">
                                         <span class="info-box-icon"><i class="fas fa-globe"></i></span>
                                         <div class="info-box-content">
                                             <span class="info-box-text">Marketing</span>
@@ -256,7 +256,8 @@
                                     </div>
                                 </div>
                                 <div class="col-md-3 col-6">
-                                    <div class="info-box bg-success">
+                                    <div
+                                        class="info-box bg-gradient-success animate__animated animate__fadeIn animate__delay-4s">
                                         <span class="info-box-icon"><i class="fas fa-cogs"></i></span>
                                         <div class="info-box-content">
                                             <span class="info-box-text">Engineering</span>
@@ -270,17 +271,16 @@
                 </div>
             </div>
 
-            <!-- How It Works Section -->
             <div class="row">
                 <div class="col-12">
-                    <div class="card card-outline card-warning">
+                    <div class="card card-outline card-orange">
                         <div class="card-header">
                             <h3 class="card-title">How It Works</h3>
                         </div>
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-4">
-                                    <div class="card bg-light">
+                                    <div class="card bg-light animate__animated animate__zoomIn">
                                         <div class="card-body text-center">
                                             <div class="mb-3">
                                                 <span class="badge badge-primary" style="font-size: 1.5rem;">1</span>
@@ -295,7 +295,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4">
-                                    <div class="card bg-light">
+                                    <div class="card bg-light animate__animated animate__zoomIn animate__delay-1s">
                                         <div class="card-body text-center">
                                             <div class="mb-3">
                                                 <span class="badge badge-success" style="font-size: 1.5rem;">2</span>
@@ -310,7 +310,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4">
-                                    <div class="card bg-light">
+                                    <div class="card bg-light animate__animated animate__zoomIn animate__delay-2s">
                                         <div class="card-body text-center">
                                             <div class="mb-3">
                                                 <span class="badge badge-info" style="font-size: 1.5rem;">3</span>
@@ -330,14 +330,13 @@
                 </div>
             </div>
 
-            <!-- Recent Internships Section -->
             <div class="row">
                 <div class="col-12">
-                    <div class="card card-outline card-primary">
+                    <div class="card card-outline card-teal">
                         <div class="card-header">
                             <h3 class="card-title">Recently Added Internships</h3>
                             <div class="card-tools">
-                                <a href="#" class="btn btn-primary btn-sm">View All</a>
+                                <a href="#" class="btn btn-teal btn-sm">View All</a>
                             </div>
                         </div>
                         <div class="card-body table-responsive p-0">
@@ -353,53 +352,53 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
+                                    <tr class="animate__animated animate__fadeIn">
                                         <td>Marketing Assistant</td>
                                         <td>Bamenda Digital Solutions</td>
                                         <td>Bamenda, Commercial Avenue</td>
-                                        <td><span class="badge badge-info">Part-time</span></td>
+                                        <td><span class="badge badge-teal">Part-time</span></td>
                                         <td>2 days ago</td>
                                         <td>
-                                            <button class="btn btn-xs btn-primary" data-toggle="modal"
+                                            <button class="btn btn-xs btn-teal" data-toggle="modal"
                                                 data-target="#internshipModal">
                                                 <i class="fas fa-eye"></i> View
                                             </button>
                                         </td>
                                     </tr>
-                                    <tr>
+                                    <tr class="animate__animated animate__fadeIn animate__delay-1s">
                                         <td>Accounting Intern</td>
                                         <td>NW Finance Ltd</td>
                                         <td>Bamenda, Up Station</td>
-                                        <td><span class="badge badge-info">Full-time</span></td>
+                                        <td><span class="badge badge-teal">Full-time</span></td>
                                         <td>3 days ago</td>
                                         <td>
-                                            <button class="btn btn-xs btn-primary" data-toggle="modal"
+                                            <button class="btn btn-xs btn-teal" data-toggle="modal"
                                                 data-target="#internshipModal">
                                                 <i class="fas fa-eye"></i> View
                                             </button>
                                         </td>
                                     </tr>
-                                    <tr>
+                                    <tr class="animate__animated animate__fadeIn animate__delay-2s">
                                         <td>Graphic Design Intern</td>
                                         <td>Creative Hub Bamenda</td>
                                         <td>Bamenda, Nkwen</td>
-                                        <td><span class="badge badge-info">Part-time</span></td>
+                                        <td><span class="badge badge-teal">Part-time</span></td>
                                         <td>5 days ago</td>
                                         <td>
-                                            <button class="btn btn-xs btn-primary" data-toggle="modal"
+                                            <button class="btn btn-xs btn-teal" data-toggle="modal"
                                                 data-target="#internshipModal">
                                                 <i class="fas fa-eye"></i> View
                                             </button>
                                         </td>
                                     </tr>
-                                    <tr>
+                                    <tr class="animate__animated animate__fadeIn animate__delay-3s">
                                         <td>Administrative Assistant</td>
                                         <td>Bamenda City Council</td>
                                         <td>Bamenda, City Center</td>
-                                        <td><span class="badge badge-info">Full-time</span></td>
+                                        <td><span class="badge badge-teal">Full-time</span></td>
                                         <td>1 week ago</td>
                                         <td>
-                                            <button class="btn btn-xs btn-primary" data-toggle="modal"
+                                            <button class="btn btn-xs btn-teal" data-toggle="modal"
                                                 data-target="#internshipModal">
                                                 <i class="fas fa-eye"></i> View
                                             </button>
@@ -414,12 +413,11 @@
         </div>
     </section>
 
-    <!-- Internship Details Modal -->
     <div class="modal fade" id="internshipModal" tabindex="-1" role="dialog" aria-labelledby="internshipModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
-                <div class="modal-header bg-primary">
+                <div class="modal-header bg-teal">
                     <h5 class="modal-title" id="internshipModalLabel">Software Development Intern - GilloTech</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -434,7 +432,7 @@
                             <h4>GilloTech</h4>
                             <p class="text-muted">Bamenda, Up Station</p>
                             <div>
-                                <span class="badge badge-info mr-1">Full-time</span>
+                                <span class="badge badge-teal mr-1">Full-time</span>
                                 <span class="badge badge-success mr-1">Paid</span>
                                 <span class="badge badge-warning">Featured</span>
                             </div>
@@ -484,19 +482,18 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#applyModal"
+                    <button type="button" class="btn btn-teal" data-toggle="modal" data-target="#applyModal"
                         data-dismiss="modal">Apply Now</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Apply Modal -->
     <div class="modal fade" id="applyModal" tabindex="-1" role="dialog" aria-labelledby="applyModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
-                <div class="modal-header bg-primary">
+                <div class="modal-header bg-teal">
                     <h5 class="modal-title" id="applyModalLabel">Apply for Software Development Intern - GilloTech</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -621,13 +618,12 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary" id="submitApplication">Submit Application</button>
+                    <button type="button" class="btn btn-teal" id="submitApplication">Submit Application</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Success Modal -->
     <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -651,15 +647,11 @@
         </div>
     </div>
 
-    <!-- Custom JavaScript -->
     <script>
         $(document).ready(function () {
-            // Initialize custom file input
             bsCustomFileInput.init();
 
-            // Handle application submission
             $('#submitApplication').click(function () {
-                // Simple validation
                 let isValid = true;
                 const requiredFields = $('#applicationForm').find('[required]');
 
@@ -673,20 +665,21 @@
                 });
 
                 if (isValid) {
-                    // Show success message
                     $('#applyModal').modal('hide');
                     setTimeout(function () {
                         $('#successModal').modal('show');
                     }, 500);
 
-                    // Reset form
                     $('#applicationForm')[0].reset();
                     $('.custom-file-label').text('Choose file');
                 }
             });
 
-            // Animation for cards
-            $('.card').addClass('animate__animated animate__fadeIn');
+            $('.card').hover(function () {
+                $(this).addClass('animate__animated animate__pulse');
+            }, function () {
+                $(this).removeClass('animate__animated animate__pulse');
+            });
         });
     </script>
 @endsection

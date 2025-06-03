@@ -5,14 +5,13 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 animate__animated animate__fadeInLeft"><i class="fas fa-plus-circle text-success"></i>
-                        Post New Internship</h1>
+                    <h1 class="m-0 animate__animated animate__fadeInLeft"><i class="fas fa-briefcase text-purple"></i>
+                        Internship Management</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right animate__animated animate__fadeInRight">
                         <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-                        <li class="breadcrumb-item"><a href="#">Internships</a></li>
-                        <li class="breadcrumb-item active">Post New</li>
+                        <li class="breadcrumb-item active">Manage Internships</li>
                     </ol>
                 </div>
             </div>
@@ -21,336 +20,1233 @@
 
     <section class="content">
         <div class="container-fluid">
-            <!-- Introduction Card -->
+            <!-- Dashboard Cards -->
             <div class="row">
-                <div class="col-12">
-                    <div class="card bg-gradient-info animate__animated animate__fadeInDown">
-                        <div class="card-header">
-                            <h3 class="card-title"><i class="fas fa-info-circle"></i> Posting Guidelines</h3>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                            </div>
+                <div class="col-lg-3 col-6">
+                    <div class="small-box bg-gradient-primary animate__animated animate__fadeInUp">
+                        <div class="inner">
+                            <h3>3</h3>
+                            <p>Active Internships</p>
                         </div>
-                        <div class="card-body">
-                            <p>Welcome to the internship posting platform! Please follow these guidelines to create an
-                                effective internship listing:</p>
-                            <ul>
-                                <li>Provide clear and specific information about responsibilities and requirements</li>
-                                <li>Be transparent about compensation (paid/unpaid) and duration</li>
-                                <li>Include details about the application process and deadlines</li>
-                                <li>Specify the location (on-site/remote) and working hours</li>
-                                <li>All postings will be reviewed before being published</li>
-                            </ul>
+                        <div class="icon">
+                            <i class="fas fa-briefcase"></i>
                         </div>
+                        <a href="#" class="small-box-footer">View All <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <div class="small-box bg-gradient-success animate__animated animate__fadeInUp"
+                        style="animation-delay: 0.1s">
+                        <div class="inner">
+                            <h3>27</h3>
+                            <p>Total Applications</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <a href="#" class="small-box-footer">View All <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <div class="small-box bg-gradient-warning animate__animated animate__fadeInUp"
+                        style="animation-delay: 0.2s">
+                        <div class="inner">
+                            <h3>5</h3>
+                            <p>Pending Reviews</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <a href="#" class="small-box-footer">View All <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <div class="small-box bg-gradient-danger animate__animated animate__fadeInUp"
+                        style="animation-delay: 0.3s">
+                        <div class="inner">
+                            <h3>2</h3>
+                            <p>Positions Filled</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-user-check"></i>
+                        </div>
+                        <a href="#" class="small-box-footer">View All <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
             </div>
 
+            <!-- Main Content Area -->
             <div class="row">
-                <!-- Internship Form -->
+                <!-- Internship List -->
                 <div class="col-md-8">
-                    <div class="card card-primary animate__animated animate__fadeInUp">
-                        <div class="card-header bg-gradient-primary">
-                            <h3 class="card-title"><i class="fas fa-briefcase"></i> Internship Details</h3>
+                    <div class="card card-tabs animate__animated animate__fadeInLeft">
+                        <div class="card-header p-0 pt-1 border-bottom-0">
+                            <ul class="nav nav-tabs" id="internship-tabs" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="internship-active-tab" data-toggle="pill"
+                                        href="#internship-active" role="tab" aria-controls="internship-active"
+                                        aria-selected="true">Active</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="internship-pending-tab" data-toggle="pill"
+                                        href="#internship-pending" role="tab" aria-controls="internship-pending"
+                                        aria-selected="false">Pending</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="internship-expired-tab" data-toggle="pill"
+                                        href="#internship-expired" role="tab" aria-controls="internship-expired"
+                                        aria-selected="false">Expired</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="internship-draft-tab" data-toggle="pill"
+                                        href="#internship-draft" role="tab" aria-controls="internship-draft"
+                                        aria-selected="false">Drafts</a>
+                                </li>
+                            </ul>
                         </div>
                         <div class="card-body">
-                            <form id="internshipForm">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label for="position">Position Title <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" id="position"
-                                                placeholder="e.g., Software Development Intern" required>
+                            <div class="tab-content" id="internship-tabContent">
+                                <!-- Active Internships Tab -->
+                                <div class="tab-pane fade show active" id="internship-active" role="tabpanel"
+                                    aria-labelledby="internship-active-tab">
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <h5 class="card-title">Active Internships</h5>
+                                        <div class="input-group input-group-sm" style="width: 150px;">
+                                            <input type="text" class="form-control" placeholder="Search">
+                                            <div class="input-group-append">
+                                                <button type="button" class="btn btn-default">
+                                                    <i class="fas fa-search"></i>
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="department">Department <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" id="department"
-                                                placeholder="e.g., Engineering, Marketing" required>
+                                    <div class="internship-list">
+                                        <!-- Internship Item 1 -->
+                                        <div class="card mb-3 internship-item animate__animated animate__fadeIn">
+                                            <div class="card-body p-0">
+                                                <div class="d-flex position-relative">
+                                                    <div class="internship-status bg-success"></div>
+                                                    <div class="p-3 flex-grow-1">
+                                                        <div class="d-flex justify-content-between align-items-start">
+                                                            <div>
+                                                                <h5 class="mb-1">Software Development Intern</h5>
+                                                                <p class="text-muted mb-1"><i
+                                                                        class="fas fa-map-marker-alt"></i> Bamenda, Up
+                                                                    Station</p>
+                                                                <div>
+                                                                    <span class="badge badge-info mr-1">Full-time</span>
+                                                                    <span class="badge badge-success mr-1">Paid</span>
+                                                                    <span class="badge badge-warning">Featured</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="text-right">
+                                                                <span class="text-muted">Posted: May 15, 2025</span><br>
+                                                                <span class="text-success">12 Applications</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="card-footer bg-light p-2">
+                                                    <div class="btn-group btn-group-sm">
+                                                        <button type="button" class="btn btn-info" data-toggle="modal"
+                                                            data-target="#viewApplicationsModal">
+                                                            <i class="fas fa-users"></i> Applications
+                                                        </button>
+                                                        <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                            data-target="#editInternshipModal">
+                                                            <i class="fas fa-edit"></i> Edit
+                                                        </button>
+                                                        <button type="button" class="btn btn-danger">
+                                                            <i class="fas fa-trash"></i> Delete
+                                                        </button>
+                                                    </div>
+                                                    <span class="float-right">
+                                                        <span class="badge bg-primary">Expires: Jun 15, 2025</span>
+                                                    </span>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="location">Location <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" id="location"
-                                                placeholder="e.g., Bamenda, Up Station" required>
-                                        </div>
-                                    </div>
-                                </div>
 
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="type">Internship Type <span class="text-danger">*</span></label>
-                                            <select class="form-control" id="type" required>
-                                                <option value="">Select Type</option>
-                                                <option value="full_time">Full-time</option>
-                                                <option value="part_time">Part-time</option>
-                                                <option value="flexible">Flexible Hours</option>
-                                            </select>
+                                        <!-- Internship Item 2 -->
+                                        <div class="card mb-3 internship-item animate__animated animate__fadeIn"
+                                            style="animation-delay: 0.1s">
+                                            <div class="card-body p-0">
+                                                <div class="d-flex position-relative">
+                                                    <div class="internship-status bg-success"></div>
+                                                    <div class="p-3 flex-grow-1">
+                                                        <div class="d-flex justify-content-between align-items-start">
+                                                            <div>
+                                                                <h5 class="mb-1">Marketing Assistant</h5>
+                                                                <p class="text-muted mb-1"><i
+                                                                        class="fas fa-map-marker-alt"></i> Bamenda,
+                                                                    Commercial Avenue</p>
+                                                                <div>
+                                                                    <span class="badge badge-info mr-1">Part-time</span>
+                                                                    <span class="badge badge-success mr-1">Paid</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="text-right">
+                                                                <span class="text-muted">Posted: May 10, 2025</span><br>
+                                                                <span class="text-success">8 Applications</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="card-footer bg-light p-2">
+                                                    <div class="btn-group btn-group-sm">
+                                                        <button type="button" class="btn btn-info" data-toggle="modal"
+                                                            data-target="#viewApplicationsModal">
+                                                            <i class="fas fa-users"></i> Applications
+                                                        </button>
+                                                        <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                            data-target="#editInternshipModal">
+                                                            <i class="fas fa-edit"></i> Edit
+                                                        </button>
+                                                        <button type="button" class="btn btn-danger">
+                                                            <i class="fas fa-trash"></i> Delete
+                                                        </button>
+                                                    </div>
+                                                    <span class="float-right">
+                                                        <span class="badge bg-primary">Expires: Jun 10, 2025</span>
+                                                    </span>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="compensation">Compensation <span
-                                                    class="text-danger">*</span></label>
-                                            <select class="form-control" id="compensation" required>
-                                                <option value="">Select Compensation</option>
-                                                <option value="paid">Paid</option>
-                                                <option value="unpaid">Unpaid</option>
-                                                <option value="stipend">Stipend</option>
-                                                <option value="other">Other (Specify)</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
 
-                                <div id="compensationDetails" class="row" style="display: none;">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label for="compensationAmount">Compensation Details</label>
-                                            <input type="text" class="form-control" id="compensationAmount"
-                                                placeholder="e.g., 50,000 FCFA monthly, Transportation allowance">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="startDate">Start Date <span class="text-danger">*</span></label>
-                                            <input type="date" class="form-control" id="startDate" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="duration">Duration <span class="text-danger">*</span></label>
-                                            <div class="input-group">
-                                                <input type="number" class="form-control" id="duration" min="1" required>
-                                                <div class="input-group-append">
-                                                    <select class="form-control" id="durationType">
-                                                        <option value="weeks">Weeks</option>
-                                                        <option value="months" selected>Months</option>
-                                                    </select>
+                                        <!-- Internship Item 3 -->
+                                        <div class="card mb-3 internship-item animate__animated animate__fadeIn"
+                                            style="animation-delay: 0.2s">
+                                            <div class="card-body p-0">
+                                                <div class="d-flex position-relative">
+                                                    <div class="internship-status bg-success"></div>
+                                                    <div class="p-3 flex-grow-1">
+                                                        <div class="d-flex justify-content-between align-items-start">
+                                                            <div>
+                                                                <h5 class="mb-1">Graphic Design Intern</h5>
+                                                                <p class="text-muted mb-1"><i
+                                                                        class="fas fa-map-marker-alt"></i> Bamenda, Nkwen
+                                                                </p>
+                                                                <div>
+                                                                    <span class="badge badge-info mr-1">Part-time</span>
+                                                                    <span class="badge badge-secondary mr-1">Unpaid</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="text-right">
+                                                                <span class="text-muted">Posted: May 5, 2025</span><br>
+                                                                <span class="text-success">7 Applications</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="card-footer bg-light p-2">
+                                                    <div class="btn-group btn-group-sm">
+                                                        <button type="button" class="btn btn-info" data-toggle="modal"
+                                                            data-target="#viewApplicationsModal">
+                                                            <i class="fas fa-users"></i> Applications
+                                                        </button>
+                                                        <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                            data-target="#editInternshipModal">
+                                                            <i class="fas fa-edit"></i> Edit
+                                                        </button>
+                                                        <button type="button" class="btn btn-danger">
+                                                            <i class="fas fa-trash"></i> Delete
+                                                        </button>
+                                                    </div>
+                                                    <span class="float-right">
+                                                        <span class="badge bg-primary">Expires: Jun 5, 2025</span>
+                                                    </span>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="applicationDeadline">Application Deadline <span
-                                                    class="text-danger">*</span></label>
-                                            <input type="date" class="form-control" id="applicationDeadline" required>
+                                <!-- Pending Internships Tab -->
+                                <div class="tab-pane fade" id="internship-pending" role="tabpanel"
+                                    aria-labelledby="internship-pending-tab">
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <h5 class="card-title">Pending Approval</h5>
+                                        <div class="input-group input-group-sm" style="width: 150px;">
+                                            <input type="text" class="form-control" placeholder="Search">
+                                            <div class="input-group-append">
+                                                <button type="button" class="btn btn-default">
+                                                    <i class="fas fa-search"></i>
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="positions">Number of Positions <span
-                                                    class="text-danger">*</span></label>
-                                            <input type="number" class="form-control" id="positions" min="1" value="1"
-                                                required>
+
+                                    <div class="internship-list">
+                                        <!-- Pending Internship Item -->
+                                        <div class="card mb-3 internship-item">
+                                            <div class="card-body p-0">
+                                                <div class="d-flex position-relative">
+                                                    <div class="internship-status bg-warning"></div>
+                                                    <div class="p-3 flex-grow-1">
+                                                        <div class="d-flex justify-content-between align-items-start">
+                                                            <div>
+                                                                <h5 class="mb-1">Administrative Assistant</h5>
+                                                                <p class="text-muted mb-1"><i
+                                                                        class="fas fa-map-marker-alt"></i> Bamenda, City
+                                                                    Center</p>
+                                                                <div>
+                                                                    <span class="badge badge-info mr-1">Full-time</span>
+                                                                    <span class="badge badge-success mr-1">Paid</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="text-right">
+                                                                <span class="text-muted">Submitted: May 20, 2025</span><br>
+                                                                <span class="text-warning">Under Review</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="card-footer bg-light p-2">
+                                                    <div class="btn-group btn-group-sm">
+                                                        <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                            data-target="#editInternshipModal">
+                                                            <i class="fas fa-edit"></i> Edit
+                                                        </button>
+                                                        <button type="button" class="btn btn-danger">
+                                                            <i class="fas fa-trash"></i> Delete
+                                                        </button>
+                                                    </div>
+                                                    <span class="float-right">
+                                                        <span class="badge bg-warning">Est. Review: 24-48 hours</span>
+                                                    </span>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="form-group">
-                                    <label for="category">Category <span class="text-danger">*</span></label>
-                                    <select class="form-control" id="category" required>
-                                        <option value="">Select Category</option>
-                                        <option value="technology">Technology</option>
-                                        <option value="business">Business</option>
-                                        <option value="healthcare">Healthcare</option>
-                                        <option value="education">Education</option>
-                                        <option value="engineering">Engineering</option>
-                                        <option value="arts">Arts & Design</option>
-                                        <option value="legal">Legal</option>
-                                        <option value="marketing">Marketing</option>
-                                        <option value="other">Other</option>
-                                    </select>
-                                </div>
+                                <!-- Expired Internships Tab -->
+                                <div class="tab-pane fade" id="internship-expired" role="tabpanel"
+                                    aria-labelledby="internship-expired-tab">
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <h5 class="card-title">Expired Internships</h5>
+                                        <div class="input-group input-group-sm" style="width: 150px;">
+                                            <input type="text" class="form-control" placeholder="Search">
+                                            <div class="input-group-append">
+                                                <button type="button" class="btn btn-default">
+                                                    <i class="fas fa-search"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
 
-                                <div class="form-group">
-                                    <label for="description">Description <span class="text-danger">*</span></label>
-                                    <textarea class="form-control" id="description" rows="5"
-                                        placeholder="Provide a detailed description of the internship..."
-                                        required></textarea>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="responsibilities">Responsibilities <span
-                                            class="text-danger">*</span></label>
-                                    <textarea class="form-control" id="responsibilities" rows="5"
-                                        placeholder="List the key responsibilities..." required></textarea>
-                                    <small class="form-text text-muted">Enter each responsibility on a new line</small>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="requirements">Requirements <span class="text-danger">*</span></label>
-                                    <textarea class="form-control" id="requirements" rows="5"
-                                        placeholder="List the key requirements..." required></textarea>
-                                    <small class="form-text text-muted">Enter each requirement on a new line</small>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="benefits">Benefits (Optional)</label>
-                                    <textarea class="form-control" id="benefits" rows="3"
-                                        placeholder="List the benefits..."></textarea>
-                                    <small class="form-text text-muted">Enter each benefit on a new line</small>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="skills">Required Skills <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" id="skills"
-                                        placeholder="e.g., Python, Communication, Microsoft Office" required>
-                                    <small class="form-text text-muted">Separate skills with commas</small>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="applicationInstructions">Application Instructions (Optional)</label>
-                                    <textarea class="form-control" id="applicationInstructions" rows="3"
-                                        placeholder="Provide specific instructions for applicants..."></textarea>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="contactPerson">Contact Person <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" id="contactPerson"
-                                        placeholder="Name of contact person" required>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="contactEmail">Contact Email <span class="text-danger">*</span></label>
-                                    <input type="email" class="form-control" id="contactEmail"
-                                        placeholder="Email address for applications" required>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="contactPhone">Contact Phone (Optional)</label>
-                                    <input type="tel" class="form-control" id="contactPhone" placeholder="Phone number">
-                                </div>
-
-                                <div class="form-group">
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="featuredCheck">
-                                        <label class="custom-control-label" for="featuredCheck">Mark as Featured (Additional
-                                            fee may apply)</label>
+                                    <div class="internship-list">
+                                        <!-- Expired Internship Item -->
+                                        <div class="card mb-3 internship-item">
+                                            <div class="card-body p-0">
+                                                <div class="d-flex position-relative">
+                                                    <div class="internship-status bg-secondary"></div>
+                                                    <div class="p-3 flex-grow-1">
+                                                        <div class="d-flex justify-content-between align-items-start">
+                                                            <div>
+                                                                <h5 class="mb-1">IT Support Intern</h5>
+                                                                <p class="text-muted mb-1"><i
+                                                                        class="fas fa-map-marker-alt"></i> Bamenda,
+                                                                    Commercial Avenue</p>
+                                                                <div>
+                                                                    <span class="badge badge-info mr-1">Part-time</span>
+                                                                    <span class="badge badge-success mr-1">Paid</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="text-right">
+                                                                <span class="text-muted">Posted: Apr 10, 2025</span><br>
+                                                                <span class="text-secondary">Expired: May 10, 2025</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="card-footer bg-light p-2">
+                                                    <div class="btn-group btn-group-sm">
+                                                        <button type="button" class="btn btn-info" data-toggle="modal"
+                                                            data-target="#viewApplicationsModal">
+                                                            <i class="fas fa-users"></i> Applications (15)
+                                                        </button>
+                                                        <button type="button" class="btn btn-success">
+                                                            <i class="fas fa-sync"></i> Repost
+                                                        </button>
+                                                        <button type="button" class="btn btn-danger">
+                                                            <i class="fas fa-trash"></i> Delete
+                                                        </button>
+                                                    </div>
+                                                    <span class="float-right">
+                                                        <span class="badge bg-secondary">Expired</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
 
-                                <div class="form-group">
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="termsCheck" required>
-                                        <label class="custom-control-label" for="termsCheck">I confirm that all information
-                                            provided is accurate and complies with the platform's guidelines</label>
+                                <!-- Draft Internships Tab -->
+                                <div class="tab-pane fade" id="internship-draft" role="tabpanel"
+                                    aria-labelledby="internship-draft-tab">
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <h5 class="card-title">Draft Internships</h5>
+                                        <div class="input-group input-group-sm" style="width: 150px;">
+                                            <input type="text" class="form-control" placeholder="Search">
+                                            <div class="input-group-append">
+                                                <button type="button" class="btn btn-default">
+                                                    <i class="fas fa-search"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="internship-list">
+                                        <!-- Draft Internship Item -->
+                                        <div class="card mb-3 internship-item">
+                                            <div class="card-body p-0">
+                                                <div class="d-flex position-relative">
+                                                    <div class="internship-status bg-info"></div>
+                                                    <div class="p-3 flex-grow-1">
+                                                        <div class="d-flex justify-content-between align-items-start">
+                                                            <div>
+                                                                <h5 class="mb-1">Finance Intern</h5>
+                                                                <p class="text-muted mb-1"><i
+                                                                        class="fas fa-map-marker-alt"></i> Bamenda, Up
+                                                                    Station</p>
+                                                                <div>
+                                                                    <span class="badge badge-info mr-1">Full-time</span>
+                                                                    <span class="badge badge-success mr-1">Paid</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="text-right">
+                                                                <span class="text-muted">Last Edited: May 18,
+                                                                    2025</span><br>
+                                                                <span class="text-info">Draft</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="card-footer bg-light p-2">
+                                                    <div class="btn-group btn-group-sm">
+                                                        <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                            data-target="#editInternshipModal">
+                                                            <i class="fas fa-edit"></i> Edit
+                                                        </button>
+                                                        <button type="button" class="btn btn-success">
+                                                            <i class="fas fa-paper-plane"></i> Submit
+                                                        </button>
+                                                        <button type="button" class="btn btn-danger">
+                                                            <i class="fas fa-trash"></i> Delete
+                                                        </button>
+                                                    </div>
+                                                    <span class="float-right">
+                                                        <span class="badge bg-info">Draft</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </form>
-                        </div>
-                        <div class="card-footer">
-                            <button type="button" class="btn btn-secondary">Save as Draft</button>
-                            <button type="button" class="btn btn-primary float-right" id="submitInternship">
-                                <i class="fas fa-paper-plane"></i> Submit for Review
-                            </button>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Sidebar -->
                 <div class="col-md-4">
-                    <!-- Preview Card -->
-                    <div class="card card-success animate__animated animate__fadeInRight">
-                        <div class="card-header bg-gradient-success">
-                            <h3 class="card-title"><i class="fas fa-eye"></i> Preview</h3>
+                    <!-- Quick Actions Card -->
+                    <div class="card card-primary animate__animated animate__fadeInRight">
+                        <div class="card-header bg-gradient-purple">
+                            <h3 class="card-title"><i class="fas fa-bolt"></i> Quick Actions</h3>
                         </div>
                         <div class="card-body">
-                            <div class="text-center mb-3">
-                                <img src="{{asset('asset/img/preview.png')}}" alt="Preview" class="img-fluid"
-                                    style="max-height: 150px;">
-                            </div>
-                            <div id="previewContent">
-                                <h5 id="previewTitle" class="text-bold">Position Title</h5>
-                                <p id="previewCompany" class="text-muted">Your Company Name</p>
-                                <div class="mb-2">
-                                    <span class="badge badge-info mr-1">Full-time</span>
-                                    <span class="badge badge-success">Paid</span>
+                            <button type="button"
+                                class="btn btn-lg btn-block btn-gradient-primary animate__animated animate__pulse animate__infinite"
+                                id="createInternshipBtn" data-toggle="modal" data-target="#createInternshipModal">
+                                <i class="fas fa-plus-circle"></i> Create New Internship
+                            </button>
+                            <div class="mt-4">
+                                <div class="list-group">
+                                    <a href="#"
+                                        class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <i class="fas fa-users text-primary mr-2"></i> Review Applications
+                                        </div>
+                                        <span class="badge badge-primary badge-pill">27</span>
+                                    </a>
+                                    <a href="#"
+                                        class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <i class="fas fa-bell text-warning mr-2"></i> Pending Approvals
+                                        </div>
+                                        <span class="badge badge-warning badge-pill">1</span>
+                                    </a>
+                                    <a href="#"
+                                        class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <i class="fas fa-chart-line text-success mr-2"></i> View Analytics
+                                        </div>
+                                    </a>
+                                    <a href="#"
+                                        class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <i class="fas fa-cog text-secondary mr-2"></i> Settings
+                                        </div>
+                                    </a>
                                 </div>
-                                <p><i class="fas fa-map-marker-alt mr-1"></i> <span id="previewLocation">Location</span></p>
-                                <p id="previewDescription" class="text-truncate">Internship description will appear here...
-                                </p>
                             </div>
-                            <div class="alert alert-info mt-3">
-                                <i class="fas fa-info-circle"></i> This is how your internship will appear in search
-                                results.
+                        </div>
+                    </div>
+
+                    <!-- Recent Activity Card -->
+                    <div class="card card-success animate__animated animate__fadeInRight" style="animation-delay: 0.2s">
+                        <div class="card-header bg-gradient-teal">
+                            <h3 class="card-title"><i class="fas fa-history"></i> Recent Activity</h3>
+                        </div>
+                        <div class="card-body p-0">
+                            <div class="timeline timeline-inverse p-3">
+                                <div class="time-label">
+                                    <span class="bg-danger">Today</span>
+                                </div>
+                                <div>
+                                    <i class="fas fa-user bg-primary"></i>
+                                    <div class="timeline-item">
+                                        <span class="time"><i class="far fa-clock"></i> 2 hours ago</span>
+                                        <h3 class="timeline-header">New application for <a href="#">Software Development
+                                                Intern</a></h3>
+                                    </div>
+                                </div>
+                                <div>
+                                    <i class="fas fa-check bg-success"></i>
+                                    <div class="timeline-item">
+                                        <span class="time"><i class="far fa-clock"></i> 5 hours ago</span>
+                                        <h3 class="timeline-header">Your internship <a href="#">Marketing Assistant</a> was
+                                            approved</h3>
+                                    </div>
+                                </div>
+                                <div class="time-label">
+                                    <span class="bg-warning">Yesterday</span>
+                                </div>
+                                <div>
+                                    <i class="fas fa-edit bg-info"></i>
+                                    <div class="timeline-item">
+                                        <span class="time"><i class="far fa-clock"></i> 1 day ago</span>
+                                        <h3 class="timeline-header">You created a draft for <a href="#">Finance Intern</a>
+                                        </h3>
+                                    </div>
+                                </div>
+                                <div>
+                                    <i class="fas fa-paper-plane bg-primary"></i>
+                                    <div class="timeline-item">
+                                        <span class="time"><i class="far fa-clock"></i> 1 day ago</span>
+                                        <h3 class="timeline-header">You submitted <a href="#">Administrative Assistant</a>
+                                            for review</h3>
+                                    </div>
+                                </div>
+                                <div>
+                                    <i class="far fa-clock bg-gray"></i>
+                                </div>
                             </div>
+                        </div>
+                        <div class="card-footer text-center">
+                            <a href="#" class="text-muted">View All Activity</a>
                         </div>
                     </div>
 
                     <!-- Tips Card -->
-                    <div class="card card-warning animate__animated animate__fadeInRight" style="animation-delay: 0.2s">
-                        <div class="card-header bg-gradient-warning">
-                            <h3 class="card-title"><i class="fas fa-lightbulb"></i> Tips for Success</h3>
-                        </div>
-                        <div class="card-body">
-                            <div class="callout callout-warning">
-                                <h5>Be Specific</h5>
-                                <p>Clear descriptions attract qualified candidates.</p>
+                    <div class="card card-warning animate__animated animate__fadeInRight" style="animation-delay: 0.4s">
+                        <div class="card-header bg-gradient-orange">
+                            <h3 class="card-title"><i class="fas fa-lightbulb"></i> Tips & Resources</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
                             </div>
-                            <div class="callout callout-info">
-                                <h5>Highlight Benefits</h5>
-                                <p>Mention learning opportunities and perks.</p>
-                            </div>
-                            <div class="callout callout-success">
-                                <h5>Set Clear Expectations</h5>
-                                <p>Define hours, duration, and responsibilities.</p>
-                            </div>
-                            <div class="callout callout-danger">
-                                <h5>Avoid Jargon</h5>
-                                <p>Use clear language that students understand.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Stats Card -->
-                    <div class="card card-danger animate__animated animate__fadeInRight" style="animation-delay: 0.4s">
-                        <div class="card-header bg-gradient-danger">
-                            <h3 class="card-title"><i class="fas fa-chart-bar"></i> Your Internship Stats</h3>
                         </div>
                         <div class="card-body p-0">
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    Active Internships
-                                    <span class="badge badge-primary badge-pill">3</span>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    Total Applications
-                                    <span class="badge badge-primary badge-pill">27</span>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    Positions Filled
-                                    <span class="badge badge-primary badge-pill">2</span>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    Average Response Time
-                                    <span class="badge badge-primary badge-pill">2 days</span>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="card-footer text-center">
-                            <a href="#" class="text-danger">View Detailed Analytics</a>
+                            <div id="carouselTips" class="carousel slide" data-ride="carousel">
+                                <ol class="carousel-indicators">
+                                    <li data-target="#carouselTips" data-slide-to="0" class="active"></li>
+                                    <li data-target="#carouselTips" data-slide-to="1"></li>
+                                    <li data-target="#carouselTips" data-slide-to="2"></li>
+                                </ol>
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <div class="p-4">
+                                            <h5 class="text-warning"><i class="fas fa-star mr-2"></i>Writing Great
+                                                Descriptions</h5>
+                                            <p>Clear, detailed descriptions attract more qualified candidates. Include
+                                                specific responsibilities and requirements.</p>
+                                            <a href="#" class="btn btn-sm btn-warning">Learn More</a>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <div class="p-4">
+                                            <h5 class="text-info"><i class="fas fa-chart-line mr-2"></i>Boost Your
+                                                Visibility</h5>
+                                            <p>Featured internships receive 3x more applications. Consider upgrading your
+                                                listings for better results.</p>
+                                            <a href="#" class="btn btn-sm btn-info">Upgrade Now</a>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <div class="p-4">
+                                            <h5 class="text-success"><i class="fas fa-check-circle mr-2"></i>Screening
+                                                Applicants</h5>
+                                            <p>Use our built-in screening tools to quickly identify the best candidates for
+                                                your internships.</p>
+                                            <a href="#" class="btn btn-sm btn-success">View Tools</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Create Internship Modal -->
+    <div class="modal fade" id="createInternshipModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-gradient-primary text-white">
+                    <h5 class="modal-title"><i class="fas fa-plus-circle"></i> Create New Internship</h5>
+                    <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <!-- Stepper -->
+                            <div class="bs-stepper" id="internshipStepper">
+                                <div class="bs-stepper-header" role="tablist">
+                                    <div class="step" data-target="#basic-info">
+                                        <button type="button" class="step-trigger" role="tab" id="basic-info-trigger">
+                                            <span class="bs-stepper-circle bg-primary">1</span>
+                                            <span class="bs-stepper-label">Basic Info</span>
+                                        </button>
+                                    </div>
+                                    <div class="line"></div>
+                                    <div class="step" data-target="#details">
+                                        <button type="button" class="step-trigger" role="tab" id="details-trigger">
+                                            <span class="bs-stepper-circle bg-primary">2</span>
+                                            <span class="bs-stepper-label">Details</span>
+                                        </button>
+                                    </div>
+                                    <div class="line"></div>
+                                    <div class="step" data-target="#requirements">
+                                        <button type="button" class="step-trigger" role="tab" id="requirements-trigger">
+                                            <span class="bs-stepper-circle bg-primary">3</span>
+                                            <span class="bs-stepper-label">Requirements</span>
+                                        </button>
+                                    </div>
+                                    <div class="line"></div>
+                                    <div class="step" data-target="#review">
+                                        <button type="button" class="step-trigger" role="tab" id="review-trigger">
+                                            <span class="bs-stepper-circle bg-primary">4</span>
+                                            <span class="bs-stepper-label">Review</span>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="bs-stepper-content">
+                                    <!-- Basic Info Step -->
+                                    <div id="basic-info" class="content" role="tabpanel"
+                                        aria-labelledby="basic-info-trigger">
+                                        <div class="form-group">
+                                            <label for="position-title">Position Title <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="position-title"
+                                                placeholder="e.g., Software Development Intern" required>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="department">Department <span
+                                                            class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control" id="department"
+                                                        placeholder="e.g., Engineering, Marketing" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="location">Location <span
+                                                            class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control" id="location"
+                                                        placeholder="e.g., Bamenda, Up Station" required>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="internship-type">Internship Type <span
+                                                            class="text-danger">*</span></label>
+                                                    <select class="form-control" id="internship-type" required>
+                                                        <option value="">Select Type</option>
+                                                        <option value="full_time">Full-time</option>
+                                                        <option value="part_time">Part-time</option>
+                                                        <option value="flexible">Flexible Hours</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="category">Category <span
+                                                            class="text-danger">*</span></label>
+                                                    <select class="form-control" id="category" required>
+                                                        <option value="">Select Category</option>
+                                                        <option value="technology">Technology</option>
+                                                        <option value="business">Business</option>
+                                                        <option value="healthcare">Healthcare</option>
+                                                        <option value="education">Education</option>
+                                                        <option value="engineering">Engineering</option>
+                                                        <option value="arts">Arts & Design</option>
+                                                        <option value="legal">Legal</option>
+                                                        <option value="marketing">Marketing</option>
+                                                        <option value="other">Other</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="compensation">Compensation <span
+                                                            class="text-danger">*</span></label>
+                                                    <select class="form-control" id="compensation" required>
+                                                        <option value="">Select Compensation</option>
+                                                        <option value="paid">Paid</option>
+                                                        <option value="unpaid">Unpaid</option>
+                                                        <option value="stipend">Stipend</option>
+                                                        <option value="other">Other (Specify)</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="positions">Number of Positions <span
+                                                            class="text-danger">*</span></label>
+                                                    <input type="number" class="form-control" id="positions" min="1"
+                                                        value="1" required>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div id="compensation-details" class="form-group" style="display: none;">
+                                            <label for="compensation-amount">Compensation Details</label>
+                                            <input type="text" class="form-control" id="compensation-amount"
+                                                placeholder="e.g., 50,000 FCFA monthly, Transportation allowance">
+                                        </div>
+
+                                        <button type="button" class="btn btn-primary next-step float-right">Next <i
+                                                class="fas fa-arrow-right"></i></button>
+                                    </div>
+
+                                    <!-- Details Step -->
+                                    <div id="details" class="content" role="tabpanel" aria-labelledby="details-trigger">
+                                        <div class="form-group">
+                                            <label for="description">Description <span class="text-danger">*</span></label>
+                                            <textarea class="form-control" id="description" rows="4"
+                                                placeholder="Provide a detailed description of the internship..."
+                                                required></textarea>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="responsibilities">Responsibilities <span
+                                                    class="text-danger">*</span></label>
+                                            <textarea class="form-control" id="responsibilities" rows="4"
+                                                placeholder="List the key responsibilities..." required></textarea>
+                                            <small class="form-text text-muted">Enter each responsibility on a new
+                                                line</small>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="benefits">Benefits (Optional)</label>
+                                            <textarea class="form-control" id="benefits" rows="3"
+                                                placeholder="List the benefits..."></textarea>
+                                            <small class="form-text text-muted">Enter each benefit on a new line</small>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="start-date">Start Date <span
+                                                            class="text-danger">*</span></label>
+                                                    <input type="date" class="form-control" id="start-date" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="duration">Duration <span
+                                                            class="text-danger">*</span></label>
+                                                    <div class="input-group">
+                                                        <input type="number" class="form-control" id="duration" min="1"
+                                                            required>
+                                                        <div class="input-group-append">
+                                                            <select class="form-control" id="duration-type">
+                                                                <option value="weeks">Weeks</option>
+                                                                <option value="months" selected>Months</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="application-deadline">Application Deadline <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="date" class="form-control" id="application-deadline" required>
+                                        </div>
+
+                                        <button type="button" class="btn btn-secondary prev-step"><i
+                                                class="fas fa-arrow-left"></i> Previous</button>
+                                        <button type="button" class="btn btn-primary next-step float-right">Next <i
+                                                class="fas fa-arrow-right"></i></button>
+                                    </div>
+
+                                    <!-- Requirements Step -->
+                                    <div id="requirements" class="content" role="tabpanel"
+                                        aria-labelledby="requirements-trigger">
+                                        <div class="form-group">
+                                            <label for="requirements-text">Requirements <span
+                                                    class="text-danger">*</span></label>
+                                            <textarea class="form-control" id="requirements-text" rows="4"
+                                                placeholder="List the key requirements..." required></textarea>
+                                            <small class="form-text text-muted">Enter each requirement on a new line</small>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="skills">Required Skills <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="skills"
+                                                placeholder="e.g., Python, Communication, Microsoft Office" required>
+                                            <small class="form-text text-muted">Separate skills with commas</small>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="application-instructions">Application Instructions
+                                                (Optional)</label>
+                                            <textarea class="form-control" id="application-instructions" rows="3"
+                                                placeholder="Provide specific instructions for applicants..."></textarea>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="contact-person">Contact Person <span
+                                                            class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control" id="contact-person"
+                                                        placeholder="Name of contact person" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="contact-email">Contact Email <span
+                                                            class="text-danger">*</span></label>
+                                                    <input type="email" class="form-control" id="contact-email"
+                                                        placeholder="Email address for applications" required>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="contact-phone">Contact Phone (Optional)</label>
+                                            <input type="tel" class="form-control" id="contact-phone"
+                                                placeholder="Phone number">
+                                        </div>
+
+                                        <button type="button" class="btn btn-secondary prev-step"><i
+                                                class="fas fa-arrow-left"></i> Previous</button>
+                                        <button type="button" class="btn btn-primary next-step float-right">Next <i
+                                                class="fas fa-arrow-right"></i></button>
+                                    </div>
+
+                                    <!-- Review Step -->
+                                    <div id="review" class="content" role="tabpanel" aria-labelledby="review-trigger">
+                                        <div class="alert alert-info">
+                                            <i class="fas fa-info-circle"></i> Please review your internship details before
+                                            submitting.
+                                        </div>
+
+                                        <div class="card">
+                                            <div class="card-header bg-light">
+                                                <h5 class="mb-0" id="review-title">Position Title</h5>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <p><strong>Department:</strong> <span id="review-department"></span>
+                                                        </p>
+                                                        <p><strong>Location:</strong> <span id="review-location"></span></p>
+                                                        <p><strong>Type:</strong> <span id="review-type"></span></p>
+                                                        <p><strong>Category:</strong> <span id="review-category"></span></p>
+                                                        <p><strong>Compensation:</strong> <span
+                                                                id="review-compensation"></span></p>
+                                                        <p><strong>Positions:</strong> <span id="review-positions"></span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <p><strong>Start Date:</strong> <span id="review-start-date"></span>
+                                                        </p>
+                                                        <p><strong>Duration:</strong> <span id="review-duration"></span></p>
+                                                        <p><strong>Deadline:</strong> <span id="review-deadline"></span></p>
+                                                        <p><strong>Contact:</strong> <span id="review-contact"></span></p>
+                                                        <p><strong>Email:</strong> <span id="review-email"></span></p>
+                                                        <p><strong>Phone:</strong> <span id="review-phone"></span></p>
+                                                    </div>
+                                                </div>
+
+                                                <hr>
+
+                                                <h6>Description</h6>
+                                                <p id="review-description"></p>
+
+                                                <h6>Responsibilities</h6>
+                                                <ul id="review-responsibilities"></ul>
+
+                                                <h6>Requirements</h6>
+                                                <ul id="review-requirements-list"></ul>
+
+                                                <h6>Skills</h6>
+                                                <p id="review-skills"></p>
+
+                                                <h6>Benefits</h6>
+                                                <ul id="review-benefits-list"></ul>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group mt-3">
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="featured-check">
+                                                <label class="custom-control-label" for="featured-check">Mark as Featured
+                                                    (Additional fee may apply)</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="terms-check"
+                                                    required>
+                                                <label class="custom-control-label" for="terms-check">I confirm that all
+                                                    information provided is accurate and complies with the platform's
+                                                    guidelines</label>
+                                            </div>
+                                        </div>
+
+                                        <button type="button" class="btn btn-secondary prev-step"><i
+                                                class="fas fa-arrow-left"></i> Previous</button>
+                                        <div class="float-right">
+                                            <button type="button" class="btn btn-secondary mr-2" id="save-draft-btn">Save as
+                                                Draft</button>
+                                            <button type="button" class="btn btn-primary" id="submit-internship-btn">Submit
+                                                for Review</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <!-- Tips Sidebar -->
+                            <div class="card bg-light">
+                                <div class="card-header bg-light">
+                                    <h5 class="mb-0"><i class="fas fa-lightbulb text-warning"></i> Tips for This Step</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div id="basic-info-tips">
+                                        <div class="callout callout-info">
+                                            <h6>Position Title</h6>
+                                            <p>Be specific and clear. Use titles that applicants are likely to search for.
+                                            </p>
+                                        </div>
+                                        <div class="callout callout-info">
+                                            <h6>Location</h6>
+                                            <p>Include neighborhood or area for better visibility in location-based
+                                                searches.</p>
+                                        </div>
+                                    </div>
+
+                                    <div id="details-tips" style="display: none;">
+                                        <div class="callout callout-info">
+                                            <h6>Description</h6>
+                                            <p>Provide a comprehensive overview of the internship and your organization.</p>
+                                        </div>
+                                        <div class="callout callout-info">
+                                            <h6>Responsibilities</h6>
+                                            <p>Be specific about day-to-day tasks and projects the intern will work on.</p>
+                                        </div>
+                                    </div>
+
+                                    <div id="requirements-tips" style="display: none;">
+                                        <div class="callout callout-info">
+                                            <h6>Requirements</h6>
+                                            <p>List both required and preferred qualifications to attract the right
+                                                candidates.</p>
+                                        </div>
+                                        <div class="callout callout-info">
+                                            <h6>Skills</h6>
+                                            <p>Include both technical and soft skills relevant to the position.</p>
+                                        </div>
+                                    </div>
+
+                                    <div id="review-tips" style="display: none;">
+                                        <div class="callout callout-warning">
+                                            <h6>Final Check</h6>
+                                            <p>Review all information carefully before submitting. Ensure all required
+                                                fields are complete and accurate.</p>
+                                        </div>
+                                        <div class="callout callout-info">
+                                            <h6>Featured Listings</h6>
+                                            <p>Featured internships appear at the top of search results and receive 3x more
+                                                applications.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Preview Card -->
+                            <div class="card mt-3 d-none d-lg-block">
+                                <div class="card-header bg-light">
+                                    <h5 class="mb-0"><i class="fas fa-eye text-primary"></i> Live Preview</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="internship-preview">
+                                        <h5 id="preview-title" class="text-bold">Position Title</h5>
+                                        <p id="preview-company" class="text-muted">Your Company Name</p>
+                                        <div class="mb-2">
+                                            <span class="badge badge-info mr-1">Full-time</span>
+                                            <span class="badge badge-success">Paid</span>
+                                        </div>
+                                        <p><i class="fas fa-map-marker-alt mr-1"></i> <span
+                                                id="preview-location-text">Location</span></p>
+                                        <p id="preview-description-text" class="text-truncate">Internship description will
+                                            appear here...</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- View Applications Modal -->
+    <div class="modal fade" id="viewApplicationsModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-info text-white">
+                    <h5 class="modal-title"><i class="fas fa-users"></i> Applications: Software Development Intern</h5>
+                    <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body p-0">
+                    <div class="row no-gutters">
+                        <div class="col-md-4 border-right">
+                            <div class="list-group list-group-flush" id="applicant-list">
+                                <a href="#" class="list-group-item list-group-item-action active" data-toggle="list"
+                                    data-target="#applicant1">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h6 class="mb-1">Nfon Andrew Abang</h6>
+                                        <small>May 15, 2025</small>
+                                    </div>
+                                    <p class="mb-1">BSc Computer Science, University of Buea</p>
+                                    <small><i class="fas fa-star text-warning"></i> Highly Qualified</small>
+                                </a>
+                                <a href="#" class="list-group-item list-group-item-action" data-toggle="list"
+                                    data-target="#applicant2">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h6 class="mb-1">Amina Bi Bongwa</h6>
+                                        <small>May 16, 2025</small>
+                                    </div>
+                                    <p class="mb-1">HND Marketing, HTTTC Bamenda</p>
+                                    <small><i class="fas fa-check text-success"></i> Qualified</small>
+                                </a>
+                                <a href="#" class="list-group-item list-group-item-action" data-toggle="list"
+                                    data-target="#applicant3">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h6 class="mb-1">Fonguh Patience Akwi</h6>
+                                        <small>May 17, 2025</small>
+                                    </div>
+                                    <p class="mb-1">B.Eng Electrical Engineering, COLTECH</p>
+                                    <small><i class="fas fa-check text-success"></i> Qualified</small>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="tab-content" id="applicant-tabContent">
+                                <div class="tab-pane fade show active" id="applicant1" role="tabpanel">
+                                    <div class="p-3">
+                                        <div class="d-flex align-items-center mb-3">
+                                            <img src="{{asset('asset/img/avatar.png')}}" alt="Applicant"
+                                                class="img-circle mr-3" style="width: 60px; height: 60px;">
+                                            <div>
+                                                <h5 class="mb-0">Nfon Andrew Abang</h5>
+                                                <p class="text-muted mb-0">Buea, SW Region</p>
+                                            </div>
+                                            <div class="ml-auto">
+                                                <span class="badge badge-warning">Highly Qualified</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <div class="col-md-6">
+                                                <p><strong>Email:</strong> andrew.nfon@email.com</p>
+                                                <p><strong>Phone:</strong> +237 6XX XXX XXX</p>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p><strong>Education:</strong> BSc Computer Science (University of Buea)</p>
+                                                <p><strong>Applied:</strong> May 15, 2025</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="card mb-3">
+                                            <div class="card-header bg-light">
+                                                <h6 class="mb-0">Skills</h6>
+                                            </div>
+                                            <div class="card-body">
+                                                <span class="badge badge-info mr-1">Java</span>
+                                                <span class="badge badge-info mr-1">Python</span>
+                                                <span class="badge badge-info mr-1">SQL</span>
+                                                <span class="badge badge-info mr-1">HTML</span>
+                                                <span class="badge badge-info mr-1">CSS</span>
+                                                <span class="badge badge-info">JavaScript</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="card mb-3">
+                                            <div class="card-header bg-light">
+                                                <h6 class="mb-0">Why interested in this internship?</h6>
+                                            </div>
+                                            <div class="card-body">
+                                                <p>I am interested in this internship because it aligns perfectly with my
+                                                    academic background in Computer Science and my career aspirations in
+                                                    software development. I am particularly drawn to your company's
+                                                    innovative approach to technology solutions in Bamenda, and I believe
+                                                    this opportunity would allow me to apply my theoretical knowledge in a
+                                                    practical setting while contributing to meaningful projects.</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="card mb-3">
+                                            <div class="card-header bg-light">
+                                                <h6 class="mb-0">Relevant Experience</h6>
+                                            </div>
+                                            <div class="card-body">
+                                                <p>I have experience with Python, Java, and web development technologies
+                                                    (HTML, CSS, JavaScript). I have completed several course projects
+                                                    including a student management system and an e-commerce website. I also
+                                                    participated in a coding bootcamp where I developed a mobile-responsive
+                                                    web application. I am familiar with version control systems like Git and
+                                                    have basic knowledge of database management with SQL.</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="card mb-3">
+                                            <div class="card-header bg-light">
+                                                <h6 class="mb-0">Documents</h6>
+                                            </div>
+                                            <div class="card-body p-0">
+                                                <ul class="list-group list-group-flush">
+                                                    <li
+                                                        class="list-group-item d-flex justify-content-between align-items-center">
+                                                        <div>
+                                                            <i class="fas fa-file-pdf mr-2"></i> Resume/CV
+                                                        </div>
+                                                        <a href="#" class="btn btn-sm btn-info">
+                                                            <i class="fas fa-download"></i> Download
+                                                        </a>
+                                                    </li>
+                                                    <li
+                                                        class="list-group-item d-flex justify-content-between align-items-center">
+                                                        <div>
+                                                            <i class="fas fa-file-word mr-2"></i> Cover Letter
+                                                        </div>
+                                                        <a href="#" class="btn btn-sm btn-info">
+                                                            <i class="fas fa-download"></i> Download
+                                                        </a>
+                                                    </li>
+                                                    <li
+                                                        class="list-group-item d-flex justify-content-between align-items-center">
+                                                        <div>
+                                                            <i class="fas fa-file-image mr-2"></i> ID Card
+                                                        </div>
+                                                        <a href="#" class="btn btn-sm btn-info">
+                                                            <i class="fas fa-download"></i> Download
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                        <div class="text-right">
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-danger">Reject</button>
+                                                <button type="button" class="btn btn-warning">Shortlist</button>
+                                                <button type="button" class="btn btn-success">Accept</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane fade" id="applicant2" role="tabpanel">
+                                    <div class="p-3">
+                                        <div class="d-flex align-items-center mb-3">
+                                            <img src="{{asset('asset/img/avatar.png')}}" alt="Applicant"
+                                                class="img-circle mr-3" style="width: 60px; height: 60px;">
+                                            <div>
+                                                <h5 class="mb-0">Amina Bi Bongwa</h5>
+                                                <p class="text-muted mb-0">Bamenda, NW Region</p>
+                                            </div>
+                                            <div class="ml-auto">
+                                                <span class="badge badge-success">Qualified</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="alert alert-info">
+                                            <i class="fas fa-info-circle"></i> Select an applicant to view their full
+                                            details.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane fade" id="applicant3" role="tabpanel">
+                                    <div class="p-3">
+                                        <div class="d-flex align-items-center mb-3">
+                                            <img src="{{asset('asset/img/avatar.png')}}" alt="Applicant"
+                                                class="img-circle mr-3" style="width: 60px; height: 60px;">
+                                            <div>
+                                                <h5 class="mb-0">Fonguh Patience Akwi</h5>
+                                                <p class="text-muted mb-0">Yaounde, Centre Region</p>
+                                            </div>
+                                            <div class="ml-auto">
+                                                <span class="badge badge-success">Qualified</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="alert alert-info">
+                                            <i class="fas fa-info-circle"></i> Select an applicant to view their full
+                                            details.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Export All Applications</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Success Modal -->
     <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-hidden="true">
@@ -377,29 +1273,327 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-success">View My Internships</button>
+                    <button type="button" class="btn btn-success" data-dismiss="modal">View My Internships</button>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- Custom CSS -->
+    <style>
+        /* Custom animations */
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Colorful styling */
+        .bg-gradient-primary {
+            background: linear-gradient(45deg, #4361ee, #3a0ca3) !important;
+        }
+
+        .bg-gradient-success {
+            background: linear-gradient(45deg, #2ecc71, #27ae60) !important;
+        }
+
+        .bg-gradient-warning {
+            background: linear-gradient(45deg, #f39c12, #e67e22) !important;
+        }
+
+        .bg-gradient-danger {
+            background: linear-gradient(45deg, #e74c3c, #c0392b) !important;
+        }
+
+        .bg-gradient-info {
+            background: linear-gradient(45deg, #3498db, #2980b9) !important;
+        }
+
+        .bg-gradient-purple {
+            background: linear-gradient(45deg, #9b59b6, #8e44ad) !important;
+        }
+
+        .bg-gradient-teal {
+            background: linear-gradient(45deg, #1abc9c, #16a085) !important;
+        }
+
+        .bg-gradient-orange {
+            background: linear-gradient(45deg, #f39c12, #d35400) !important;
+        }
+
+        /* Button gradients */
+        .btn-gradient-primary {
+            background: linear-gradient(45deg, #4361ee, #3a0ca3);
+            border: none;
+            color: white;
+            box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .btn-gradient-primary:hover {
+            background: linear-gradient(45deg, #3a0ca3, #4361ee);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(67, 97, 238, 0.4);
+            color: white;
+        }
+
+        /* Card styling */
+        .card {
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            border-bottom: 0;
+            padding: 15px 20px;
+        }
+
+        /* Internship list styling */
+        .internship-item {
+            transition: all 0.3s ease;
+            overflow: hidden;
+            border: none;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+        }
+
+        .internship-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .internship-status {
+            width: 5px;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        /* Badge styling */
+        .badge {
+            font-size: 0.85rem;
+            padding: 0.4em 0.8em;
+            border-radius: 30px;
+        }
+
+        /* Stepper styling */
+        .bs-stepper .line {
+            min-height: 2px;
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        .bs-stepper-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+
+        .bs-stepper-label {
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+
+        /* Tabs styling */
+        .nav-tabs .nav-link {
+            border: none;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            font-weight: 600;
+            padding: 12px 20px;
+            color: #495057;
+        }
+
+        .nav-tabs .nav-link.active {
+            color: #4361ee;
+            background-color: #fff;
+            border-bottom: 3px solid #4361ee;
+        }
+
+        /* Timeline styling */
+        .timeline-item {
+            border-radius: 8px;
+        }
+
+        /* Carousel styling */
+        .carousel-item {
+            min-height: 200px;
+        }
+
+        /* Callout styling */
+        .callout {
+            border-radius: 5px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .callout:hover {
+            transform: translateX(5px);
+        }
+
+        /* Applicant list styling */
+        #applicant-list .list-group-item.active {
+            background-color: #f8f9fa;
+            color: #212529;
+            border-color: rgba(0, 0, 0, 0.125);
+            border-left: 4px solid #4361ee;
+        }
+
+        /* Small box styling */
+        .small-box {
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .small-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .small-box .icon {
+            transition: all 0.3s ease;
+            font-size: 70px;
+            padding-top: 5px;
+        }
+
+        .small-box:hover .icon {
+            transform: scale(1.1);
+        }
+    </style>
+
     <!-- Custom JavaScript -->
     <script>
         $(document).ready(function () {
-            // Live preview functionality
-            $('#position').on('input', function () {
-                $('#previewTitle').text($(this).val() || 'Position Title');
+            // Initialize BS Stepper
+            var stepper = new Stepper(document.querySelector('#internshipStepper'), {
+                linear: false,
+                animation: true
+            });
+
+            // Handle next step buttons
+            $('.next-step').click(function () {
+                stepper.next();
+                updateTips();
+            });
+
+            // Handle previous step buttons
+            $('.prev-step').click(function () {
+                stepper.previous();
+                updateTips();
+            });
+
+            // Update tips based on current step
+            function updateTips() {
+                $('#basic-info-tips, #details-tips, #requirements-tips, #review-tips').hide();
+
+                if ($('#basic-info').hasClass('active')) {
+                    $('#basic-info-tips').show();
+                } else if ($('#details').hasClass('active')) {
+                    $('#details-tips').show();
+                } else if ($('#requirements').hasClass('active')) {
+                    $('#requirements-tips').show();
+                } else if ($('#review').hasClass('active')) {
+                    $('#review-tips').show();
+                    updateReviewContent();
+                }
+            }
+
+            // Update review content
+            function updateReviewContent() {
+                // Basic info
+                $('#review-title').text($('#position-title').val() || 'Position Title');
+                $('#review-department').text($('#department').val() || 'Not specified');
+                $('#review-location').text($('#location').val() || 'Not specified');
+                $('#review-type').text($('#internship-type option:selected').text() || 'Not specified');
+                $('#review-category').text($('#category option:selected').text() || 'Not specified');
+                $('#review-compensation').text($('#compensation option:selected').text() || 'Not specified');
+                $('#review-positions').text($('#positions').val() || '1');
+
+                // Details
+                $('#review-description').text($('#description').val() || 'No description provided.');
+
+                // Parse responsibilities
+                var responsibilities = $('#responsibilities').val().split('\n').filter(item => item.trim() !== '');
+                var responsibilitiesList = '';
+                responsibilities.forEach(function (item) {
+                    responsibilitiesList += '<li>' + item + '</li>';
+                });
+                $('#review-responsibilities').html(responsibilitiesList || '<li>No responsibilities specified.</li>');
+
+                // Parse benefits
+                var benefits = $('#benefits').val().split('\n').filter(item => item.trim() !== '');
+                var benefitsList = '';
+                benefits.forEach(function (item) {
+                    benefitsList += '<li>' + item + '</li>';
+                });
+                $('#review-benefits-list').html(benefitsList || '<li>No benefits specified.</li>');
+
+                // Dates and duration
+                var startDate = $('#start-date').val() ? new Date($('#start-date').val()).toLocaleDateString() : 'Not specified';
+                $('#review-start-date').text(startDate);
+
+                var duration = $('#duration').val() ? $('#duration').val() + ' ' + $('#duration-type option:selected').text() : 'Not specified';
+                $('#review-duration').text(duration);
+
+                var deadline = $('#application-deadline').val() ? new Date($('#application-deadline').val()).toLocaleDateString() : 'Not specified';
+                $('#review-deadline').text(deadline);
+
+                // Requirements
+                var requirements = $('#requirements-text').val().split('\n').filter(item => item.trim() !== '');
+                var requirementsList = '';
+                requirements.forEach(function (item) {
+                    requirementsList += '<li>' + item + '</li>';
+                });
+                $('#review-requirements-list').html(requirementsList || '<li>No requirements specified.</li>');
+
+                // Skills
+                $('#review-skills').text($('#skills').val() || 'No skills specified.');
+
+                // Contact
+                $('#review-contact').text($('#contact-person').val() || 'Not specified');
+                $('#review-email').text($('#contact-email').val() || 'Not specified');
+                $('#review-phone').text($('#contact-phone').val() || 'Not specified');
+            }
+
+            // Live preview updates
+            $('#position-title').on('input', function () {
+                $('#preview-title').text($(this).val() || 'Position Title');
             });
 
             $('#location').on('input', function () {
-                $('#previewLocation').text($(this).val() || 'Location');
+                $('#preview-location-text').text($(this).val() || 'Location');
             });
 
             $('#description').on('input', function () {
-                $('#previewDescription').text($(this).val() || 'Internship description will appear here...');
+                $('#preview-description-text').text($(this).val() || 'Internship description will appear here...');
             });
 
-            $('#type').on('change', function () {
+            $('#internship-type').on('change', function () {
                 let badgeText = '';
                 switch ($(this).val()) {
                     case 'full_time':
@@ -444,199 +1638,57 @@
 
                 // Show/hide compensation details
                 if ($(this).val() === 'paid' || $(this).val() === 'stipend' || $(this).val() === 'other') {
-                    $('#compensationDetails').slideDown();
+                    $('#compensation-details').slideDown();
                 } else {
-                    $('#compensationDetails').slideUp();
+                    $('#compensation-details').slideUp();
                 }
             });
 
-            // Form submission
-            $('#submitInternship').click(function () {
+            // Submit internship
+            $('#submit-internship-btn').click(function () {
                 // Simple validation
                 let isValid = true;
-                const requiredFields = $('#internshipForm').find('[required]');
 
-                requiredFields.each(function () {
-                    if (!$(this).val()) {
-                        isValid = false;
-                        $(this).addClass('is-invalid');
-                    } else {
-                        $(this).removeClass('is-invalid');
-                    }
-                });
+                if (!$('#terms-check').prop('checked')) {
+                    isValid = false;
+                    alert('Please confirm that all information is accurate by checking the confirmation box.');
+                }
 
                 if (isValid) {
+                    // Hide modal
+                    $('#createInternshipModal').modal('hide');
+
                     // Show success message
-                    $('#successModal').modal('show');
-                } else {
-                    // Scroll to first invalid field
-                    $('html, body').animate({
-                        scrollTop: $('.is-invalid:first').offset().top - 100
+                    setTimeout(function () {
+                        $('#successModal').modal('show');
                     }, 500);
                 }
             });
 
-            // Add animations to form sections on scroll
-            const animateOnScroll = function () {
-                const elements = $('.form-group');
+            // Save as draft
+            $('#save-draft-btn').click(function () {
+                // Hide modal
+                $('#createInternshipModal').modal('hide');
 
-                elements.each(function (index) {
-                    const element = $(this);
-                    const elementPosition = element.offset().top;
-                    const windowHeight = $(window).height();
-                    const scrollPosition = $(window).scrollTop();
-
-                    if (elementPosition < scrollPosition + windowHeight - 100) {
-                        setTimeout(function () {
-                            element.addClass('animate__animated animate__fadeInUp');
-                        }, index * 50); // Staggered animation
-                    }
+                // Show toast notification
+                $(document).Toasts('create', {
+                    class: 'bg-info',
+                    title: 'Draft Saved',
+                    body: 'Your internship has been saved as a draft.',
+                    autohide: true,
+                    delay: 3000
                 });
-            };
+            });
 
-            // Run animation check on scroll
-            $(window).on('scroll', animateOnScroll);
-            // Run once on page load
-            setTimeout(animateOnScroll, 500);
-
-            // Add pulse animation to submit button
+            // Add pulse animation to create button
             setInterval(function () {
-                $('#submitInternship').toggleClass('animate__animated animate__pulse');
+                $('#createInternshipBtn').toggleClass('animate__pulse');
             }, 2000);
+
+            // Add animations to internship items
+            $('.internship-item').each(function (index) {
+                $(this).css('animation-delay', (index * 0.1) + 's');
+            });
         });
     </script>
-
-    <!-- Additional CSS -->
-    <style>
-        /* Custom animations */
-        @keyframes float {
-            0% {
-                transform: translateY(0px);
-            }
-
-            50% {
-                transform: translateY(-10px);
-            }
-
-            100% {
-                transform: translateY(0px);
-            }
-        }
-
-        .float-animation {
-            animation: float 3s ease-in-out infinite;
-        }
-
-        /* Colorful form styling */
-        .form-control:focus {
-            border-color: #4361ee;
-            box-shadow: 0 0 0 0.2rem rgba(67, 97, 238, 0.25);
-        }
-
-        .card {
-            transition: all 0.3s ease;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .card-header {
-            border-bottom: 0;
-        }
-
-        .callout {
-            border-radius: 5px;
-            margin-bottom: 15px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-        }
-
-        .callout:hover {
-            transform: translateX(5px);
-        }
-
-        .badge {
-            font-size: 0.85rem;
-            padding: 0.4em 0.8em;
-            border-radius: 30px;
-        }
-
-        /* Animated background for preview */
-        .card-success .card-body {
-            background: linear-gradient(120deg, #f8f9fa 0%, #e9ecef 100%);
-            background-size: 200% 200%;
-            animation: gradientBG 15s ease infinite;
-        }
-
-        @keyframes gradientBG {
-            0% {
-                background-position: 0% 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
-            }
-
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
-        /* Custom styling for form groups */
-        .form-group {
-            opacity: 0;
-            /* Start invisible for scroll animation */
-        }
-
-        .form-group.animate__animated {
-            opacity: 1;
-        }
-
-        /* Colorful labels */
-        label {
-            font-weight: 600;
-            background: linear-gradient(90deg, #4361ee, #3a0ca3);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            display: inline-block;
-        }
-
-        /* Custom styling for buttons */
-        .btn-primary {
-            background: linear-gradient(45deg, #4361ee, #3a0ca3);
-            border: none;
-            box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        .btn-primary:hover {
-            background: linear-gradient(45deg, #3a0ca3, #4361ee);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(67, 97, 238, 0.4);
-        }
-
-        .btn-secondary {
-            background: linear-gradient(45deg, #6c757d, #495057);
-            border: none;
-            box-shadow: 0 4px 15px rgba(108, 117, 125, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        .btn-secondary:hover {
-            background: linear-gradient(45deg, #495057, #6c757d);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(108, 117, 125, 0.4);
-        }
-
-        /* Custom styling for checkboxes */
-        .custom-control-input:checked~.custom-control-label::before {
-            background: linear-gradient(45deg, #4361ee, #3a0ca3);
-            border-color: #3a0ca3;
-        }
-    </style>
 @endsection

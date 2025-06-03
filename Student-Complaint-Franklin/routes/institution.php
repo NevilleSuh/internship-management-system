@@ -12,6 +12,6 @@ Route::prefix('institution')->group(function () {
 
     Route::get('post', function () {
 
-        return view('institutionf.post');
+        return view('institution.post');
     });
 });
