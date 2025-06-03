@@ -63,10 +63,10 @@
                     <a class="nav-link" href="{{ route('show.home') }}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('show.complain') }}">Complain</a>
+                    <a class="nav-link" href="{{ route('show.complain') }}">Profile</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link"  href="{{ route('student.logout') }}">
+                    <a class="nav-link" href="{{ route('student.logout') }}">
                         <i class="fas fa-sign-out-alt"></i>
                     </a>
                 </li>
