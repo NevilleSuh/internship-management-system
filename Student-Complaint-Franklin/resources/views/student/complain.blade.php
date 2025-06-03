@@ -1,18 +1,18 @@
 @extends('student.includes.layout')
 
 @section('content')
-
-
     <div class="content-header">
         <div class="container-fluid">
-            <div class="row mb-2">
+            <div class="row mb-2 animate__animated animate__fadeIn">
                 <div class="col-sm-6">
-                    <h1 class="m-0"><img src="../asset/img/complaint.png" width="35"> Submit Complaint</h1>
+                    <h1 class="m-0">
+                        <i class="fas fa-user-circle"></i> My Profile
+                    </h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{ route('show.home') }}">Home</a></li>
-                        <li class="breadcrumb-item active">Submit Complaint</li>
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Profile</li>
                     </ol>
                 </div>
             </div>
@@ -22,292 +22,296 @@
     <section class="content">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-8">
-                    <div class="card card-info complaint-form-card">
+                <div class="col-md-4">
+                    <div class="card card-indigo card-outline animate__animated animate__fadeInLeft">
+                        <div class="card-body box-profile">
+                            <div class="text-center">
+                                <img class="profile-user-img img-fluid img-circle shadow"
+                                    src="{{asset('asset/img/avatar.png')}}" alt="User profile picture">
+                            </div>
+
+                            <h3 class="profile-username text-center mt-3">Nfon Andrew Abang</h3>
+                            <p class="text-muted text-center">Student</p>
+
+                            <ul class="list-group list-group-unbordered mb-3">
+                                <li class="list-group-item animate__animated animate__fadeIn" style="animation-delay: 0.1s">
+                                    <b>Applications</b> <a class="float-right">3</a>
+                                </li>
+                                <li class="list-group-item animate__animated animate__fadeIn" style="animation-delay: 0.2s">
+                                    <b>Accepted</b> <a class="float-right">1</a>
+                                </li>
+                                <li class="list-group-item animate__animated animate__fadeIn" style="animation-delay: 0.3s">
+                                    <b>Pending</b> <a class="float-right">1</a>
+                                </li>
+                                <li class="list-group-item animate__animated animate__fadeIn" style="animation-delay: 0.4s">
+                                    <b>Rejected</b> <a class="float-right">1</a>
+                                </li>
+                            </ul>
+
+                            <button class="btn btn-indigo btn-block shadow-sm animate__animated animate__fadeInUp"
+                                data-toggle="modal" data-target="#editProfileModal">
+                                <i class="fas fa-edit"></i> Edit Profile
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="card card-indigo animate__animated animate__fadeInLeft animate__delay-1s">
                         <div class="card-header">
-                            <h5><img src="../asset/img/edit.png" width="30"> Complaint Form</h5>
+                            <h3 class="card-title"><i class="fas fa-info-circle mr-1"></i> About Me</h3>
                         </div>
                         <div class="card-body">
-                            <form id="complaintForm" method="POST" action="{{ route('create.complain') }}" enctype="multipart/form-data">
-                                @csrf
-                                {{-- <div class="row">
-                                    <div class="col-md-6 animate__animated animate__fadeInLeft">
-                                        <div class="form-group">
-                                            <label>Full Name</label>
-                                            <input type="text" name="name" class="form-control" value="NEVILLE SUH"
-                                                readonly>
-                                        </div>
+                            <strong><i class="fas fa-map-marker-alt mr-1"></i> Location</strong>
+                            <p class="text-muted">Buea, SW Region</p>
+                            <hr>
+
+                            <strong><i class="fas fa-graduation-cap mr-1"></i> Education</strong>
+                            <p class="text-muted">BSc Computer Science (University of Buea)</p>
+                            <hr>
+
+                            <strong><i class="fas fa-phone mr-1"></i> Contact</strong>
+                            <p class="text-muted">+237 650729916</p>
+                            <p class="text-muted">andrew.nfon@email.com</p>
+                            <hr>
+
+                            <strong><i class="fas fa-pencil-alt mr-1"></i> Skills</strong>
+                            <p class="text-muted">
+                                <span class="badge bg-teal mr-1 mb-1">Java</span>
+                                <span class="badge bg-teal mr-1 mb-1">Python</span>
+                                <span class="badge bg-teal mr-1 mb-1">SQL</span>
+                                <span class="badge bg-teal mr-1 mb-1">HTML</span>
+                                <span class="badge bg-teal mr-1 mb-1">CSS</span>
+                                <span class="badge bg-teal mb-1">JavaScript</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="card card-indigo animate__animated animate__fadeInLeft animate__delay-2s">
+                        <div class="card-header">
+                            <h3 class="card-title"><i class="fas fa-file-alt mr-1"></i> My Documents</h3>
+                        </div>
+                        <div class="card-body p-0">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item d-flex justify-content-between align-items-center animate__animated animate__fadeIn"
+                                    style="animation-delay: 0.1s">
+                                    <div>
+                                        <i class="fas fa-file-pdf text-danger mr-2"></i> Resume/CV
                                     </div>
-                                    <div class="col-md-6 animate__animated animate__fadeInRight">
-                                        <div class="form-group">
-                                            <label>Matricule</label>
-                                            <input type="text" name="matricule" class="form-control" value="UBa22PB000" readonly>
-                                        </div>
+                                    <div>
+                                        <a href="#" class="btn btn-xs btn-info mr-1">
+                                            <i class="fas fa-download"></i>
+                                        </a>
+                                        <button class="btn btn-xs btn-warning" data-toggle="modal"
+                                            data-target="#updateDocumentModal" data-document="resume">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
                                     </div>
-                                </div> --}}
-
-                                <div class="row">
-                                    <div class="col-md-6 animate__animated animate__fadeInLeft">
-                                        <div class="form-group">
-                                            <label>Year</label>
-                                            <select class="form-control" name="year" id="year">
-                                                <option value="">Select Year</option>
-                                                @foreach ($years as $year)
-                                                    <option value="{{ $year->id }}">{{ $year->name }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center animate__animated animate__fadeIn"
+                                    style="animation-delay: 0.2s">
+                                    <div>
+                                        <i class="fas fa-file-image text-primary mr-2"></i> ID Card
                                     </div>
-                                    <div class="col-md-6 animate__animated animate__fadeInRight">
-                                        <div class="form-group">
-                                            <label>Semester</label>
-                                            <select class="form-control" name="semester" id="semester">
-                                                <option value="">Select Semester</option>
-                                                <option value="first">First</option>
-                                                <option value="second">Second</option>
-                                            </select>
-                                        </div>
+                                    <div>
+                                        <a href="#" class="btn btn-xs btn-info mr-1">
+                                            <i class="fas fa-download"></i>
+                                        </a>
+                                        <button class="btn btn-xs btn-warning" data-toggle="modal"
+                                            data-target="#updateDocumentModal" data-document="id">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
                                     </div>
-                                </div>
-
-
-                                <div class="form-group animate__animated animate__fadeInUp">
-                                    <label>Department</label>
-                                    <select name="department" class="form-control" id="department">
-                                        <option value="">Select Department</option>
-                                        @foreach ($departments as $department)
-                                            <option value="{{ $department->id }}">{{$department->code}} {{ $department->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-
-                                <div class="form-group animate__animated animate__fadeInUp">
-                                    <label>Course</label>
-                                    <select name="course" class="form-control" id="course">
-                                        <option value="">Select Course</option>
-                                    </select>
-                                </div>
-
-                                <div class="form-group animate__animated animate__fadeInUp" style="animation-delay: 0.4s">
-                                    <label>Category <span class="text-danger">*</span></label>
-                                    <select name="category" class="form-control" required>
-                                        <option value="">Select Category</option>
-                                        <option value="ca">CA</option>
-                                        <option value="exam">Examination</option>
-                                        <option value="other">Other</option>
-                                    </select>
-                                </div>
-
-                                <div class="form-group animate__animated animate__fadeInUp" style="animation-delay: 0.4s">
-                                    <label>Academic Year <span class="text-danger">*</span></label>
-                                    <select name="academic_year" class="form-control" required>
-                                        <option value="">Select Academic year</option>
-                                        <option value="2024/2025">2024/2025</option>
-                                        <option value="2025/2026">2025/2026</option>
-                                        <option value="2026/2027">2026/2027</option>
-                                        <option value="2027/2028">2027/2028</option>
-                                        <option value="2028/2029">2028/2029</option>
-                                        <option value="2029/2030">2029/2030</option>
-                                    </select>
-                                </div>
-
-                                <div class="form-group animate__animated animate__fadeInUp" style="animation-delay: 0.2s">
-                                    <label>Subject <span class="text-danger">*</span></label>
-                                    <input type="text" name="subject" class="form-control"
-                                        placeholder="Brief title of your complaint" required>
-                                </div>
-
-
-                                <div class="form-group animate__animated animate__fadeInUp" style="animation-delay: 0.8s">
-                                    <label>Description <span class="text-danger">*</span></label>
-                                    <textarea name="description" class="form-control" rows="6"
-                                        placeholder="Provide detailed information about your complaint..."
-                                        required></textarea>
-                                    <small class="text-muted">Please be specific and include all relevant details such as
-                                        dates, course codes, and people involved.</small>
-                                </div>
-
-                                <div class="form-group animate__animated animate__fadeInUp" style="animation-delay: 1s">
-                                    <label>Supporting Documents</label>
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="documentUpload" name="documents[]"
-                                            multiple>
-                                        <label class="custom-file-label" for="documentUpload">Choose file(s)</label>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center animate__animated animate__fadeIn"
+                                    style="animation-delay: 0.3s">
+                                    <div>
+                                        <i class="fas fa-file-alt text-success mr-2"></i> Academic Transcript
                                     </div>
-                                    <small class="text-muted">Upload any relevant documents (PDF, DOC, JPG, PNG). Maximum
-                                        5MB per file.</small>
-                                </div>
-
-                                <div id="filePreviewArea" class="mt-3" style="display: none;">
-                                    <h6>Selected Files:</h6>
-                                    <div id="fileList" class="list-group"></div>
-                                </div>
-
-                                <div class="form-check animate__animated animate__fadeInUp" style="animation-delay: 1.2s">
-                                    <input type="checkbox" class="form-check-input" id="confirmCheck" required>
-                                    <label class="form-check-label" for="confirmCheck">I confirm that all information
-                                        provided is accurate and true.</label>
-                                </div>
-
-                                <div class="mt-4 text-center animate__animated animate__fadeInUp"
-                                    style="animation-delay: 1.4s">
-                                    <button type="submit" class="btn btn-info btn-lg submit-btn">
-                                        <i class="fa fa-paper-plane"></i> Submit Complaint
-                                    </button>
-                                </div>
-                            </form>
+                                    <div>
+                                        <a href="#" class="btn btn-xs btn-info mr-1">
+                                            <i class="fas fa-download"></i>
+                                        </a>
+                                        <button class="btn btn-xs btn-warning" data-toggle="modal"
+                                            data-target="#updateDocumentModal" data-document="transcript">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-sm btn-indigo shadow-sm" data-toggle="modal"
+                                data-target="#addDocumentModal">
+                                <i class="fas fa-plus"></i> Add Document
+                            </button>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-md-4">
-                    <div class="card card-info animate__animated animate__fadeInRight">
+                <div class="col-md-8">
+                    <div class="card card-indigo card-outline animate__animated animate__fadeInRight">
                         <div class="card-header">
-                            <h5><img src="{{asset('asset/img/profile.png')}}" width="30"> Guidelines</h5>
+                            <h3 class="card-title"><i class="fas fa-history mr-1"></i> Application History</h3>
+                            <div class="card-tools">
+                                <div class="input-group input-group-sm" style="width: 150px;">
+                                    <input type="text" name="table_search" class="form-control float-right"
+                                        placeholder="Search">
+                                    <div class="input-group-append">
+                                        <button type="submit" class="btn btn-indigo">
+                                            <i class="fas fa-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body p-0">
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead class="bg-indigo">
+                                        <tr>
+                                            <th>Position</th>
+                                            <th>Company</th>
+                                            <th>Applied On</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="animate__animated animate__fadeIn" style="animation-delay: 0.1s">
+                                            <td>Software Dev Intern</td>
+                                            <td>GilloTech</td>
+                                            <td>May 15, 2025</td>
+                                            <td><span class="badge badge-info">Pending</span></td>
+                                            <td>
+                                                <button class="btn btn-xs btn-indigo" data-toggle="modal"
+                                                    data-target="#viewApplicationModal">
+                                                    <i class="fas fa-eye"></i> View
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr class="animate__animated animate__fadeIn" style="animation-delay: 0.2s">
+                                            <td>IT Support Intern</td>
+                                            <td>H4BF</td>
+                                            <td>May 10, 2025</td>
+                                            <td><span class="badge badge-success">Accepted</span></td>
+                                            <td>
+                                                <button class="btn btn-xs btn-indigo" data-toggle="modal"
+                                                    data-target="#viewApplicationModal">
+                                                    <i class="fas fa-eye"></i> View
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr class="animate__animated animate__fadeIn" style="animation-delay: 0.3s">
+                                            <td>Web Intern</td>
+                                            <td>Uncle Luke Digitals</td>
+                                            <td>April 28, 2025</td>
+                                            <td><span class="badge badge-danger">Rejected</span></td>
+                                            <td>
+                                                <button class="btn btn-xs btn-indigo" data-toggle="modal"
+                                                    data-target="#viewApplicationModal">
+                                                    <i class="fas fa-eye"></i> View
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="card-footer clearfix">
+                            <ul class="pagination pagination-sm m-0 float-right">
+                                <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="card card-indigo card-outline animate__animated animate__fadeInRight animate__delay-1s">
+                        <div class="card-header">
+                            <h3 class="card-title"><i class="fas fa-bell mr-1"></i> Recent Activity</h3>
                         </div>
                         <div class="card-body">
                             <div class="timeline">
                                 <div class="time-label">
-                                    <span class="bg-info">Complaint Process</span>
+                                    <span class="bg-indigo">May 15, 2025</span>
                                 </div>
-
-                                <div>
-                                    <i class="fas fa-edit bg-blue"></i>
+                                <div class="animate__animated animate__fadeIn" style="animation-delay: 0.1s">
+                                    <i class="fas fa-paper-plane bg-blue"></i>
                                     <div class="timeline-item">
-                                        <h3 class="timeline-header">Submit Complaint</h3>
+                                        <span class="time"><i class="fas fa-clock"></i> 10:30 AM</span>
+                                        <h3 class="timeline-header">You applied for <a href="#">Software Dev Intern</a> at
+                                            GilloTech</h3>
                                         <div class="timeline-body">
-                                            Fill out the form with all required details and attach supporting documents.
+                                            Your application has been submitted and is pending review.
                                         </div>
                                     </div>
                                 </div>
 
-                                <div>
-                                    <i class="fas fa-clock bg-yellow"></i>
-                                    <div class="timeline-item">
-                                        <h3 class="timeline-header">Review Process</h3>
-                                        <div class="timeline-body">
-                                            Your complaint will be reviewed by the appropriate department within 48 hours.
-                                        </div>
-                                    </div>
+                                <div class="time-label">
+                                    <span class="bg-success">May 12, 2025</span>
                                 </div>
-
-                                <div>
-                                    <i class="fas fa-comments bg-purple"></i>
-                                    <div class="timeline-item">
-                                        <h3 class="timeline-header">Communication</h3>
-                                        <div class="timeline-body">
-                                            You may be contacted for additional information if needed.
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div>
+                                <div class="animate__animated animate__fadeIn" style="animation-delay: 0.2s">
                                     <i class="fas fa-check-circle bg-green"></i>
                                     <div class="timeline-item">
-                                        <h3 class="timeline-header">Resolution</h3>
+                                        <span class="time"><i class="fas fa-clock"></i> 2:15 PM</span>
+                                        <h3 class="timeline-header">Your application for <a href="#">IT Support Intern</a>
+                                            was accepted</h3>
                                         <div class="timeline-body">
-                                            You will be notified once your complaint has been resolved.
+                                            Congratulations! H4BF has accepted your application. Please check your email for
+                                            further instructions.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="time-label">
+                                    <span class="bg-info">May 10, 2025</span>
+                                </div>
+                                <div class="animate__animated animate__fadeIn" style="animation-delay: 0.3s">
+                                    <i class="fas fa-paper-plane bg-blue"></i>
+                                    <div class="timeline-item">
+                                        <span class="time"><i class="fas fa-clock"></i> 9:45 AM</span>
+                                        <h3 class="timeline-header">You applied for <a href="#">IT Support Intern</a> at
+                                            H4BF</h3>
+                                        <div class="timeline-body">
+                                            Your application has been submitted and is pending review.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="time-label">
+                                    <span class="bg-danger">May 5, 2025</span>
+                                </div>
+                                <div class="animate__animated animate__fadeIn" style="animation-delay: 0.4s">
+                                    <i class="fas fa-times-circle bg-red"></i>
+                                    <div class="timeline-item">
+                                        <span class="time"><i class="fas fa-clock"></i> 11:20 AM</span>
+                                        <h3 class="timeline-header">Your application for <a href="#">Web Intern</a> was
+                                            rejected</h3>
+                                        <div class="timeline-body">
+                                            Unfortunately, Uncle Luke Digitals has decided not to proceed with your
+                                            application at this time.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="time-label">
+                                    <span class="bg-info">April 28, 2025</span>
+                                </div>
+                                <div class="animate__animated animate__fadeIn" style="animation-delay: 0.5s">
+                                    <i class="fas fa-paper-plane bg-blue"></i>
+                                    <div class="timeline-item">
+                                        <span class="time"><i class="fas fa-clock"></i> 3:30 PM</span>
+                                        <h3 class="timeline-header">You applied for <a href="#">Web Intern</a> at Uncle Luke
+                                            Digitals</h3>
+                                        <div class="timeline-body">
+                                            Your application has been submitted and is pending review.
                                         </div>
                                     </div>
                                 </div>
 
                                 <div>
-                                    <i class="far fa-circle bg-gray"></i>
+                                    <i class="fas fa-clock bg-gray"></i>
                                 </div>
                             </div>
-
-                            <div class="alert alert-info mt-4">
-                                <h5><i class="icon fas fa-info"></i> Important!</h5>
-                                <p>Please ensure all information is accurate. False complaints may result in disciplinary
-                                    action.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card card-info animate__animated animate__fadeInRight" style="animation-delay: 0.3s">
-                        <div class="card-header">
-                            <h5><img src="../asset/img/faq.png" width="30"> FAQs</h5>
-                        </div>
-                        <div class="card-body p-0">
-                            <div class="accordion" id="faqAccordion">
-                                <div class="card">
-                                    <div class="card-header" id="faqOne">
-                                        <h2 class="mb-0">
-                                            <button class="btn btn-link btn-block text-left collapsed" type="button"
-                                                data-toggle="collapse" data-target="#collapseOne" aria-expanded="false"
-                                                aria-controls="collapseOne">
-                                                How long does the process take?
-                                            </button>
-                                        </h2>
-                                    </div>
-                                    <div id="collapseOne" class="collapse" aria-labelledby="faqOne"
-                                        data-parent="#faqAccordion">
-                                        <div class="card-body">
-                                            Most complaints are processed within 5-7 working days, depending on complexity.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card">
-                                    <div class="card-header" id="faqTwo">
-                                        <h2 class="mb-0">
-                                            <button class="btn btn-link btn-block text-left collapsed" type="button"
-                                                data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
-                                                aria-controls="collapseTwo">
-                                                Can I update my complaint?
-                                            </button>
-                                        </h2>
-                                    </div>
-                                    <div id="collapseTwo" class="collapse" aria-labelledby="faqTwo"
-                                        data-parent="#faqAccordion">
-                                        <div class="card-body">
-                                            Yes, you can add additional information to your complaint until it enters the
-                                            "In Progress" status.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card">
-                                    <div class="card-header" id="faqThree">
-                                        <h2 class="mb-0">
-                                            <button class="btn btn-link btn-block text-left collapsed" type="button"
-                                                data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
-                                                aria-controls="collapseThree">
-                                                What documents should I attach?
-                                            </button>
-                                        </h2>
-                                    </div>
-                                    <div id="collapseThree" class="collapse" aria-labelledby="faqThree"
-                                        data-parent="#faqAccordion">
-                                        <div class="card-body">
-                                            Attach any evidence that supports your complaint, such as emails, screenshots,
-                                            medical documents, or receipts.
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Success Modal -->
-            <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-body text-center py-5">
-                            <div class="animate__animated animate__bounceIn">
-                                <i class="fas fa-check-circle text-success" style="font-size: 80px;"></i>
-                            </div>
-                            <h3 class="mt-4 animate__animated animate__fadeInUp">Complaint Submitted Successfully!</h3>
-                            <p class="animate__animated animate__fadeInUp" style="animation-delay: 0.3s">Your complaint has
-                                been received and will be processed shortly.</p>
-                            <p class="animate__animated animate__fadeInUp" style="animation-delay: 0.5s">Complaint ID:
-                                <strong id="complaintId">C-2025-001</strong>
-                            </p>
-                            <button type="button" class="btn btn-success mt-3 animate__animated animate__fadeInUp"
-                                style="animation-delay: 0.7s" data-dismiss="modal">
-                                <i class="fas fa-check"></i> OK
-                            </button>
                         </div>
                     </div>
                 </div>
@@ -315,339 +319,371 @@
         </div>
     </section>
 
-    <style>
-        @import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css');
+    <div class="modal fade" id="editProfileModal" tabindex="-1" role="dialog" aria-labelledby="editProfileModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <form id="profileForm">
+                    <div class="modal-header bg-indigo">
+                        <h5 class="modal-title" id="editProfileModalLabel">Edit Profile</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="text-center mb-4">
+                            <img class="profile-user-img img-fluid img-circle shadow"
+                                src="{{asset('asset/img/avatar.png')}}" alt="User profile picture">
+                            <div class="mt-2">
+                                <button type="button" class="btn btn-sm btn-info shadow-sm">
+                                    <i class="fas fa-camera"></i> Change Photo
+                                </button>
+                            </div>
+                        </div>
 
-        .complaint-form-card {
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>First Name</label>
+                                    <input type="text" class="form-control" value="Nfon" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Last Name</label>
+                                    <input type="text" class="form-control" value="Andrew Abang" required>
+                                </div>
+                            </div>
+                        </div>
 
-        .complaint-form-card:hover {
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
-        }
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="email" class="form-control" value="andrew.nfon@email.com" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Phone</label>
+                                    <input type="tel" class="form-control" value="+237 650729916" required>
+                                </div>
+                            </div>
+                        </div>
 
-        .submit-btn {
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
+                        <div class="form-group">
+                            <label>Location</label>
+                            <input type="text" class="form-control" value="Buea, SW Region" required>
+                        </div>
 
-        .submit-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Education Level</label>
+                                    <select class="form-control" required>
+                                        <option>High School</option>
+                                        <option selected>Bachelor's Degree</option>
+                                        <option>Master's Degree</option>
+                                        <option>PhD</option>
+                                        <option>Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Field of Study</label>
+                                    <input type="text" class="form-control" value="Computer Science" required>
+                                </div>
+                            </div>
+                        </div>
 
-        .submit-btn:after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 5px;
-            height: 5px;
-            background: rgba(255, 255, 255, 0.5);
-            opacity: 0;
-            border-radius: 100%;
-            transform: scale(1, 1) translate(-50%);
-            transform-origin: 50% 50%;
-        }
+                        <div class="form-group">
+                            <label>Institution</label>
+                            <input type="text" class="form-control" value="University of Buea" required>
+                        </div>
 
-        .submit-btn:focus:not(:active)::after {
-            animation: ripple 1s ease-out;
-        }
+                        <div class="form-group">
+                            <label>Skills (comma-separated)</label>
+                            <input type="text" class="form-control" value="Java, Python, SQL, HTML, CSS, JavaScript"
+                                required>
+                        </div>
 
-        @keyframes ripple {
-            0% {
-                transform: scale(0, 0);
-                opacity: 0.5;
-            }
+                        <div class="form-group">
+                            <label>Bio</label>
+                            <textarea class="form-control"
+                                rows="3">Computer Science student with a passion for software development and web technologies. Looking for opportunities to gain practical experience and grow professionally.</textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-indigo" id="saveProfileChanges">
+                            <i class="fas fa-save"></i> Save Changes
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
-            100% {
-                transform: scale(20, 20);
-                opacity: 0;
-            }
-        }
+    <div class="modal fade" id="viewApplicationModal" tabindex="-1" role="dialog"
+        aria-labelledby="viewApplicationModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-indigo">
+                    <h5 class="modal-title" id="viewApplicationModalLabel">Application Details</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-4">
+                        <div class="col-md-2">
+                            <img src="https://via.placeholder.com/80" alt="GilloTech" class="img-fluid rounded shadow">
+                        </div>
+                        <div class="col-md-10">
+                            <h4>Software Dev Intern - GilloTech</h4>
+                            <p class="text-muted">Bamenda, Up Station</p>
+                            <div>
+                                <span class="badge badge-info">Full-time</span>
+                                <span class="badge badge-success">Paid</span>
+                                <span class="badge badge-info">Pending</span>
+                            </div>
+                        </div>
+                    </div>
 
-        .timeline {
-            position: relative;
-            margin: 0 0 30px 0;
-            padding: 0;
-            list-style: none;
-        }
+                    <div class="card card-outline card-indigo mb-4 animate__animated animate__fadeIn">
+                        <div class="card-header">
+                            <h3 class="card-title"><i class="fas fa-info-circle mr-1"></i> Application Summary</h3>
+                        </div>
+                        <div class="card-body">
+                            <dl class="row">
+                                <dt class="col-sm-3">Applied On</dt>
+                                <dd class="col-sm-9">May 15, 2025</dd>
 
-        .timeline:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            width: 4px;
-            background: #ddd;
-            left: 31px;
-            margin: 0;
-            border-radius: 2px;
-        }
+                                <dt class="col-sm-3">Status</dt>
+                                <dd class="col-sm-9"><span class="badge badge-info">Pending</span></dd>
 
-        .timeline>div {
-            position: relative;
-            margin-right: 10px;
-            margin-bottom: 15px;
-        }
+                                <dt class="col-sm-3">Last Updated</dt>
+                                <dd class="col-sm-9">May 15, 2025</dd>
+                            </dl>
+                        </div>
+                    </div>
 
-        .timeline>div>.timeline-item {
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-            border-radius: 3px;
-            margin-top: 0;
-            background-color: #fff;
-            color: #444;
-            margin-left: 60px;
-            margin-right: 0;
-            padding: 0;
-            position: relative;
-        }
+                    <div class="card card-outline card-indigo mb-4 animate__animated animate__fadeIn animate__delay-1s">
+                        <div class="card-header">
+                            <h3 class="card-title"><i class="fas fa-file-alt mr-1"></i> Submitted Information</h3>
+                        </div>
+                        <div class="card-body">
+                            <h5>Why are you interested in this internship?</h5>
+                            <p>I am interested in this internship because it aligns perfectly with my academic background in
+                                Computer Science and my career aspirations in software development. I am particularly drawn
+                                to GilloTech's innovative approach to technology solutions in Bamenda, and I believe this
+                                opportunity would allow me to apply my theoretical knowledge in a practical setting while
+                                contributing to meaningful projects.</p>
 
-        .timeline>div>.fa,
-        .timeline>div>.fas,
-        .timeline>div>.far {
-            width: 30px;
-            height: 30px;
-            font-size: 15px;
-            line-height: 30px;
-            position: absolute;
-            color: #fff;
-            background: #d2d6de;
-            border-radius: 50%;
-            text-align: center;
-            left: 18px;
-            top: 0;
-        }
+                            <h5>Relevant Skills & Experience</h5>
+                            <p>I have experience with Python, Java, and web development technologies (HTML, CSS,
+                                JavaScript). I have completed several course projects including a student management system
+                                and an e-commerce website. I also participated in a coding bootcamp where I developed a
+                                mobile-responsive web application. I am familiar with version control systems like Git and
+                                have basic knowledge of database management with SQL.</p>
+                        </div>
+                    </div>
 
-        .timeline>.time-label>span {
-            font-weight: 600;
-            padding: 5px 10px;
-            display: inline-block;
-            background-color: #fff;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-            border-radius: 4px;
-            margin-left: 50px;
-            margin-bottom: 10px;
-        }
+                    <div class="card card-outline card-indigo animate__animated animate__fadeIn animate__delay-2s">
+                        <div class="card-header">
+                            <h3 class="card-title"><i class="fas fa-file-download mr-1"></i> Submitted Documents</h3>
+                        </div>
+                        <div class="card-body p-0">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <i class="fas fa-file-pdf text-danger mr-2"></i> Resume/CV
+                                    </div>
+                                    <a href="#" class="btn btn-sm btn-info">
+                                        <i class="fas fa-download"></i> Download
+                                    </a>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <i class="fas fa-file-word text-primary mr-2"></i> Cover Letter
+                                    </div>
+                                    <a href="#" class="btn btn-sm btn-info">
+                                        <i class="fas fa-download"></i> Download
+                                    </a>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <i class="fas fa-file-image text-success mr-2"></i> ID Card
+                                    </div>
+                                    <a href="#" class="btn btn-sm btn-info">
+                                        <i class="fas fa-download"></i> Download
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-danger">
+                        <i class="fas fa-times"></i> Withdraw Application
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        .timeline-item>.timeline-header {
-            margin: 0;
-            color: #555;
-            border-bottom: 1px solid #f4f4f4;
-            padding: 10px;
-            font-size: 16px;
-            line-height: 1.1;
-            font-weight: 600;
-        }
+    <div class="modal fade" id="updateDocumentModal" tabindex="-1" role="dialog" aria-labelledby="updateDocumentModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-warning">
+                    <h5 class="modal-title" id="updateDocumentModalLabel">Update Document</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label>Document Type</label>
+                            <input type="text" class="form-control" id="documentType" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label>Upload New Version</label>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="documentFile" required>
+                                <label class="custom-file-label" for="documentFile">Choose file</label>
+                            </div>
+                            <small class="form-text text-muted">Accepted formats: PDF, DOC, DOCX, JPG, PNG (Max 5MB)</small>
+                        </div>
+                        <div class="form-group">
+                            <label>Description (Optional)</label>
+                            <textarea class="form-control" rows="3"
+                                placeholder="Add a note about this document..."></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-warning">
+                        <i class="fas fa-sync-alt"></i> Update Document
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        .timeline-item>.timeline-body {
-            padding: 10px;
-            font-size: 14px;
-        }
+    <div class="modal fade" id="addDocumentModal" tabindex="-1" role="dialog" aria-labelledby="addDocumentModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-indigo">
+                    <h5 class="modal-title" id="addDocumentModalLabel">Add New Document</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label>Document Type</label>
+                            <select class="form-control" required>
+                                <option value="">Select Document Type</option>
+                                <option value="certificate">Certificate</option>
+                                <option value="recommendation">Recommendation Letter</option>
+                                <option value="portfolio">Portfolio</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Document Title</label>
+                            <input type="text" class="form-control" placeholder="Enter document title" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Upload File</label>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="newDocumentFile" required>
+                                <label class="custom-file-label" for="newDocumentFile">Choose file</label>
+                            </div>
+                            <small class="form-text text-muted">Accepted formats: PDF, DOC, DOCX, JPG, PNG (Max 5MB)</small>
+                        </div>
+                        <div class="form-group">
+                            <label>Description (Optional)</label>
+                            <textarea class="form-control" rows="3"
+                                placeholder="Add a description for this document..."></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-indigo">
+                        <i class="fas fa-plus"></i> Add Document
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        .bg-blue {
-            background-color: #3c8dbc !important;
-        }
-
-        .bg-yellow {
-            background-color: #f39c12 !important;
-        }
-
-        .bg-purple {
-            background-color: #605ca8 !important;
-        }
-
-        .bg-green {
-            background-color: #00a65a !important;
-        }
-
-        .bg-gray {
-            background-color: #d2d6de !important;
-        }
-
-        #fileList .list-group-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .file-preview-icon {
-            margin-right: 10px;
-        }
-
-        .file-remove-btn {
-            cursor: pointer;
-            color: #dc3545;
-        }
-
-        #faqAccordion .card-header {
-            padding: 0;
-        }
-
-        #faqAccordion .btn-link {
-            color: #17a2b8;
-            text-decoration: none;
-            font-weight: 600;
-            padding: 12px 15px;
-        }
-
-        #faqAccordion .btn-link:hover {
-            background-color: rgba(23, 162, 184, 0.1);
-        }
-
-        #faqAccordion .btn-link.collapsed:after {
-            content: '\f067';
-            font-family: 'Font Awesome 5 Free';
-            font-weight: 900;
-            float: right;
-        }
-
-        #faqAccordion .btn-link:not(.collapsed):after {
-            content: '\f068';
-            font-family: 'Font Awesome 5 Free';
-            font-weight: 900;
-            float: right;
-        }
-    </style>
-
-    <!-- JavaScript for file upload preview and form submission -->
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        $(document).ready(function () {
+            bsCustomFileInput.init();
 
-            const fileInput = document.getElementById('documentUpload');
-            const filePreviewArea = document.getElementById('filePreviewArea');
-            const fileList = document.getElementById('fileList');
+            $('#saveProfileChanges').click(function () {
+                let isValid = true;
+                const requiredFields = $('#profileForm').find('[required]');
 
-            fileInput.addEventListener('change', function () {
-                fileList.innerHTML = '';
-
-                if (this.files.length > 0) {
-                    filePreviewArea.style.display = 'block';
-
-                    Array.from(this.files).forEach(function (file, index) {
-                        const fileItem = document.createElement('div');
-                        fileItem.className = 'list-group-item animate__animated animate__fadeIn';
-
-                        let iconClass = 'fa-file';
-                        if (file.type.includes('pdf')) {
-                            iconClass = 'fa-file-pdf';
-                        } else if (file.type.includes('word') || file.type.includes('doc')) {
-                            iconClass = 'fa-file-word';
-                        } else if (file.type.includes('image')) {
-                            iconClass = 'fa-file-image';
-                        } else if (file.type.includes('excel') || file.type.includes('sheet')) {
-                            iconClass = 'fa-file-excel';
-                        }
-
-                        let fileSize = file.size / 1024;
-                        let fileSizeStr = fileSize < 1024 ?
-                            fileSize.toFixed(1) + ' KB' :
-                            (fileSize / 1024).toFixed(1) + ' MB';
-
-                        fileItem.innerHTML = `
-                                        <div>
-                                            <i class="fas ${iconClass} file-preview-icon"></i>
-                                            <span>${file.name}</span>
-                                            <small class="text-muted ml-2">${fileSizeStr}</small>
-                                        </div>
-                                        <div>
-                                            <i class="fas fa-times-circle file-remove-btn" data-index="${index}"></i>
-                                        </div>
-                                    `;
-
-                        fileList.appendChild(fileItem);
-                    });
-
-                    document.querySelector('.custom-file-label').textContent =
-                        this.files.length > 1 ? `${this.files.length} files selected` : this.files[0].name;
-                } else {
-                    filePreviewArea.style.display = 'none';
-                    document.querySelector('.custom-file-label').textContent = 'Choose file(s)';
-                }
-            });
-
-            fileList.addEventListener('click', function (e) {
-                if (e.target.classList.contains('file-remove-btn')) {
-                    e.target.closest('.list-group-item').remove();
-
-                    if (fileList.children.length === 0) {
-                        filePreviewArea.style.display = 'none';
-                        document.querySelector('.custom-file-label').textContent = 'Choose file(s)';
+                requiredFields.each(function () {
+                    if (!$(this).val()) {
+                        isValid = false;
+                        $(this).addClass('is-invalid');
                     } else {
-                        document.querySelector('.custom-file-label').textContent =
-                            fileList.children.length > 1 ? `${fileList.children.length} files selected` : 'File selected';
+                        $(this).removeClass('is-invalid');
                     }
-                }
-            });
+                });
 
-            // const complaintForm = document.getElementById('complaintForm');
-
-            // complaintForm.addEventListener('submit', function (e) {
-            //     e.preventDefault();
-
-            //     const subject = document.querySelector('input[name="subject"]').value;
-            //     const category = document.querySelector('select[name="category"]').value;
-            //     const description = document.querySelector('textarea[name="description"]').value;
-            //     const confirmCheck = document.getElementById('confirmCheck').checked;
-
-            //     if (!subject || !category || !description || !confirmCheck) {
-            //         alert('Please fill in all required fields and confirm the information is accurate.');
-            //         return;
-            //     }
-
-            //     const randomId = 'C-2025-' + Math.floor(Math.random() * 1000).toString().padStart(3, '0');
-            //     document.getElementById('complaintId').textContent = randomId;
-
-            //     $('#successModal').modal('show');
-
-            //     setTimeout(() => {
-            //         complaintForm.reset();
-            //         filePreviewArea.style.display = 'none';
-            //         document.querySelector('.custom-file-label').textContent = 'Choose file(s)';
-            //         fileList.innerHTML = '';
-            //     }, 500);
-            // });
-        });
-    </script>
-
-
-
-    {{-- Javascript to filter --}}
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('#year, #semester, #department').change(function() {
-                var year = $('#year').val();
-                var semester = $('#semester').val();
-                var department = $('#department').val();
-
-                if (year && semester && department) {
-                    $.ajax({
-                        url: '{{ route("courses.filter") }}',
-                        type: 'GET',
-                        data: {
-                            year: year,
-                            semester: semester,
-                            department: department
-                        },
-                        success: function(data) {
-                            $('#course').empty();
-                            $('#course').append('<option value="">Select Course</option>');
-                            $.each(data, function(index, course) {
-                                $('#course').append('<option value="'+ course.id +'">'+course.code + ":: "+ course.name +'</option>');
-                            });
-                        }
+                if (isValid) {
+                    $('#editProfileModal').modal('hide');
+                    $(document).Toasts('create', {
+                        class: 'bg-success',
+                        title: 'Success',
+                        body: 'Your profile has been updated successfully.',
+                        autohide: true,
+                        delay: 3000
                     });
-                } else {
-                    $('#course').empty();
-                    $('#course').append('<option value="">Select Course</option>');
                 }
+            });
+
+            $('#updateDocumentModal').on('show.bs.modal', function (event) {
+                const button = $(event.relatedTarget);
+                const documentType = button.data('document');
+                const modal = $(this);
+
+                let documentTitle = '';
+                switch (documentType) {
+                    case 'resume':
+                        documentTitle = 'Resume/CV';
+                        break;
+                    case 'id':
+                        documentTitle = 'ID Card';
+                        break;
+                    case 'transcript':
+                        documentTitle = 'Academic Transcript';
+                        break;
+                    default:
+                        documentTitle = 'Document';
+                }
+
+                modal.find('.modal-title').text('Update ' + documentTitle);
+                modal.find('#documentType').val(documentTitle);
+            });
+
+            $('.card').hover(function () {
+                $(this).addClass('animate__animated animate__pulse');
+            }, function () {
+                $(this).removeClass('animate__animated animate__pulse');
             });
         });
     </script>
-
-
-
 @endsection
