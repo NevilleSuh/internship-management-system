@@ -14,4 +14,9 @@ Route::prefix('institution')->group(function () {
 
         return view('institution.post');
     });
+
+    Route::get('view', function () {
+
+        return view('institution.view');
+    });
 });
