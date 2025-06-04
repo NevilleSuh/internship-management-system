@@ -18,10 +18,9 @@ class Admin extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-        'matricule',
         'first_name',
         'last_name',
-        'phone',
+        'tell',
         'role',
         'email',
         'password',

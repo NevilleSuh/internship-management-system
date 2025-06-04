@@ -8,37 +8,32 @@ use Auth;
 
 class AuthController extends Controller
 {
-    public function login(Request $request){
-        // dd($request);
 
+    public function login(Request $request){
+
+        // dd($request);
         $request->validate([
-            'matricule' => 'required',
+            'email' => 'required',
             'password' => 'required',
         ]);
-        // hello
 
-        $credentials = $request->only(['matricule', 'password']);
-        $credentials['matricule'] = strtoupper($credentials['matricule']);
 
-        if($request->type == 'admin'){
-            if(Auth::guard('admin')->attempt($credentials)){
-                return redirect()->route('show.dashboard')->with('message', 'Login Successful Welcome Back');
-            }else{
-                $errors = ['Invalid Login Credentails'];
-                return redirect()->back()->withErrors($errors);
-            }
+        $credentials = $request->only(['email','password']);
+
+        if(Auth::guard('institution')->attempt($credentials)){
+            return redirect()->route('show.post')->with('message', 'Login Successful Welcome Back');
+
+        }else if(Auth::guard('admin')->attempt($credentials)){
+            return redirect()->route('admin.dashboard')->with('message', 'Login Successful Welcome Back');
+
+        }else if(Auth::guard('student')->attempt($credentials)){
+            return redirect()->route('show.home')->with('message', 'Login Successful Welcome Back');
+
+        }else{
+            $errors = ['Invalid Login Credentials'];
+            return redirect()->back()->withErrors($errors);
         }
 
-        if($request->type == 'student'){
-
-            // dd($credentials);
-            if(Auth::guard('student')->attempt($credentials)){
-                return redirect()->route('show.home')->with('message', 'Login Successful Welcome Back');
-            }else{
-                $errors = ['Invalid Login Credentails'];
-                return redirect()->back()->withErrors($errors);
-            }
-        }
 
     }
 

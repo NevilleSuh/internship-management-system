@@ -18,13 +18,11 @@ class Student extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-        'matricule',
         'first_name',
         'last_name',
+        'tell',
         'email',
-        'phone',
         'password',
-        'department_id',
     ];
 
     /**
@@ -50,11 +48,5 @@ class Student extends Authenticatable
         ];
     }
 
-    public function department(){
-        return $this->belongsTo(Department::class);
-    }
 
-    public function complaints(){
-        return $this->hasMany(Complaint::class);
-    }
 }

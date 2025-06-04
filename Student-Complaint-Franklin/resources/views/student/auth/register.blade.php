@@ -37,7 +37,7 @@
                 <form action="{{ route('register.perform') }}" method="POST">
                     @csrf
                     <div class="input-group mb-3">
-                        <input type="text" name="first_name" class="form-control" placeholder="First Name">
+                        <input type="text" name="first_name" class="form-control" placeholder="First Name" required>
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-user"></span>
@@ -45,29 +45,39 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="text" name="last_name" class="form-control" placeholder="Last Name">
+                        <input type="text" name="last_name" class="form-control" placeholder="Last Name" required>
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-user"></span>
                             </div>
                         </div>
                     </div>
-                    <div class="input-group mb-3">
+                    {{-- <div class="input-group mb-3">
                         <input type="text" name="matricule" class="form-control" placeholder="Matricule">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-id-card"></span>
                             </div>
                         </div>
-                    </div>
-                    {{-- <div class="input-group mb-3">
-                        <input type="email" name="email" class="form-control" placeholder="Email">
+                    </div> --}}
+                    <div class="input-group mb-3">
+                        <input type="email" name="email" class="form-control" placeholder="Email" required>
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>
                             </div>
                         </div>
-                    </div> --}}
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <input type="number" name="tell" class="form-control" placeholder="Telephone" required>
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-phone"></span>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="input-group mb-3">
                         <input type="password" class="form-control" name="password" placeholder="Password">
                         <div class="input-group-append">
@@ -85,7 +95,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="input-group mb-3">
+                    
+                    {{-- <div class="input-group mb-3">
                         <select class="form-control" name="department">
                             <option value="">Select Department</option>
                             @foreach ( $departments as $department)
@@ -98,7 +109,7 @@
                                 <span class="fas fa-users"></span>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="row">
                         <div class="col-6 offset-3">
                             <button type="submit" class="btn btn-block btn-warning">Register</button>

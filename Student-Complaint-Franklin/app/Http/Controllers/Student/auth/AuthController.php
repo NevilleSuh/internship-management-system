@@ -15,9 +15,9 @@ class AuthController extends Controller
 {
     public function showRegister(){
 
-        $departments = Department::all();
+        // $departments = Department::all();
 
-        return view('student.auth.register', compact('departments'));
+        return view('student.auth.register');
     }
 
 
@@ -25,25 +25,27 @@ class AuthController extends Controller
         // dd($request);
 
         $request->validate([
-            'matricule'=>'required|unique:students',
+            'email'=>'required|unique:students',
             'password'=>'required|confirmed',
-            'department' => 'required',
+            'tell' => 'required',
             'first_name' => 'required',
             'last_name' => 'required',
         ]);
 
 
         Student::create([
-            'first_name' => strtoupper($request->first_name),
-            'last_name' => strtoupper($request->last_name),
-            'matricule' => strtoupper($request->matricule),
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'email' => $request->email,
+            'tell' => $request->tell,
             'password' => Hash::make($request->password),
-            'department_id' => $request->department,
         ]);
 
 
         return redirect()->route('show.login')->with('message', 'Account Created successfully');
     }
+
+
 
     public function logout(){
         Session::flush();

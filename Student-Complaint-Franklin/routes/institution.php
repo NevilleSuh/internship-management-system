@@ -8,8 +8,8 @@ use App\Http\Controllers\Institution\ApplicationController;
 
 Route::prefix('institution')->group(function () {
 
-    Route::get('login', [AuthController::class, 'showLogin'])->name('show.login');
-    Route::post('login-perform', [AuthController::class, 'login'])->name('perform.login');
+    // Route::get('login', [AuthController::class, 'showLogin'])->name('show.login');
+    // Route::post('login-perform', [AuthController::class, 'login'])->name('perform.login');
 
 
     // Post Routes
