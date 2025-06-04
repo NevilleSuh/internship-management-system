@@ -1,22 +1,20 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Institution\auth\AuthController;
+use App\Http\Controllers\Institution\PostController;
+use App\Http\Controllers\Institution\ApplicationController;
 
 
 Route::prefix('institution')->group(function () {
 
-    Route::get('login', function () {
+    Route::get('login', [AuthController::class, 'showLogin'])->name('show.login');
+    Route::post('login-perform', [AuthController::class, 'login'])->name('perform.login');
 
-        return view('institution.auth.login');
-    });
 
-    Route::get('post', function () {
+    // Post Routes
+    Route::get('post', [PostController::class, 'showPost'])->name('show.post');
 
-        return view('institution.post');
-    });
-
-    Route::get('view', function () {
-
-        return view('institution.view');
-    });
+    //Applications Routes
+    Route::get('application', [ApplicationController::class, 'showApplications'])->name('show.application');
 });

@@ -48,11 +48,11 @@
                 </a>
             </div>
             <div class="card-body">
-                <form action="{{ route('login.perform') }}" method="POST">
+                <form action="{{ route('perform.login') }}" method="POST">
 
                     @csrf
                     <div class="input-group mb-3">
-                        <input type="text" name="matricule" class="form-control" placeholder="Username">
+                        <input type="text" name="email" class="form-control" placeholder="Email">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-user"></span>
@@ -67,7 +67,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="input-group mb-3">
+                    {{-- <div class="input-group mb-3">
                         <select class="form-control" name="type">
                             <option value="student">student</option>
                             <option value="admin">admin</option>
@@ -77,7 +77,7 @@
                                 <span class="fas fa-users"></span>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="row">
                         <div class="col-6 offset-3">
                             <button type="submit" class="btn btn-block btn-warning">Login</button>

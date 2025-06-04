@@ -131,10 +131,10 @@
                         {{-- @endif --}}
 
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{route('admin.category')}}" class="nav-link">
                                 <img src="{{asset('asset/img/course.png')}}" width="30">
                                 <p>
-                                    Applications
+                                    Category
                                 </p>
                             </a>
                         </li>

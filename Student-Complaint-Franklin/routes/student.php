@@ -11,9 +11,6 @@ Route::prefix('student')->group(function () {
     Route::get('register', [AuthController::class, 'showRegister'])->name('register.show');
     Route::post('register-perform', [AuthController::class, 'register'])->name('register.perform');
 
-
-
-
         Route::get('logout', [AuthController::class, 'logout'])->name('student.logout');
 
 

@@ -3,9 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\InstitutionController;
-// use App\Http\Controllers\Admin\AdminController;
-// use App\Http\Controllers\Admin\CourseController;
-// use App\Http\Controllers\Admin\ComplainController;
+use App\Http\Controllers\Admin\CategoryController;
+
 
 
 Route::prefix('admin')->group(function () {
@@ -17,5 +16,12 @@ Route::prefix('admin')->group(function () {
     Route::get('institution', [InstitutionController::class, 'showInstitution'])->name('admin.institution');
     Route::post('add-institution', [InstitutionController::class, 'addInstitution'])->name('admin.add.institution');
     Route::delete('delete-institution/{id}', [InstitutionController::class, 'deleteInstitution'])->name('admin.delete.institution');
+
+
+    // Institutions ROutes
+    Route::get('category', [CategoryController::class, 'showCategory'])->name('admin.category');
+    Route::post('add-category', [CategoryController::class, 'addCategory'])->name('admin.add.category');
+    Route::delete('delete-category/{id}', [CategoryController::class, 'deleteCategory'])->name('admin.delete.category');
+
 
 });

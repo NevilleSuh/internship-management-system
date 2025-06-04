@@ -17,7 +17,7 @@ class InstitutionController extends Controller
 
     }
 
-    public function AddInstitution(Request $request){
+    public function addInstitution(Request $request){
         // dd($request);
         $request->validate([
             'name' => 'required',

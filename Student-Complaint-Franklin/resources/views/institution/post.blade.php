@@ -605,6 +605,10 @@
         </div>
     </section>
 
+
+
+
+
     <!-- Create Internship Modal -->
     <div class="modal fade" id="createInternshipModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-xl modal-dialog-scrollable" role="document">
@@ -627,27 +631,8 @@
                                             <span class="bs-stepper-label">Basic Info</span>
                                         </button>
                                     </div>
-                                    <div class="line"></div>
-                                    <div class="step" data-target="#details">
-                                        <button type="button" class="step-trigger" role="tab" id="details-trigger">
-                                            <span class="bs-stepper-circle bg-primary">2</span>
-                                            <span class="bs-stepper-label">Details</span>
-                                        </button>
-                                    </div>
-                                    <div class="line"></div>
-                                    <div class="step" data-target="#requirements">
-                                        <button type="button" class="step-trigger" role="tab" id="requirements-trigger">
-                                            <span class="bs-stepper-circle bg-primary">3</span>
-                                            <span class="bs-stepper-label">Requirements</span>
-                                        </button>
-                                    </div>
-                                    <div class="line"></div>
-                                    <div class="step" data-target="#review">
-                                        <button type="button" class="step-trigger" role="tab" id="review-trigger">
-                                            <span class="bs-stepper-circle bg-primary">4</span>
-                                            <span class="bs-stepper-label">Review</span>
-                                        </button>
-                                    </div>
+
+
                                 </div>
 
                                 <div class="bs-stepper-content">
@@ -662,15 +647,15 @@
                                         </div>
 
                                         <div class="row">
-                                            <div class="col-md-6">
+                                            {{-- <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="department">Department <span
                                                             class="text-danger">*</span></label>
                                                     <input type="text" class="form-control" id="department"
                                                         placeholder="e.g., Engineering, Marketing" required>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-6">
+                                            </div> --}}
+                                            <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label for="location">Location <span
                                                             class="text-danger">*</span></label>
@@ -718,7 +703,7 @@
                                                 <div class="form-group">
                                                     <label for="compensation">Compensation <span
                                                             class="text-danger">*</span></label>
-                                                    <select class="form-control" id="compensation" required>
+                                                    <select class="form-control" id="compensation" multiple required>
                                                         <option value="">Select Compensation</option>
                                                         <option value="paid">Paid</option>
                                                         <option value="unpaid">Unpaid</option>
@@ -743,17 +728,25 @@
                                                 placeholder="e.g., 50,000 FCFA monthly, Transportation allowance">
                                         </div>
 
-                                        <button type="button" class="btn btn-primary next-step float-right">Next <i
-                                                class="fas fa-arrow-right"></i></button>
                                     </div>
 
                                     <!-- Details Step -->
+
+                                    <div class="line"></div>
+                                    <div class="step" data-target="#details">
+                                        <button type="button" class="step-trigger" role="tab" id="details-trigger">
+                                            <span class="bs-stepper-circle bg-primary">2</span>
+                                            <span class="bs-stepper-label">Details</span>
+                                        </button>
+                                    </div>
                                     <div id="details" class="content" role="tabpanel" aria-labelledby="details-trigger">
                                         <div class="form-group">
                                             <label for="description">Description <span class="text-danger">*</span></label>
                                             <textarea class="form-control" id="description" rows="4"
                                                 placeholder="Provide a detailed description of the internship..."
                                                 required></textarea>
+                                                <small class="form-text text-muted">Enter each Description on a new
+                                                    line</small>
                                         </div>
 
                                         <div class="form-group">
@@ -804,13 +797,19 @@
                                             <input type="date" class="form-control" id="application-deadline" required>
                                         </div>
 
-                                        <button type="button" class="btn btn-secondary prev-step"><i
-                                                class="fas fa-arrow-left"></i> Previous</button>
-                                        <button type="button" class="btn btn-primary next-step float-right">Next <i
-                                                class="fas fa-arrow-right"></i></button>
+
                                     </div>
 
                                     <!-- Requirements Step -->
+                                    <div class="line"></div>
+                                    <div class="step" data-target="#requirements">
+                                        <button type="button" class="step-trigger" role="tab" id="requirements-trigger">
+                                            <span class="bs-stepper-circle bg-primary">3</span>
+                                            <span class="bs-stepper-label">Requirements</span>
+                                        </button>
+                                    </div>
+                                    <div class="line"></div>
+
                                     <div id="requirements" class="content" role="tabpanel"
                                         aria-labelledby="requirements-trigger">
                                         <div class="form-group">
@@ -860,10 +859,6 @@
                                                 placeholder="Phone number">
                                         </div>
 
-                                        <button type="button" class="btn btn-secondary prev-step"><i
-                                                class="fas fa-arrow-left"></i> Previous</button>
-                                        <button type="button" class="btn btn-primary next-step float-right">Next <i
-                                                class="fas fa-arrow-right"></i></button>
                                     </div>
 
                                     <!-- Review Step -->
@@ -873,56 +868,10 @@
                                             submitting.
                                         </div>
 
-                                        <div class="card">
-                                            <div class="card-header bg-light">
-                                                <h5 class="mb-0" id="review-title">Position Title</h5>
-                                            </div>
-                                            <div class="card-body">
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <p><strong>Department:</strong> <span id="review-department"></span>
-                                                        </p>
-                                                        <p><strong>Location:</strong> <span id="review-location"></span></p>
-                                                        <p><strong>Type:</strong> <span id="review-type"></span></p>
-                                                        <p><strong>Category:</strong> <span id="review-category"></span></p>
-                                                        <p><strong>Compensation:</strong> <span
-                                                                id="review-compensation"></span></p>
-                                                        <p><strong>Positions:</strong> <span id="review-positions"></span>
-                                                        </p>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <p><strong>Start Date:</strong> <span id="review-start-date"></span>
-                                                        </p>
-                                                        <p><strong>Duration:</strong> <span id="review-duration"></span></p>
-                                                        <p><strong>Deadline:</strong> <span id="review-deadline"></span></p>
-                                                        <p><strong>Contact:</strong> <span id="review-contact"></span></p>
-                                                        <p><strong>Email:</strong> <span id="review-email"></span></p>
-                                                        <p><strong>Phone:</strong> <span id="review-phone"></span></p>
-                                                    </div>
-                                                </div>
-
-                                                <hr>
-
-                                                <h6>Description</h6>
-                                                <p id="review-description"></p>
-
-                                                <h6>Responsibilities</h6>
-                                                <ul id="review-responsibilities"></ul>
-
-                                                <h6>Requirements</h6>
-                                                <ul id="review-requirements-list"></ul>
-
-                                                <h6>Skills</h6>
-                                                <p id="review-skills"></p>
-
-                                                <h6>Benefits</h6>
-                                                <ul id="review-benefits-list"></ul>
-                                            </div>
-                                        </div>
 
                                         <div class="form-group mt-3">
                                             <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="featured-check">
+                                                <input type="checkbox" class="custom-control-input" id="featured-check" required>
                                                 <label class="custom-control-label" for="featured-check">Mark as Featured
                                                     (Additional fee may apply)</label>
                                             </div>
@@ -938,13 +887,11 @@
                                             </div>
                                         </div>
 
-                                        <button type="button" class="btn btn-secondary prev-step"><i
-                                                class="fas fa-arrow-left"></i> Previous</button>
+
                                         <div class="float-right">
-                                            <button type="button" class="btn btn-secondary mr-2" id="save-draft-btn">Save as
-                                                Draft</button>
+
                                             <button type="button" class="btn btn-primary" id="submit-internship-btn">Submit
-                                                for Review</button>
+                                                </button>
                                         </div>
                                     </div>
                                 </div>

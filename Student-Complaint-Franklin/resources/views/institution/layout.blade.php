@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Complaint Management</title>
+    <title>Internship Management System</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{asset('asset/fontawesome/css/all.min.css')}}">
     <link rel="stylesheet" href="{{asset('asset/css/adminlte.min.css')}}">
@@ -60,10 +60,10 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="{{ route('show.home') }}">Internships</a>
+                    <a class="nav-link" href="{{ route('show.post') }}">Internships</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('show.complain') }}">Applications</a>
+                    <a class="nav-link" href="{{ route('show.application') }}">Applications</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('student.logout') }}">
