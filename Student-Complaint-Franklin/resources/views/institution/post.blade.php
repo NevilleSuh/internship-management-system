@@ -684,15 +684,10 @@
                                                             class="text-danger">*</span></label>
                                                     <select class="form-control" id="category" required>
                                                         <option value="">Select Category</option>
-                                                        <option value="technology">Technology</option>
-                                                        <option value="business">Business</option>
-                                                        <option value="healthcare">Healthcare</option>
-                                                        <option value="education">Education</option>
-                                                        <option value="engineering">Engineering</option>
-                                                        <option value="arts">Arts & Design</option>
-                                                        <option value="legal">Legal</option>
-                                                        <option value="marketing">Marketing</option>
-                                                        <option value="other">Other</option>
+                                                        @foreach ($categories as $category)
+                                                            <option value="{{$category->id}}">{{$category->name}}</option>
+                                                        @endforeach
+
                                                     </select>
                                                 </div>
                                             </div>
@@ -703,7 +698,7 @@
                                                 <div class="form-group">
                                                     <label for="compensation">Compensation <span
                                                             class="text-danger">*</span></label>
-                                                    <select class="form-control" id="compensation" multiple required>
+                                                    <select class="form-control" id="compensation" required>
                                                         <option value="">Select Compensation</option>
                                                         <option value="paid">Paid</option>
                                                         <option value="unpaid">Unpaid</option>
