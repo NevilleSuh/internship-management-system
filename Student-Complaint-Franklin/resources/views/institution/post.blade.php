@@ -123,144 +123,61 @@
 
                                     <div class="internship-list">
                                         <!-- Internship Item 1 -->
-                                        <div class="card mb-3 internship-item animate__animated animate__fadeIn">
-                                            <div class="card-body p-0">
-                                                <div class="d-flex position-relative">
-                                                    <div class="internship-status bg-success"></div>
-                                                    <div class="p-3 flex-grow-1">
-                                                        <div class="d-flex justify-content-between align-items-start">
-                                                            <div>
-                                                                <h5 class="mb-1">Software Development Intern</h5>
-                                                                <p class="text-muted mb-1"><i
-                                                                        class="fas fa-map-marker-alt"></i> Bamenda, Up
-                                                                    Station</p>
-                                                                <div>
-                                                                    <span class="badge badge-info mr-1">Full-time</span>
-                                                                    <span class="badge badge-success mr-1">Paid</span>
-                                                                    <span class="badge badge-warning">Featured</span>
-                                                                </div>
-                                                            </div>
-                                                            <div class="text-right">
-                                                                <span class="text-muted">Posted: May 15, 2025</span><br>
-                                                                <span class="text-success">12 Applications</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="card-footer bg-light p-2">
-                                                    <div class="btn-group btn-group-sm">
-                                                        <button type="button" class="btn btn-info" data-toggle="modal"
-                                                            data-target="#viewApplicationsModal">
-                                                            <i class="fas fa-users"></i> Applications
-                                                        </button>
-                                                        <button type="button" class="btn btn-primary" data-toggle="modal"
-                                                            data-target="#editInternshipModal">
-                                                            <i class="fas fa-edit"></i> Edit
-                                                        </button>
-                                                        <button type="button" class="btn btn-danger">
-                                                            <i class="fas fa-trash"></i> Delete
-                                                        </button>
-                                                    </div>
-                                                    <span class="float-right">
-                                                        <span class="badge bg-primary">Expires: Jun 15, 2025</span>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
 
-                                        <!-- Internship Item 2 -->
-                                        <div class="card mb-3 internship-item animate__animated animate__fadeIn"
-                                            style="animation-delay: 0.1s">
-                                            <div class="card-body p-0">
-                                                <div class="d-flex position-relative">
-                                                    <div class="internship-status bg-success"></div>
-                                                    <div class="p-3 flex-grow-1">
-                                                        <div class="d-flex justify-content-between align-items-start">
-                                                            <div>
-                                                                <h5 class="mb-1">Marketing Assistant</h5>
-                                                                <p class="text-muted mb-1"><i
-                                                                        class="fas fa-map-marker-alt"></i> Bamenda,
-                                                                    Commercial Avenue</p>
+                                        @foreach($posts as $post)
+                                            <div class="card mb-3 internship-item animate__animated animate__fadeIn">
+                                                <div class="card-body p-0">
+                                                    <div class="d-flex position-relative">
+                                                        <div class="internship-status bg-success"></div>
+                                                        <div class="p-3 flex-grow-1">
+                                                            <div class="d-flex justify-content-between align-items-start">
                                                                 <div>
-                                                                    <span class="badge badge-info mr-1">Part-time</span>
-                                                                    <span class="badge badge-success mr-1">Paid</span>
+                                                                    <h5 class="mb-1">{{$post->title}}</h5>
+                                                                    <p class="text-muted mb-1"><i
+                                                                            class="fas fa-map-marker-alt"></i>{{$post->location}}</p>
+                                                                    <div>
+                                                                        <span class="badge badge-info mr-1">{{$post->type}}</span>
+                                                                        <span class="badge badge-success mr-1">{{$post->compensation}}</span>
+                                                                        {{-- <span class="badge badge-warning">Featured</span> --}}
+                                                                    </div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="text-right">
-                                                                <span class="text-muted">Posted: May 10, 2025</span><br>
-                                                                <span class="text-success">8 Applications</span>
+                                                                <div class="text-right">
+                                                                    <span class="text-muted">Posted: {{$post->created_at}}</span><br>
+                                                                    <span class="text-success">12 Applications</span>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="card-footer bg-light p-2">
-                                                    <div class="btn-group btn-group-sm">
-                                                        <button type="button" class="btn btn-info" data-toggle="modal"
-                                                            data-target="#viewApplicationsModal">
-                                                            <i class="fas fa-users"></i> Applications
-                                                        </button>
-                                                        <button type="button" class="btn btn-primary" data-toggle="modal"
-                                                            data-target="#editInternshipModal">
-                                                            <i class="fas fa-edit"></i> Edit
-                                                        </button>
-                                                        <button type="button" class="btn btn-danger">
-                                                            <i class="fas fa-trash"></i> Delete
-                                                        </button>
+                                                    <div class="card-footer bg-light p-2">
+                                                        <div class="btn-group btn-group-sm">
+                                                            <button type="button" class="btn btn-info" data-toggle="modal"
+                                                                data-target="#viewApplicationsModal{{$post->id}}">
+                                                                <i class="fas fa-users"></i> Applications
+                                                            </button>
+                                                            {{-- <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                                data-target="#editInternshipModal">
+                                                                <i class="fas fa-edit"></i> Edit
+                                                            </button> --}}
+                                                            <button type="button" class="btn btn-danger">
+                                                                <i class="fas fa-trash"></i> Delete
+                                                            </button>
+                                                        </div>
+                                                        <span class="float-right">
+                                                            <span class="badge bg-primary">Expires: {{$post->deadline}}</span>
+                                                        </span>
                                                     </div>
-                                                    <span class="float-right">
-                                                        <span class="badge bg-primary">Expires: Jun 10, 2025</span>
-                                                    </span>
                                                 </div>
                                             </div>
-                                        </div>
+                                        @endforeach
+                                        
 
-                                        <!-- Internship Item 3 -->
-                                        <div class="card mb-3 internship-item animate__animated animate__fadeIn"
-                                            style="animation-delay: 0.2s">
-                                            <div class="card-body p-0">
-                                                <div class="d-flex position-relative">
-                                                    <div class="internship-status bg-success"></div>
-                                                    <div class="p-3 flex-grow-1">
-                                                        <div class="d-flex justify-content-between align-items-start">
-                                                            <div>
-                                                                <h5 class="mb-1">Graphic Design Intern</h5>
-                                                                <p class="text-muted mb-1"><i
-                                                                        class="fas fa-map-marker-alt"></i> Bamenda, Nkwen
-                                                                </p>
-                                                                <div>
-                                                                    <span class="badge badge-info mr-1">Part-time</span>
-                                                                    <span class="badge badge-secondary mr-1">Unpaid</span>
-                                                                </div>
-                                                            </div>
-                                                            <div class="text-right">
-                                                                <span class="text-muted">Posted: May 5, 2025</span><br>
-                                                                <span class="text-success">7 Applications</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="card-footer bg-light p-2">
-                                                    <div class="btn-group btn-group-sm">
-                                                        <button type="button" class="btn btn-info" data-toggle="modal"
-                                                            data-target="#viewApplicationsModal">
-                                                            <i class="fas fa-users"></i> Applications
-                                                        </button>
-                                                        <button type="button" class="btn btn-primary" data-toggle="modal"
-                                                            data-target="#editInternshipModal">
-                                                            <i class="fas fa-edit"></i> Edit
-                                                        </button>
-                                                        <button type="button" class="btn btn-danger">
-                                                            <i class="fas fa-trash"></i> Delete
-                                                        </button>
-                                                    </div>
-                                                    <span class="float-right">
-                                                        <span class="badge bg-primary">Expires: Jun 5, 2025</span>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
+
                                     </div>
+
+
                                 </div>
+
+
 
                                 <!-- Pending Internships Tab -->
                                 <div class="tab-pane fade" id="internship-pending" role="tabpanel"
@@ -635,261 +552,267 @@
 
                                 </div>
 
-                                <div class="bs-stepper-content">
-                                    <!-- Basic Info Step -->
-                                    <div id="basic-info" class="content" role="tabpanel"
-                                        aria-labelledby="basic-info-trigger">
-                                        <div class="form-group">
-                                            <label for="position-title">Position Title <span
-                                                    class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" id="position-title"
-                                                placeholder="e.g., Software Development Intern" required>
-                                        </div>
 
-                                        <div class="row">
-                                            {{-- <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="department">Department <span
-                                                            class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control" id="department"
-                                                        placeholder="e.g., Engineering, Marketing" required>
+                                <form action="{{route('perform.post')}}" method="POST">
+                                    @csrf
+                                    <div class="bs-stepper-content">
+                                        <!-- Basic Info Step -->
+                                        <div id="basic-info" class="content" role="tabpanel"
+                                            aria-labelledby="basic-info-trigger">
+                                            <div class="form-group">
+                                                <label for="position-title">Position Title <span
+                                                        class="text-danger">*</span></label>
+                                                <input type="text" name="title" class="form-control" id="position-title"
+                                                    placeholder="e.g., Software Development Intern" required>
+                                            </div>
+
+                                            <div class="row">
+                                                {{-- <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="department">Department <span
+                                                                class="text-danger">*</span></label>
+                                                        <input type="text" class="form-control" id="department"
+                                                            placeholder="e.g., Engineering, Marketing" required>
+                                                    </div>
+                                                </div> --}}
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="location">Location <span
+                                                                class="text-danger">*</span></label>
+                                                        <input type="text" name="location" class="form-control" id="location"
+                                                            placeholder="e.g., Bamenda, Up Station" required>
+                                                    </div>
                                                 </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="internship-type">Internship Type <span
+                                                                class="text-danger">*</span></label>
+                                                        <select class="form-control" name="type" id="internship-type" required>
+                                                            <option value="">Select Type</option>
+                                                            <option value="full_time">Full-time</option>
+                                                            <option value="part_time">Part-time</option>
+                                                            <option value="flexible">Flexible Hours</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="category">Category <span
+                                                                class="text-danger">*</span></label>
+                                                        <select class="form-control" id="category" name="category" required>
+                                                            <option value="">Select Category</option>
+                                                            @foreach ($categories as $category)
+                                                                <option value="{{$category->id}}">{{$category->name}}</option>
+                                                            @endforeach
+
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="compensation">Compensation <span
+                                                                class="text-danger">*</span></label>
+                                                        <select class="form-control" name="compensation" id="compensation" required>
+                                                            <option value="">Select Compensation</option>
+                                                            <option value="paid">Paid</option>
+                                                            <option value="unpaid">Unpaid</option>
+                                                            <option value="stipend">Stipend</option>
+                                                            <option value="other">Other (Specify)</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="positions">Number of Positions <span
+                                                                class="text-danger">*</span></label>
+                                                        <input type="number" name="number" class="form-control" id="positions" min="1"
+                                                            value="1" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            {{-- <div id="compensation-details" class="form-group" style="display: none;">
+                                                <label for="compensation-amount">Compensation Details</label>
+                                                <input type="text" class="form-control" id="compensation-amount"
+                                                    placeholder="e.g., 50,000 FCFA monthly, Transportation allowance">
                                             </div> --}}
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                    <label for="location">Location <span
-                                                            class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control" id="location"
-                                                        placeholder="e.g., Bamenda, Up Station" required>
-                                                </div>
-                                            </div>
+
                                         </div>
 
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="internship-type">Internship Type <span
-                                                            class="text-danger">*</span></label>
-                                                    <select class="form-control" id="internship-type" required>
-                                                        <option value="">Select Type</option>
-                                                        <option value="full_time">Full-time</option>
-                                                        <option value="part_time">Part-time</option>
-                                                        <option value="flexible">Flexible Hours</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="category">Category <span
-                                                            class="text-danger">*</span></label>
-                                                    <select class="form-control" id="category" required>
-                                                        <option value="">Select Category</option>
-                                                        @foreach ($categories as $category)
-                                                            <option value="{{$category->id}}">{{$category->name}}</option>
-                                                        @endforeach
+                                        <!-- Details Step -->
 
-                                                    </select>
-                                                </div>
-                                            </div>
+                                        <div class="line"></div>
+                                        <div class="step" data-target="#details">
+                                            <button type="button" class="step-trigger" role="tab" id="details-trigger">
+                                                <span class="bs-stepper-circle bg-primary">2</span>
+                                                <span class="bs-stepper-label">Details</span>
+                                            </button>
                                         </div>
-
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="compensation">Compensation <span
-                                                            class="text-danger">*</span></label>
-                                                    <select class="form-control" id="compensation" required>
-                                                        <option value="">Select Compensation</option>
-                                                        <option value="paid">Paid</option>
-                                                        <option value="unpaid">Unpaid</option>
-                                                        <option value="stipend">Stipend</option>
-                                                        <option value="other">Other (Specify)</option>
-                                                    </select>
-                                                </div>
+                                        <div id="details" class="content" role="tabpanel" aria-labelledby="details-trigger">
+                                            <div class="form-group">
+                                                <label for="description">Description <span class="text-danger">*</span></label>
+                                                <textarea class="form-control" name="descriptions[]" id="description" rows="4"
+                                                    placeholder="Provide a detailed description of the internship..."
+                                                    required></textarea>
+                                                    <small class="form-text text-muted">Enter each Description on a new
+                                                        line</small>
                                             </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="positions">Number of Positions <span
-                                                            class="text-danger">*</span></label>
-                                                    <input type="number" class="form-control" id="positions" min="1"
-                                                        value="1" required>
-                                                </div>
-                                            </div>
-                                        </div>
 
-                                        <div id="compensation-details" class="form-group" style="display: none;">
-                                            <label for="compensation-amount">Compensation Details</label>
-                                            <input type="text" class="form-control" id="compensation-amount"
-                                                placeholder="e.g., 50,000 FCFA monthly, Transportation allowance">
-                                        </div>
-
-                                    </div>
-
-                                    <!-- Details Step -->
-
-                                    <div class="line"></div>
-                                    <div class="step" data-target="#details">
-                                        <button type="button" class="step-trigger" role="tab" id="details-trigger">
-                                            <span class="bs-stepper-circle bg-primary">2</span>
-                                            <span class="bs-stepper-label">Details</span>
-                                        </button>
-                                    </div>
-                                    <div id="details" class="content" role="tabpanel" aria-labelledby="details-trigger">
-                                        <div class="form-group">
-                                            <label for="description">Description <span class="text-danger">*</span></label>
-                                            <textarea class="form-control" id="description" rows="4"
-                                                placeholder="Provide a detailed description of the internship..."
-                                                required></textarea>
-                                                <small class="form-text text-muted">Enter each Description on a new
+                                            <div class="form-group">
+                                                <label for="responsibilities">Responsibilities <span
+                                                        class="text-danger">*</span></label>
+                                                <textarea class="form-control" name="responsibilities[]" id="responsibilities" rows="4"
+                                                    placeholder="List the key responsibilities..." required></textarea>
+                                                <small class="form-text text-muted">Enter each responsibility on a new
                                                     line</small>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="responsibilities">Responsibilities <span
-                                                    class="text-danger">*</span></label>
-                                            <textarea class="form-control" id="responsibilities" rows="4"
-                                                placeholder="List the key responsibilities..." required></textarea>
-                                            <small class="form-text text-muted">Enter each responsibility on a new
-                                                line</small>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="benefits">Benefits (Optional)</label>
-                                            <textarea class="form-control" id="benefits" rows="3"
-                                                placeholder="List the benefits..."></textarea>
-                                            <small class="form-text text-muted">Enter each benefit on a new line</small>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="start-date">Start Date <span
-                                                            class="text-danger">*</span></label>
-                                                    <input type="date" class="form-control" id="start-date" required>
-                                                </div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="duration">Duration <span
-                                                            class="text-danger">*</span></label>
-                                                    <div class="input-group">
-                                                        <input type="number" class="form-control" id="duration" min="1"
-                                                            required>
-                                                        <div class="input-group-append">
-                                                            <select class="form-control" id="duration-type">
-                                                                <option value="weeks">Weeks</option>
-                                                                <option value="months" selected>Months</option>
-                                                            </select>
+
+                                            <div class="form-group">
+                                                <label for="benefits">Benefits (Optional)</label>
+                                                <textarea class="form-control" name="benefits[]" id="benefits" rows="3"
+                                                    placeholder="List the benefits..."></textarea>
+                                                <small class="form-text text-muted">Enter each benefit on a new line</small>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="start-date">Start Date <span
+                                                                class="text-danger">*</span></label>
+                                                        <input type="date" name="start" class="form-control" id="start-date" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="duration">Duration <span
+                                                                class="text-danger">*</span></label>
+                                                        <div class="input-group">
+                                                            <input type="number" name="i" class="form-control" id="duration" min="1"
+                                                                required>
+                                                            <div class="input-group-append">
+                                                                <select class="form-control" name="j" id="duration-type">
+                                                                    <option value="weeks">Weeks</option>
+                                                                    <option value="months" selected>Months</option>
+                                                                </select>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
+
+                                            <div class="form-group">
+                                                <label for="application-deadline">Application Deadline <span
+                                                        class="text-danger">*</span></label>
+                                                <input type="date" name="deadline" class="form-control" id="application-deadline" required>
+                                            </div>
+
+
                                         </div>
 
-                                        <div class="form-group">
-                                            <label for="application-deadline">Application Deadline <span
-                                                    class="text-danger">*</span></label>
-                                            <input type="date" class="form-control" id="application-deadline" required>
+                                        <!-- Requirements Step -->
+                                        <div class="line"></div>
+                                        <div class="step" data-target="#requirements">
+                                            <button type="button" class="step-trigger" role="tab" id="requirements-trigger">
+                                                <span class="bs-stepper-circle bg-primary">3</span>
+                                                <span class="bs-stepper-label">Requirements</span>
+                                            </button>
                                         </div>
+                                        <div class="line"></div>
 
+                                        <div id="requirements" class="content" role="tabpanel"
+                                            aria-labelledby="requirements-trigger">
+                                            <div class="form-group">
+                                                <label for="requirements-text">Requirements <span
+                                                        class="text-danger">*</span></label>
+                                                <textarea class="form-control" name="requirements[]" id="requirements-text" rows="4"
+                                                    placeholder="List the key requirements..." required></textarea>
+                                                <small class="form-text text-muted">Enter each requirement on a new line</small>
+                                            </div>
 
-                                    </div>
+                                            <div class="form-group">
+                                                <label for="skills">Required Skills <span class="text-danger">*</span></label>
+                                                <input type="text" name="skills[]" class="form-control" id="skills"
+                                                    placeholder="e.g., Python, Communication, Microsoft Office" required>
+                                                <small class="form-text text-muted">Separate skills with commas</small>
+                                            </div>
 
-                                    <!-- Requirements Step -->
-                                    <div class="line"></div>
-                                    <div class="step" data-target="#requirements">
-                                        <button type="button" class="step-trigger" role="tab" id="requirements-trigger">
-                                            <span class="bs-stepper-circle bg-primary">3</span>
-                                            <span class="bs-stepper-label">Requirements</span>
-                                        </button>
-                                    </div>
-                                    <div class="line"></div>
+                                            <div class="form-group">
+                                                <label for="application-instructions">Application Instructions
+                                                    (Optional)</label>
+                                                <textarea class="form-control" name="instruction[]" id="application-instructions" rows="3"
+                                                    placeholder="Provide specific instructions for applicants..."></textarea>
+                                            </div>
 
-                                    <div id="requirements" class="content" role="tabpanel"
-                                        aria-labelledby="requirements-trigger">
-                                        <div class="form-group">
-                                            <label for="requirements-text">Requirements <span
-                                                    class="text-danger">*</span></label>
-                                            <textarea class="form-control" id="requirements-text" rows="4"
-                                                placeholder="List the key requirements..." required></textarea>
-                                            <small class="form-text text-muted">Enter each requirement on a new line</small>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="skills">Required Skills <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" id="skills"
-                                                placeholder="e.g., Python, Communication, Microsoft Office" required>
-                                            <small class="form-text text-muted">Separate skills with commas</small>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="application-instructions">Application Instructions
-                                                (Optional)</label>
-                                            <textarea class="form-control" id="application-instructions" rows="3"
-                                                placeholder="Provide specific instructions for applicants..."></textarea>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="contact-person">Contact Person <span
-                                                            class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control" id="contact-person"
-                                                        placeholder="Name of contact person" required>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="contact-person">Contact Person <span
+                                                                class="text-danger">*</span></label>
+                                                        <input type="text" name="person" class="form-control" id="contact-person"
+                                                            placeholder="Name of contact person" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="contact-email">Contact Email <span
+                                                                class="text-danger">*</span></label>
+                                                        <input type="email" name="email" class="form-control" id="contact-email"
+                                                            placeholder="Email address for applications" required>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="contact-email">Contact Email <span
-                                                            class="text-danger">*</span></label>
-                                                    <input type="email" class="form-control" id="contact-email"
-                                                        placeholder="Email address for applications" required>
+
+                                            <div class="form-group">
+                                                <label for="contact-phone">Contact Phone (Optional)</label>
+                                                <input type="tel" name="phone" class="form-control" id="contact-phone"
+                                                    placeholder="Phone number">
+                                            </div>
+
+                                        </div>
+
+                                        <!-- Review Step -->
+                                        <div id="review" class="content" role="tabpanel" aria-labelledby="review-trigger">
+                                            <div class="alert alert-info">
+                                                <i class="fas fa-info-circle"></i> Please review your internship details before
+                                                submitting.
+                                            </div>
+
+
+                                            <div class="form-group mt-3">
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="featured-check" required>
+                                                    <label class="custom-control-label" for="featured-check">Mark as Featured
+                                                        (Additional fee may apply)</label>
                                                 </div>
                                             </div>
-                                        </div>
 
-                                        <div class="form-group">
-                                            <label for="contact-phone">Contact Phone (Optional)</label>
-                                            <input type="tel" class="form-control" id="contact-phone"
-                                                placeholder="Phone number">
-                                        </div>
-
-                                    </div>
-
-                                    <!-- Review Step -->
-                                    <div id="review" class="content" role="tabpanel" aria-labelledby="review-trigger">
-                                        <div class="alert alert-info">
-                                            <i class="fas fa-info-circle"></i> Please review your internship details before
-                                            submitting.
-                                        </div>
+                                            <div class="form-group">
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="terms-check"
+                                                        required>
+                                                    <label class="custom-control-label" for="terms-check">I confirm that all
+                                                        information provided is accurate and complies with the platform's
+                                                        guidelines</label>
+                                                </div>
+                                            </div>
 
 
-                                        <div class="form-group mt-3">
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="featured-check" required>
-                                                <label class="custom-control-label" for="featured-check">Mark as Featured
-                                                    (Additional fee may apply)</label>
+                                            <div class="float-right">
+
+                                                <button type="submit" class="btn btn-primary" id="submit-internship-btn">Submit
+                                                    </button>
                                             </div>
                                         </div>
-
-                                        <div class="form-group">
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="terms-check"
-                                                    required>
-                                                <label class="custom-control-label" for="terms-check">I confirm that all
-                                                    information provided is accurate and complies with the platform's
-                                                    guidelines</label>
-                                            </div>
-                                        </div>
-
-
-                                        <div class="float-right">
-
-                                            <button type="button" class="btn btn-primary" id="submit-internship-btn">Submit
-                                                </button>
-                                        </div>
                                     </div>
-                                </div>
+                                </form>
+
+
                             </div>
                         </div>
 
@@ -978,217 +901,221 @@
         </div>
     </div>
 
-    <!-- View Applications Modal -->
-    <div class="modal fade" id="viewApplicationsModal" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog modal-xl" role="document">
-            <div class="modal-content">
-                <div class="modal-header bg-info text-white">
-                    <h5 class="modal-title"><i class="fas fa-users"></i> Applications: Software Development Intern</h5>
-                    <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body p-0">
-                    <div class="row no-gutters">
-                        <div class="col-md-4 border-right">
-                            <div class="list-group list-group-flush" id="applicant-list">
-                                <a href="#" class="list-group-item list-group-item-action active" data-toggle="list"
-                                    data-target="#applicant1">
-                                    <div class="d-flex w-100 justify-content-between">
-                                        <h6 class="mb-1">Nfon Andrew Abang</h6>
-                                        <small>May 15, 2025</small>
-                                    </div>
-                                    <p class="mb-1">BSc Computer Science, University of Buea</p>
-                                    <small><i class="fas fa-star text-warning"></i> Highly Qualified</small>
-                                </a>
-                                <a href="#" class="list-group-item list-group-item-action" data-toggle="list"
-                                    data-target="#applicant2">
-                                    <div class="d-flex w-100 justify-content-between">
-                                        <h6 class="mb-1">Amina Bi Bongwa</h6>
-                                        <small>May 16, 2025</small>
-                                    </div>
-                                    <p class="mb-1">HND Marketing, HTTTC Bamenda</p>
-                                    <small><i class="fas fa-check text-success"></i> Qualified</small>
-                                </a>
-                                <a href="#" class="list-group-item list-group-item-action" data-toggle="list"
-                                    data-target="#applicant3">
-                                    <div class="d-flex w-100 justify-content-between">
-                                        <h6 class="mb-1">Fonguh Patience Akwi</h6>
-                                        <small>May 17, 2025</small>
-                                    </div>
-                                    <p class="mb-1">B.Eng Electrical Engineering, COLTECH</p>
-                                    <small><i class="fas fa-check text-success"></i> Qualified</small>
-                                </a>
+
+    @foreach($posts as $post)
+        <!-- View Applications Modal -->
+        <div class="modal fade" id="viewApplicationsModal{{$post->id}}" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-xl" role="document">
+                <div class="modal-content">
+                    <div class="modal-header bg-info text-white">
+                        <h5 class="modal-title"><i class="fas fa-users"></i> Applications: Software Development Intern</h5>
+                        <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body p-0">
+                        <div class="row no-gutters">
+                            <div class="col-md-4 border-right">
+                                <div class="list-group list-group-flush" id="applicant-list">
+                                    <a href="#" class="list-group-item list-group-item-action active" data-toggle="list"
+                                        data-target="#applicant1">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-1">Nfon Andrew Abang</h6>
+                                            <small>May 15, 2025</small>
+                                        </div>
+                                        <p class="mb-1">BSc Computer Science, University of Buea</p>
+                                        <small><i class="fas fa-star text-warning"></i> Highly Qualified</small>
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action" data-toggle="list"
+                                        data-target="#applicant2">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-1">Amina Bi Bongwa</h6>
+                                            <small>May 16, 2025</small>
+                                        </div>
+                                        <p class="mb-1">HND Marketing, HTTTC Bamenda</p>
+                                        <small><i class="fas fa-check text-success"></i> Qualified</small>
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action" data-toggle="list"
+                                        data-target="#applicant3">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-1">Fonguh Patience Akwi</h6>
+                                            <small>May 17, 2025</small>
+                                        </div>
+                                        <p class="mb-1">B.Eng Electrical Engineering, COLTECH</p>
+                                        <small><i class="fas fa-check text-success"></i> Qualified</small>
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-8">
-                            <div class="tab-content" id="applicant-tabContent">
-                                <div class="tab-pane fade show active" id="applicant1" role="tabpanel">
-                                    <div class="p-3">
-                                        <div class="d-flex align-items-center mb-3">
-                                            <img src="{{asset('asset/img/avatar.png')}}" alt="Applicant"
-                                                class="img-circle mr-3" style="width: 60px; height: 60px;">
-                                            <div>
-                                                <h5 class="mb-0">Nfon Andrew Abang</h5>
-                                                <p class="text-muted mb-0">Buea, SW Region</p>
+                            <div class="col-md-8">
+                                <div class="tab-content" id="applicant-tabContent">
+                                    <div class="tab-pane fade show active" id="applicant1" role="tabpanel">
+                                        <div class="p-3">
+                                            <div class="d-flex align-items-center mb-3">
+                                                <img src="{{asset('asset/img/avatar.png')}}" alt="Applicant"
+                                                    class="img-circle mr-3" style="width: 60px; height: 60px;">
+                                                <div>
+                                                    <h5 class="mb-0">Nfon Andrew Abang</h5>
+                                                    <p class="text-muted mb-0">Buea, SW Region</p>
+                                                </div>
+                                                <div class="ml-auto">
+                                                    <span class="badge badge-warning">Highly Qualified</span>
+                                                </div>
                                             </div>
-                                            <div class="ml-auto">
-                                                <span class="badge badge-warning">Highly Qualified</span>
+
+                                            <div class="row mb-3">
+                                                <div class="col-md-6">
+                                                    <p><strong>Email:</strong> andrew.nfon@email.com</p>
+                                                    <p><strong>Phone:</strong> +237 6XX XXX XXX</p>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <p><strong>Education:</strong> BSc Computer Science (University of Buea)</p>
+                                                    <p><strong>Applied:</strong> May 15, 2025</p>
+                                                </div>
+                                            </div>
+
+                                            <div class="card mb-3">
+                                                <div class="card-header bg-light">
+                                                    <h6 class="mb-0">Skills</h6>
+                                                </div>
+                                                <div class="card-body">
+                                                    <span class="badge badge-info mr-1">Java</span>
+                                                    <span class="badge badge-info mr-1">Python</span>
+                                                    <span class="badge badge-info mr-1">SQL</span>
+                                                    <span class="badge badge-info mr-1">HTML</span>
+                                                    <span class="badge badge-info mr-1">CSS</span>
+                                                    <span class="badge badge-info">JavaScript</span>
+                                                </div>
+                                            </div>
+
+                                            <div class="card mb-3">
+                                                <div class="card-header bg-light">
+                                                    <h6 class="mb-0">Why interested in this internship?</h6>
+                                                </div>
+                                                <div class="card-body">
+                                                    <p>I am interested in this internship because it aligns perfectly with my
+                                                        academic background in Computer Science and my career aspirations in
+                                                        software development. I am particularly drawn to your company's
+                                                        innovative approach to technology solutions in Bamenda, and I believe
+                                                        this opportunity would allow me to apply my theoretical knowledge in a
+                                                        practical setting while contributing to meaningful projects.</p>
+                                                </div>
+                                            </div>
+
+                                            <div class="card mb-3">
+                                                <div class="card-header bg-light">
+                                                    <h6 class="mb-0">Relevant Experience</h6>
+                                                </div>
+                                                <div class="card-body">
+                                                    <p>I have experience with Python, Java, and web development technologies
+                                                        (HTML, CSS, JavaScript). I have completed several course projects
+                                                        including a student management system and an e-commerce website. I also
+                                                        participated in a coding bootcamp where I developed a mobile-responsive
+                                                        web application. I am familiar with version control systems like Git and
+                                                        have basic knowledge of database management with SQL.</p>
+                                                </div>
+                                            </div>
+
+                                            <div class="card mb-3">
+                                                <div class="card-header bg-light">
+                                                    <h6 class="mb-0">Documents</h6>
+                                                </div>
+                                                <div class="card-body p-0">
+                                                    <ul class="list-group list-group-flush">
+                                                        <li
+                                                            class="list-group-item d-flex justify-content-between align-items-center">
+                                                            <div>
+                                                                <i class="fas fa-file-pdf mr-2"></i> Resume/CV
+                                                            </div>
+                                                            <a href="#" class="btn btn-sm btn-info">
+                                                                <i class="fas fa-download"></i> Download
+                                                            </a>
+                                                        </li>
+                                                        <li
+                                                            class="list-group-item d-flex justify-content-between align-items-center">
+                                                            <div>
+                                                                <i class="fas fa-file-word mr-2"></i> Cover Letter
+                                                            </div>
+                                                            <a href="#" class="btn btn-sm btn-info">
+                                                                <i class="fas fa-download"></i> Download
+                                                            </a>
+                                                        </li>
+                                                        <li
+                                                            class="list-group-item d-flex justify-content-between align-items-center">
+                                                            <div>
+                                                                <i class="fas fa-file-image mr-2"></i> ID Card
+                                                            </div>
+                                                            <a href="#" class="btn btn-sm btn-info">
+                                                                <i class="fas fa-download"></i> Download
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                            <div class="text-right">
+                                                <div class="btn-group">
+                                                    <button type="button" class="btn btn-danger">Reject</button>
+                                                    <button type="button" class="btn btn-warning">Shortlist</button>
+                                                    <button type="button" class="btn btn-success">Accept</button>
+                                                </div>
                                             </div>
                                         </div>
+                                    </div>
 
-                                        <div class="row mb-3">
-                                            <div class="col-md-6">
-                                                <p><strong>Email:</strong> andrew.nfon@email.com</p>
-                                                <p><strong>Phone:</strong> +237 6XX XXX XXX</p>
+                                    <div class="tab-pane fade" id="applicant2" role="tabpanel">
+                                        <div class="p-3">
+                                            <div class="d-flex align-items-center mb-3">
+                                                <img src="{{asset('asset/img/avatar.png')}}" alt="Applicant"
+                                                    class="img-circle mr-3" style="width: 60px; height: 60px;">
+                                                <div>
+                                                    <h5 class="mb-0">Amina Bi Bongwa</h5>
+                                                    <p class="text-muted mb-0">Bamenda, NW Region</p>
+                                                </div>
+                                                <div class="ml-auto">
+                                                    <span class="badge badge-success">Qualified</span>
+                                                </div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <p><strong>Education:</strong> BSc Computer Science (University of Buea)</p>
-                                                <p><strong>Applied:</strong> May 15, 2025</p>
-                                            </div>
-                                        </div>
 
-                                        <div class="card mb-3">
-                                            <div class="card-header bg-light">
-                                                <h6 class="mb-0">Skills</h6>
-                                            </div>
-                                            <div class="card-body">
-                                                <span class="badge badge-info mr-1">Java</span>
-                                                <span class="badge badge-info mr-1">Python</span>
-                                                <span class="badge badge-info mr-1">SQL</span>
-                                                <span class="badge badge-info mr-1">HTML</span>
-                                                <span class="badge badge-info mr-1">CSS</span>
-                                                <span class="badge badge-info">JavaScript</span>
-                                            </div>
-                                        </div>
-
-                                        <div class="card mb-3">
-                                            <div class="card-header bg-light">
-                                                <h6 class="mb-0">Why interested in this internship?</h6>
-                                            </div>
-                                            <div class="card-body">
-                                                <p>I am interested in this internship because it aligns perfectly with my
-                                                    academic background in Computer Science and my career aspirations in
-                                                    software development. I am particularly drawn to your company's
-                                                    innovative approach to technology solutions in Bamenda, and I believe
-                                                    this opportunity would allow me to apply my theoretical knowledge in a
-                                                    practical setting while contributing to meaningful projects.</p>
-                                            </div>
-                                        </div>
-
-                                        <div class="card mb-3">
-                                            <div class="card-header bg-light">
-                                                <h6 class="mb-0">Relevant Experience</h6>
-                                            </div>
-                                            <div class="card-body">
-                                                <p>I have experience with Python, Java, and web development technologies
-                                                    (HTML, CSS, JavaScript). I have completed several course projects
-                                                    including a student management system and an e-commerce website. I also
-                                                    participated in a coding bootcamp where I developed a mobile-responsive
-                                                    web application. I am familiar with version control systems like Git and
-                                                    have basic knowledge of database management with SQL.</p>
-                                            </div>
-                                        </div>
-
-                                        <div class="card mb-3">
-                                            <div class="card-header bg-light">
-                                                <h6 class="mb-0">Documents</h6>
-                                            </div>
-                                            <div class="card-body p-0">
-                                                <ul class="list-group list-group-flush">
-                                                    <li
-                                                        class="list-group-item d-flex justify-content-between align-items-center">
-                                                        <div>
-                                                            <i class="fas fa-file-pdf mr-2"></i> Resume/CV
-                                                        </div>
-                                                        <a href="#" class="btn btn-sm btn-info">
-                                                            <i class="fas fa-download"></i> Download
-                                                        </a>
-                                                    </li>
-                                                    <li
-                                                        class="list-group-item d-flex justify-content-between align-items-center">
-                                                        <div>
-                                                            <i class="fas fa-file-word mr-2"></i> Cover Letter
-                                                        </div>
-                                                        <a href="#" class="btn btn-sm btn-info">
-                                                            <i class="fas fa-download"></i> Download
-                                                        </a>
-                                                    </li>
-                                                    <li
-                                                        class="list-group-item d-flex justify-content-between align-items-center">
-                                                        <div>
-                                                            <i class="fas fa-file-image mr-2"></i> ID Card
-                                                        </div>
-                                                        <a href="#" class="btn btn-sm btn-info">
-                                                            <i class="fas fa-download"></i> Download
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-
-                                        <div class="text-right">
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-danger">Reject</button>
-                                                <button type="button" class="btn btn-warning">Shortlist</button>
-                                                <button type="button" class="btn btn-success">Accept</button>
+                                            <div class="alert alert-info">
+                                                <i class="fas fa-info-circle"></i> Select an applicant to view their full
+                                                details.
                                             </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="tab-pane fade" id="applicant2" role="tabpanel">
-                                    <div class="p-3">
-                                        <div class="d-flex align-items-center mb-3">
-                                            <img src="{{asset('asset/img/avatar.png')}}" alt="Applicant"
-                                                class="img-circle mr-3" style="width: 60px; height: 60px;">
-                                            <div>
-                                                <h5 class="mb-0">Amina Bi Bongwa</h5>
-                                                <p class="text-muted mb-0">Bamenda, NW Region</p>
+                                    <div class="tab-pane fade" id="applicant3" role="tabpanel">
+                                        <div class="p-3">
+                                            <div class="d-flex align-items-center mb-3">
+                                                <img src="{{asset('asset/img/avatar.png')}}" alt="Applicant"
+                                                    class="img-circle mr-3" style="width: 60px; height: 60px;">
+                                                <div>
+                                                    <h5 class="mb-0">Fonguh Patience Akwi</h5>
+                                                    <p class="text-muted mb-0">Yaounde, Centre Region</p>
+                                                </div>
+                                                <div class="ml-auto">
+                                                    <span class="badge badge-success">Qualified</span>
+                                                </div>
                                             </div>
-                                            <div class="ml-auto">
-                                                <span class="badge badge-success">Qualified</span>
-                                            </div>
-                                        </div>
 
-                                        <div class="alert alert-info">
-                                            <i class="fas fa-info-circle"></i> Select an applicant to view their full
-                                            details.
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="tab-pane fade" id="applicant3" role="tabpanel">
-                                    <div class="p-3">
-                                        <div class="d-flex align-items-center mb-3">
-                                            <img src="{{asset('asset/img/avatar.png')}}" alt="Applicant"
-                                                class="img-circle mr-3" style="width: 60px; height: 60px;">
-                                            <div>
-                                                <h5 class="mb-0">Fonguh Patience Akwi</h5>
-                                                <p class="text-muted mb-0">Yaounde, Centre Region</p>
+                                            <div class="alert alert-info">
+                                                <i class="fas fa-info-circle"></i> Select an applicant to view their full
+                                                details.
                                             </div>
-                                            <div class="ml-auto">
-                                                <span class="badge badge-success">Qualified</span>
-                                            </div>
-                                        </div>
-
-                                        <div class="alert alert-info">
-                                            <i class="fas fa-info-circle"></i> Select an applicant to view their full
-                                            details.
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Export All Applications</button>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Export All Applications</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    @endforeach
+
 
     <!-- Success Modal -->
     <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-hidden="true">

@@ -14,6 +14,7 @@ Route::prefix('institution')->group(function () {
 
     // Post Routes
     Route::get('post', [PostController::class, 'showPost'])->name('show.post');
+    Route::post('post-perform', [PostController::class, 'post'])->name('perform.post');
 
     //Applications Routes
     Route::get('application', [ApplicationController::class, 'showApplications'])->name('show.application');

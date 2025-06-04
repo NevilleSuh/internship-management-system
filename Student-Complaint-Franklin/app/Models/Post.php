@@ -10,6 +10,7 @@ class Post extends Model
         'title',
         'location',
         'type',
+        'compensation',
         'number',
         'descriptions',
         'responsibilities',
@@ -26,5 +27,15 @@ class Post extends Model
         'status',
         'category_id',
         'institution_id',
+    ];
+
+    protected $casts = [
+        'descriptions' => 'array', 
+        'responsibilities' => 'array', 
+        'benefits' => 'array', 
+        'skills' => 'array', 
+        'requirements' => 'array', 
+        'instruction' => 'array', 
+
     ];
 }
