@@ -63,7 +63,7 @@
                     <a class="nav-link" href="{{ route('show.home') }}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('show.complain') }}">Profile</a>
+                    <a class="nav-link" href="{{ route('show.profile') }}">Profile</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('student.logout') }}">
