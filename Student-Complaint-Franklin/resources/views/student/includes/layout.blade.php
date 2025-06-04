@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Complaint Management</title>
+    <title>Internship Management System</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{asset('asset/fontawesome/css/all.min.css')}}">
     <link rel="stylesheet" href="{{asset('asset/css/adminlte.min.css')}}">

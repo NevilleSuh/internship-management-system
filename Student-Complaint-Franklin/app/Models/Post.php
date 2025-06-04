@@ -30,12 +30,20 @@ class Post extends Model
     ];
 
     protected $casts = [
-        'descriptions' => 'array', 
-        'responsibilities' => 'array', 
-        'benefits' => 'array', 
-        'skills' => 'array', 
-        'requirements' => 'array', 
-        'instruction' => 'array', 
+        'descriptions' => 'array',
+        'responsibilities' => 'array',
+        'benefits' => 'array',
+        'skills' => 'array',
+        'requirements' => 'array',
+        'instruction' => 'array',
+
+        'start' => 'datetime',
+
 
     ];
+
+
+    public function institution(){
+        return $this->belongsTo(Institution::class);
+    }
 }

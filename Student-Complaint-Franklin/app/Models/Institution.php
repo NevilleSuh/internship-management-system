@@ -57,8 +57,8 @@ class Institution extends Authenticatable
         return $this->belongsTo(Admin::class);
     }
 
-    public function department(){
-        return $this->hasOne(Department::class);
+    public function posts(){
+        return $this->hasMany(Post::class);
     }
 }
 

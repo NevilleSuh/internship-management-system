@@ -71,105 +71,50 @@
                         </div>
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-md-4">
-                                    <div class="card animate__animated animate__fadeInUp">
-                                        <div class="card-body">
-                                            <div class="d-flex align-items-center mb-3">
-                                                <div class="mr-3">
-                                                    <img src="https://via.placeholder.com/60" alt="GilloTech"
-                                                        class="img-circle elevation-2" style="width: 60px; height: 60px;">
-                                                </div>
-                                                <div>
-                                                    <h5 class="mb-0">Software Development Intern</h5>
-                                                    <p class="text-muted mb-0">GilloTech</p>
-                                                </div>
-                                            </div>
-                                            <div class="mb-3">
-                                                <span class="badge badge-teal mr-1">Full-time</span>
-                                                <span class="badge badge-success mr-1">Paid</span>
-                                                <span class="badge badge-warning">Featured</span>
-                                            </div>
-                                            <p><i class="fas fa-map-marker-alt mr-1"></i> Bamenda, Up Station</p>
-                                            <p class="text-truncate">Join our team to develop innovative solutions and gain
-                                                hands-on experience with cutting-edge technologies in Bamenda.</p>
-                                            <div class="mb-3">
-                                                <span class="badge bg-light text-dark mr-1">Python</span>
-                                                <span class="badge bg-light text-dark mr-1">JavaScript</span>
-                                                <span class="badge bg-light text-dark">Web Development</span>
-                                            </div>
-                                            <button class="btn btn-outline-teal btn-block" data-toggle="modal"
-                                                data-target="#internshipModal">
-                                                <i class="fas fa-eye"></i> View Details
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
 
-                                <div class="col-md-4">
-                                    <div class="card animate__animated animate__fadeInUp animate__delay-1s">
-                                        <div class="card-body">
-                                            <div class="d-flex align-items-center mb-3">
-                                                <div class="mr-3">
-                                                    <img src="https://via.placeholder.com/60" alt="H4BF"
-                                                        class="img-circle elevation-2" style="width: 60px; height: 60px;">
-                                                </div>
-                                                <div>
-                                                    <h5 class="mb-0">IT Support Intern</h5>
-                                                    <p class="text-muted mb-0">H4BF</p>
-                                                </div>
-                                            </div>
-                                            <div class="mb-3">
-                                                <span class="badge badge-teal mr-1">Part-time</span>
-                                                <span class="badge badge-success mr-1">Paid</span>
-                                            </div>
-                                            <p><i class="fas fa-map-marker-alt mr-1"></i> Bamenda, Commercial Avenue</p>
-                                            <p class="text-truncate">Provide technical support and troubleshooting for our
-                                                organization's IT infrastructure and users.</p>
-                                            <div class="mb-3">
-                                                <span class="badge bg-light text-dark mr-1">Networking</span>
-                                                <span class="badge bg-light text-dark mr-1">Hardware</span>
-                                                <span class="badge bg-light text-dark">Customer Service</span>
-                                            </div>
-                                            <button class="btn btn-outline-teal btn-block" data-toggle="modal"
-                                                data-target="#internshipModal">
-                                                <i class="fas fa-eye"></i> View Details
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
 
-                                <div class="col-md-4">
-                                    <div class="card animate__animated animate__fadeInUp animate__delay-2s">
-                                        <div class="card-body">
-                                            <div class="d-flex align-items-center mb-3">
-                                                <div class="mr-3">
-                                                    <img src="https://via.placeholder.com/60" alt="Uncle Luke Digitals"
-                                                        class="img-circle elevation-2" style="width: 60px; height: 60px;">
+                                @foreach ($posts->slice(0, 6) as $post)
+
+                                    <div class="col-md-4">
+                                        <div class="card animate__animated animate__fadeInUp">
+                                            <div class="card-body">
+                                                <div class="d-flex align-items-center mb-3">
+                                                    <div class="mr-3">
+                                                        <img src="https://via.placeholder.com/60" alt="{{$post->institution->name}}"
+                                                            class="img-circle elevation-2" style="width: 60px; height: 60px;">
+                                                    </div>
+                                                    <div>
+                                                        <h5 class="mb-0">Software Development Intern</h5>
+                                                        <p class="text-muted mb-0">{{$post->institution->name}}</p>
+                                                    </div>
                                                 </div>
-                                                <div>
-                                                    <h5 class="mb-0">Web Development Intern</h5>
-                                                    <p class="text-muted mb-0">Uncle Luke Digitals</p>
+                                                <div class="mb-3">
+                                                    <span class="badge badge-teal mr-1">{{$post->type}}</span>
+                                                    <span class="badge badge-success mr-1">{{$post->compensation}}</span>
+                                                    {{-- <span class="badge badge-warning">Featured</span> --}}
                                                 </div>
+                                                <p><i class="fas fa-map-marker-alt mr-1"></i> {{$post->location}}</p>
+                                                <p class="text-truncate">Join our team to develop innovative solutions and gain
+                                                    hands-on experience with cutting-edge technologies in Bamenda.</p>
+                                                <div class="mb-3">
+                                                    @foreach ($post->skills as $skill)
+                                                        @foreach (explode("\r\n", $skill) as $line)
+                                                            <span class="badge bg-light text-dark mr-1">{{ trim($line) }}</span>
+                                                        @endforeach
+                                                    @endforeach
+
+                                                </div>
+                                                <button class="btn btn-outline-teal btn-block" data-toggle="modal"
+                                                    data-target="#internshipModal{{ $post->id }}">
+                                                    <i class="fas fa-eye"></i> View Details
+                                                </button>
                                             </div>
-                                            <div class="mb-3">
-                                                <span class="badge badge-teal mr-1">Full-time</span>
-                                                <span class="badge badge-secondary mr-1">Unpaid</span>
-                                            </div>
-                                            <p><i class="fas fa-map-marker-alt mr-1"></i> Bamenda, Nkwen</p>
-                                            <p class="text-truncate">Create responsive websites and web applications for our
-                                                clients in the Bamenda region.</p>
-                                            <div class="mb-3">
-                                                <span class="badge bg-light text-dark mr-1">HTML/CSS</span>
-                                                <span class="badge bg-light text-dark mr-1">JavaScript</span>
-                                                <span class="badge bg-light text-dark">PHP</span>
-                                            </div>
-                                            <button class="btn btn-outline-teal btn-block" data-toggle="modal"
-                                                data-target="#internshipModal">
-                                                <i class="fas fa-eye"></i> View Details
-                                            </button>
                                         </div>
                                     </div>
-                                </div>
+                                @endforeach
+
+
+
                             </div>
                         </div>
                     </div>
@@ -352,58 +297,22 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="animate__animated animate__fadeIn">
-                                        <td>Marketing Assistant</td>
-                                        <td>Bamenda Digital Solutions</td>
-                                        <td>Bamenda, Commercial Avenue</td>
-                                        <td><span class="badge badge-teal">Part-time</span></td>
-                                        <td>2 days ago</td>
-                                        <td>
-                                            <button class="btn btn-xs btn-teal" data-toggle="modal"
-                                                data-target="#internshipModal">
-                                                <i class="fas fa-eye"></i> View
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr class="animate__animated animate__fadeIn animate__delay-1s">
-                                        <td>Accounting Intern</td>
-                                        <td>NW Finance Ltd</td>
-                                        <td>Bamenda, Up Station</td>
-                                        <td><span class="badge badge-teal">Full-time</span></td>
-                                        <td>3 days ago</td>
-                                        <td>
-                                            <button class="btn btn-xs btn-teal" data-toggle="modal"
-                                                data-target="#internshipModal">
-                                                <i class="fas fa-eye"></i> View
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr class="animate__animated animate__fadeIn animate__delay-2s">
-                                        <td>Graphic Design Intern</td>
-                                        <td>Creative Hub Bamenda</td>
-                                        <td>Bamenda, Nkwen</td>
-                                        <td><span class="badge badge-teal">Part-time</span></td>
-                                        <td>5 days ago</td>
-                                        <td>
-                                            <button class="btn btn-xs btn-teal" data-toggle="modal"
-                                                data-target="#internshipModal">
-                                                <i class="fas fa-eye"></i> View
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr class="animate__animated animate__fadeIn animate__delay-3s">
-                                        <td>Administrative Assistant</td>
-                                        <td>Bamenda City Council</td>
-                                        <td>Bamenda, City Center</td>
-                                        <td><span class="badge badge-teal">Full-time</span></td>
-                                        <td>1 week ago</td>
-                                        <td>
-                                            <button class="btn btn-xs btn-teal" data-toggle="modal"
-                                                data-target="#internshipModal">
-                                                <i class="fas fa-eye"></i> View
-                                            </button>
-                                        </td>
-                                    </tr>
+                                    @foreach ($posts as $post)
+                                        <tr class="animate__animated animate__fadeIn">
+                                            <td>{{$post->title}}</td>
+                                            <td>{{$post->institution->name}}</td>
+                                            <td>{{$post->location}}</td>
+                                            <td><span class="badge badge-teal">{{$post->type}}</span></td>
+                                            <td>{{$post->created_at->format('F d, Y')}}</td>
+                                            <td>
+                                                <button class="btn btn-xs btn-teal" data-toggle="modal"
+                                                    data-target="#internshipModal{{ $post->id }}">
+                                                    <i class="fas fa-eye"></i> View
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+
                                 </tbody>
                             </table>
                         </div>
@@ -413,81 +322,107 @@
         </div>
     </section>
 
-    <div class="modal fade" id="internshipModal" tabindex="-1" role="dialog" aria-labelledby="internshipModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header bg-teal">
-                    <h5 class="modal-title" id="internshipModalLabel">Software Development Intern - GilloTech</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="row mb-4">
-                        <div class="col-md-2">
-                            <img src="https://via.placeholder.com/80" alt="GilloTech" class="img-fluid">
-                        </div>
-                        <div class="col-md-10">
-                            <h4>GilloTech</h4>
-                            <p class="text-muted">Bamenda, Up Station</p>
-                            <div>
-                                <span class="badge badge-teal mr-1">Full-time</span>
-                                <span class="badge badge-success mr-1">Paid</span>
-                                <span class="badge badge-warning">Featured</span>
+
+    @foreach ($posts as $post)
+        {{-- View Internship Modal --}}
+        <div class="modal fade" id="internshipModal{{ $post->id }}" tabindex="-1" role="dialog" aria-labelledby="internshipModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header bg-teal">
+                        <h5 class="modal-title" id="internshipModalLabel">{{ $post->title }} - {{$post->institution->name}}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row mb-4">
+                            <div class="col-md-2">
+                                <img src="https://via.placeholder.com/80" alt="GilloTech" class="img-fluid">
+                            </div>
+                            <div class="col-md-10">
+                                <h4>{{$post->institution->name}}</h4>
+                                <p class="text-muted">{{$post->location}}</p>
+                                <div>
+                                    <span class="badge badge-teal mr-1">{{$post->type}}</span>
+                                    <span class="badge badge-success mr-1">{{ $post->compensation }}</span>
+                                    {{-- <span class="badge badge-warning">Featured</span> --}}
+                                </div>
                             </div>
                         </div>
+
+                        <div class="internship-details">
+                            <h5>About the Internship</h5>
+
+                            <ul>
+                                @if (!empty($post->descriptions))
+                                    @foreach ($post->descriptions as $description)
+                                        @foreach (explode("\r\n", $description) as $line)
+                                            <li>{{ trim($line) }}</li>
+                                        @endforeach
+                                    @endforeach
+                                @else
+                                    <li>No responsibilities listed.</li>
+                                @endif
+                            </ul>
+
+                            <h5>Responsibilities</h5>
+                            <ul>
+                                @if (!empty($post->responsibilities))
+                                    @foreach ($post->responsibilities as $responsibility)
+                                        @foreach (explode("\r\n", $responsibility) as $line)
+                                            <li>{{ trim($line) }}</li>
+                                        @endforeach
+                                    @endforeach
+                                @else
+                                    <li>No responsibilities listed.</li>
+                                @endif
+                            </ul>
+
+                            <h5>Requirements</h5>
+                            <ul>
+                                @if (!empty($post->requirements))
+                                    @foreach ($post->requirements as $requirement)
+                                        @foreach (explode("\r\n", $requirement) as $line)
+                                            <li>{{ trim($line) }}</li>
+                                        @endforeach
+                                    @endforeach
+                                @else
+                                    <li>No responsibilities listed.</li>
+                                @endif
+                            </ul>
+
+                            <h5>Benefits</h5>
+                            <ul>
+                                @if (!empty($post->benefits))
+                                    @foreach ($post->benefits as $benefit)
+                                        @foreach (explode("\r\n", $benefit) as $line)
+                                            <li>{{ trim($line) }}</li>
+                                        @endforeach
+                                    @endforeach
+                                @else
+                                    <li>No responsibilities listed.</li>
+                                @endif
+                            </ul>
+
+                            <h5>Duration</h5>
+                            <p>{{ $post->duration }} </p>
+
+                            <h5>Start Date</h5>
+                            <p>{{$post->start->format('F d, Y')}}</p>
+                        </div>
                     </div>
-
-                    <div class="internship-details">
-                        <h5>About the Internship</h5>
-                        <p>GilloTech is seeking a Software Development Intern to join our dynamic team in Bamenda. This
-                            internship offers a unique opportunity to work on real-world projects alongside experienced
-                            developers in the Bamenda tech ecosystem.</p>
-
-                        <h5>Responsibilities</h5>
-                        <ul>
-                            <li>Assist in designing, developing, and testing software applications</li>
-                            <li>Collaborate with cross-functional teams to define, design, and ship new features</li>
-                            <li>Identify and resolve performance bottlenecks and bugs</li>
-                            <li>Participate in code reviews and contribute to team discussions</li>
-                            <li>Learn from experienced engineers and receive mentorship</li>
-                        </ul>
-
-                        <h5>Requirements</h5>
-                        <ul>
-                            <li>Currently pursuing a degree in Computer Science, Software Engineering, or related field</li>
-                            <li>Strong programming skills in one or more of: Python, JavaScript, PHP</li>
-                            <li>Basic understanding of web technologies (HTML, CSS, JavaScript)</li>
-                            <li>Ability to work collaboratively in a team environment</li>
-                            <li>Strong problem-solving and analytical skills</li>
-                            <li>Fluency in English; knowledge of French is a plus</li>
-                        </ul>
-
-                        <h5>Benefits</h5>
-                        <ul>
-                            <li>Monthly stipend</li>
-                            <li>Transportation allowance</li>
-                            <li>Flexible working hours</li>
-                            <li>Networking opportunities within the Bamenda tech community</li>
-                            <li>Potential for full-time employment after internship</li>
-                        </ul>
-
-                        <h5>Duration</h5>
-                        <p>3 months (with possibility of extension)</p>
-
-                        <h5>Start Date</h5>
-                        <p>Immediate</p>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-teal" data-toggle="modal" data-target="#applyModal"
+                            data-dismiss="modal">Apply Now</button>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-teal" data-toggle="modal" data-target="#applyModal"
-                        data-dismiss="modal">Apply Now</button>
                 </div>
             </div>
         </div>
-    </div>
+    @endforeach
+
+
 
     <div class="modal fade" id="applyModal" tabindex="-1" role="dialog" aria-labelledby="applyModalLabel"
         aria-hidden="true">
