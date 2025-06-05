@@ -64,6 +64,16 @@ class PostController extends Controller
 
         ]);
 
-        return redirect()->back()->with('success', 'Internship Added Successfully');
+        return redirect()->back()->with('message', 'Internship Added Successfully');
+    }
+
+
+    public function deletePost($id){
+
+        $post = Post::find($id);
+        $post->delete();
+
+
+        return redirect()->route('show.post')->with('message', 'Post Delete Successfully');
     }
 }

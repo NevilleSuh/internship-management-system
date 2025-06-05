@@ -158,7 +158,8 @@
                                                                 data-target="#editInternshipModal">
                                                                 <i class="fas fa-edit"></i> Edit
                                                             </button> --}}
-                                                            <button type="button" class="btn btn-danger">
+                                                            <button type="button" class="btn btn-danger" data-toggle="modal"
+                                                                data-target="#deletePost{{$post->id}}">
                                                                 <i class="fas fa-trash"></i> Delete
                                                             </button>
                                                         </div>
@@ -922,17 +923,30 @@
                                      <a href="#" class="list-group-item list-group-item-action {{$key == 0 ? 'active': '' }}" data-toggle="list"
                                          data-target="#applicant{{ $application->id }}">
 
-                            
-
-                                         @php
-                                            $i = $application->id   
-                                         @endphp
                                          <div class="d-flex w-100 justify-content-between">
                                              <h6 class="mb-1">{{$application->student->first_name}}  {{$application->student->last_name}}</h6>
                                              <small>{{$application->created_at->format('F d, Y')}}</small>
                                          </div>
                                          <p class="mb-1">{{$application->field}}</p>
-                                         <small><i class="fas fa-star text-warning"></i> Highly Qualified</small>
+
+                                        @php
+                                            $badgeClass = '';
+                                            switch ($application->status) {
+                                                case 'pending':
+                                                    $badgeClass = 'bg-warning';
+                                                    break;
+                                                case 'selected':
+                                                    $badgeClass = 'bg-info';
+                                                    break;
+                                                case 'declined':
+                                                    $badgeClass = 'bg-danger';
+                                                    break;
+                                                default:
+                                                    $badgeClass = 'bg-secondary';
+                                            }
+                                        @endphp
+
+                                         <small class="badge {{ $badgeClass }}"><i class="fas fa-star text-warning"></i>{{$application->status}}</small>
                                      </a>
                                    @endforeach
 
@@ -1078,7 +1092,7 @@
 
 
         @foreach ($post->applications as $application)
-            {{-- Delete Modal --}}
+            {{-- Accept Modal --}}
             <div class="modal fade" id="acceptModal{{ $application->id }}" tabindex="-1" role="dialog" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
@@ -1088,7 +1102,9 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <form action="#">
+                        <form action="{{ route('accept.application', $application->id) }}" method="POST">
+                            @csrf
+                            @method('PUT')
                             <div class="modal-body text-center">
                                 <div class="my-4 animate__animated animate__bounceIn">
                                     <i class="fas fa-check-circle text-success" style="font-size: 4rem;"></i>
@@ -1104,13 +1120,75 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-success" data-dismiss="modal">Accept</button>
+                                <button type="submit" class="btn btn-success" >Accept</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            {{-- Reject Modal --}}
+            <div class="modal fade" id="rejectModal{{ $application->id }}" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header bg-danger">
+                            <h5 class="modal-title">Decline Application</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <form action="{{ route('reject.application', $application->id) }}" method="POST">
+                            @csrf
+                            @method('PUT')
+                            <div class="modal-body text-center">
+                                <div class="my-4 animate__animated animate__bounceIn">
+                                    <i class="fas fa-times-circle text-danger" style="font-size: 4rem;"></i>
+                                </div>
+                                <h4>Reject Intern</h4>
+                                <p>{{$application->student->first_name}} {{$application->student->last_name}}</p>
+
+                                <textarea class="form-control" name="message" cols="4" required placeholder="Example: Requirements not met"></textarea>
+                                {{-- <div class="progress mt-3">
+                                    <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" style="width: 100%"></div>
+                                </div> --}}
+                                {{-- <p class="mt-2 text-muted">Estimated review time: 24-48 hours</p> --}}
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-danger" >Reject</button>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
         @endforeach
+
+
+
+        {{-- Delete Modal --}}
+        <div id="deletePost{{ $post->id }}" class="modal animated rubberBand delete-modal" role="dialog">
+            <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <img src="{{asset('asset/img/sent.png')}}" alt="" width="50" height="46">
+                    <h3>Are you sure want to delete this Post {{$post->tile}}?</h3>
+                    <div class="m-t-20">
+                        <a href="#" class="btn btn-white" data-dismiss="modal">Close</a>
+
+                        <form action="{{ route('delete.post', $post->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Delete</button>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
     @endforeach
 
 
