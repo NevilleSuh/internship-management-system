@@ -64,6 +64,6 @@ class PostController extends Controller
 
         ]);
 
-        return redirect()->back()->with('message', 'Internship Added Successfully');
+        return redirect()->back()->with('success', 'Internship Added Successfully');
     }
 }

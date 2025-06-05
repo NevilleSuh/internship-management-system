@@ -143,7 +143,7 @@
                                                                 </div>
                                                                 <div class="text-right">
                                                                     <span class="text-muted">Posted: {{$post->created_at}}</span><br>
-                                                                    <span class="text-success">12 Applications</span>
+                                                                    <span class="text-success">{{ $post->applications->count() }} Applications</span>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -169,7 +169,7 @@
                                                 </div>
                                             </div>
                                         @endforeach
-                                        
+
 
 
                                     </div>
@@ -917,192 +917,147 @@
                         <div class="row no-gutters">
                             <div class="col-md-4 border-right">
                                 <div class="list-group list-group-flush" id="applicant-list">
-                                    <a href="#" class="list-group-item list-group-item-action active" data-toggle="list"
-                                        data-target="#applicant1">
-                                        <div class="d-flex w-100 justify-content-between">
-                                            <h6 class="mb-1">Nfon Andrew Abang</h6>
-                                            <small>May 15, 2025</small>
-                                        </div>
-                                        <p class="mb-1">BSc Computer Science, University of Buea</p>
-                                        <small><i class="fas fa-star text-warning"></i> Highly Qualified</small>
-                                    </a>
-                                    <a href="#" class="list-group-item list-group-item-action" data-toggle="list"
-                                        data-target="#applicant2">
-                                        <div class="d-flex w-100 justify-content-between">
-                                            <h6 class="mb-1">Amina Bi Bongwa</h6>
-                                            <small>May 16, 2025</small>
-                                        </div>
-                                        <p class="mb-1">HND Marketing, HTTTC Bamenda</p>
-                                        <small><i class="fas fa-check text-success"></i> Qualified</small>
-                                    </a>
-                                    <a href="#" class="list-group-item list-group-item-action" data-toggle="list"
-                                        data-target="#applicant3">
-                                        <div class="d-flex w-100 justify-content-between">
-                                            <h6 class="mb-1">Fonguh Patience Akwi</h6>
-                                            <small>May 17, 2025</small>
-                                        </div>
-                                        <p class="mb-1">B.Eng Electrical Engineering, COLTECH</p>
-                                        <small><i class="fas fa-check text-success"></i> Qualified</small>
-                                    </a>
+
+                                   @foreach ($post->applications as $application)
+                                     <a href="#" class="list-group-item list-group-item-action active" data-toggle="list"
+                                         data-target="#applicant{{ $application->id }}">
+                                         <div class="d-flex w-100 justify-content-between">
+                                             <h6 class="mb-1">{{$application->student->first_name}}  {{$application->student->last_name}}</h6>
+                                             <small>{{$application->created_at->format('F d, Y')}}</small>
+                                         </div>
+                                         <p class="mb-1">{{$application->field}}</p>
+                                         <small><i class="fas fa-star text-warning"></i> Highly Qualified</small>
+                                     </a>
+                                   @endforeach
+
                                 </div>
                             </div>
                             <div class="col-md-8">
                                 <div class="tab-content" id="applicant-tabContent">
-                                    <div class="tab-pane fade show active" id="applicant1" role="tabpanel">
-                                        <div class="p-3">
-                                            <div class="d-flex align-items-center mb-3">
-                                                <img src="{{asset('asset/img/avatar.png')}}" alt="Applicant"
-                                                    class="img-circle mr-3" style="width: 60px; height: 60px;">
-                                                <div>
-                                                    <h5 class="mb-0">Nfon Andrew Abang</h5>
-                                                    <p class="text-muted mb-0">Buea, SW Region</p>
-                                                </div>
-                                                <div class="ml-auto">
-                                                    <span class="badge badge-warning">Highly Qualified</span>
-                                                </div>
-                                            </div>
 
-                                            <div class="row mb-3">
-                                                <div class="col-md-6">
-                                                    <p><strong>Email:</strong> andrew.nfon@email.com</p>
-                                                    <p><strong>Phone:</strong> +237 6XX XXX XXX</p>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <p><strong>Education:</strong> BSc Computer Science (University of Buea)</p>
-                                                    <p><strong>Applied:</strong> May 15, 2025</p>
-                                                </div>
-                                            </div>
 
-                                            <div class="card mb-3">
-                                                <div class="card-header bg-light">
-                                                    <h6 class="mb-0">Skills</h6>
+                                    @foreach ($post->applications as $application)
+                                        <div class="tab-pane fade show active" id="applicant{{ $application->id }}" role="tabpanel">
+                                            <div class="p-3">
+                                                <div class="d-flex align-items-center mb-3">
+                                                    <img src="{{asset('asset/img/avatar.png')}}" alt="Applicant"
+                                                        class="img-circle mr-3" style="width: 60px; height: 60px;">
+                                                    <div>
+                                                        <h5 class="mb-0">{{$application->student->first_name}} {{$application->student->last_name}}</h5>
+                                                        <p class="text-muted mb-0">{{$application->post->location}}</p>
+                                                    </div>
+                                                    <div class="ml-auto">
+                                                        <span class="badge badge-info">Qualified</span>
+                                                    </div>
                                                 </div>
-                                                <div class="card-body">
-                                                    <span class="badge badge-info mr-1">Java</span>
-                                                    <span class="badge badge-info mr-1">Python</span>
-                                                    <span class="badge badge-info mr-1">SQL</span>
-                                                    <span class="badge badge-info mr-1">HTML</span>
-                                                    <span class="badge badge-info mr-1">CSS</span>
-                                                    <span class="badge badge-info">JavaScript</span>
-                                                </div>
-                                            </div>
 
-                                            <div class="card mb-3">
-                                                <div class="card-header bg-light">
-                                                    <h6 class="mb-0">Why interested in this internship?</h6>
+                                                <div class="row mb-3">
+                                                    <div class="col-md-6">
+                                                        <p><strong>Email:</strong>{{ $application->student->email }}</p>
+                                                        <p><strong>Phone:</strong> {{$application->student->tell}}</p>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <p><strong>Education:</strong> {{$application->education}}</p>
+                                                        <p><strong>Applied:</strong> {{$application->created_at->format('F d, Y')}}</p>
+                                                    </div>
                                                 </div>
-                                                <div class="card-body">
-                                                    <p>I am interested in this internship because it aligns perfectly with my
-                                                        academic background in Computer Science and my career aspirations in
-                                                        software development. I am particularly drawn to your company's
-                                                        innovative approach to technology solutions in Bamenda, and I believe
-                                                        this opportunity would allow me to apply my theoretical knowledge in a
-                                                        practical setting while contributing to meaningful projects.</p>
-                                                </div>
-                                            </div>
 
-                                            <div class="card mb-3">
-                                                <div class="card-header bg-light">
-                                                    <h6 class="mb-0">Relevant Experience</h6>
+                                                <div class="card mb-3">
+                                                    <div class="card-header bg-light">
+                                                        <h6 class="mb-0">Skills</h6>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <span class="badge badge-info mr-1">Python</span>
+                                                        <span class="badge badge-info mr-1">SQL</span>
+                                                        <span class="badge badge-info mr-1">HTML</span>
+                                                        <span class="badge badge-info mr-1">CSS</span>
+                                                        <span class="badge badge-info">JavaScript</span>
+                                                    </div>
                                                 </div>
-                                                <div class="card-body">
-                                                    <p>I have experience with Python, Java, and web development technologies
-                                                        (HTML, CSS, JavaScript). I have completed several course projects
-                                                        including a student management system and an e-commerce website. I also
-                                                        participated in a coding bootcamp where I developed a mobile-responsive
-                                                        web application. I am familiar with version control systems like Git and
-                                                        have basic knowledge of database management with SQL.</p>
-                                                </div>
-                                            </div>
 
-                                            <div class="card mb-3">
-                                                <div class="card-header bg-light">
-                                                    <h6 class="mb-0">Documents</h6>
+                                                <div class="card mb-3">
+                                                    <div class="card-header bg-light">
+                                                        <h6 class="mb-0">Why interested in this internship?</h6>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <p>{{$application->reason}}</p>
+                                                    </div>
                                                 </div>
-                                                <div class="card-body p-0">
-                                                    <ul class="list-group list-group-flush">
-                                                        <li
-                                                            class="list-group-item d-flex justify-content-between align-items-center">
-                                                            <div>
-                                                                <i class="fas fa-file-pdf mr-2"></i> Resume/CV
-                                                            </div>
-                                                            <a href="#" class="btn btn-sm btn-info">
-                                                                <i class="fas fa-download"></i> Download
-                                                            </a>
-                                                        </li>
-                                                        <li
-                                                            class="list-group-item d-flex justify-content-between align-items-center">
-                                                            <div>
-                                                                <i class="fas fa-file-word mr-2"></i> Cover Letter
-                                                            </div>
-                                                            <a href="#" class="btn btn-sm btn-info">
-                                                                <i class="fas fa-download"></i> Download
-                                                            </a>
-                                                        </li>
-                                                        <li
-                                                            class="list-group-item d-flex justify-content-between align-items-center">
-                                                            <div>
-                                                                <i class="fas fa-file-image mr-2"></i> ID Card
-                                                            </div>
-                                                            <a href="#" class="btn btn-sm btn-info">
-                                                                <i class="fas fa-download"></i> Download
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
 
-                                            <div class="text-right">
-                                                <div class="btn-group">
-                                                    <button type="button" class="btn btn-danger">Reject</button>
-                                                    <button type="button" class="btn btn-warning">Shortlist</button>
-                                                    <button type="button" class="btn btn-success">Accept</button>
+                                                <div class="card mb-3">
+                                                    <div class="card-header bg-light">
+                                                        <h6 class="mb-0">Relevant Experience</h6>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <p>{{$application->skill}}</p>
+                                                    </div>
+                                                </div>
+
+                                                <div class="card mb-3">
+                                                    <div class="card-header bg-light">
+                                                        <h6 class="mb-0">Documents</h6>
+                                                    </div>
+                                                    <div class="card-body p-0">
+                                                        <ul class="list-group list-group-flush">
+                                                            <li
+                                                                class="list-group-item d-flex justify-content-between align-items-center">
+                                                                <div>
+                                                                    <i class="fas fa-file-pdf mr-2"></i> Resume/CV
+                                                                </div>
+                                                                <a href="{{ asset('storage/'.$application->cv) }}" class="btn btn-sm btn-info">
+                                                                    <i class="fas fa-download"></i> Download
+                                                                </a>
+                                                            </li>
+                                                            <li
+                                                                class="list-group-item d-flex justify-content-between align-items-center">
+                                                                <div>
+                                                                    <i class="fas fa-file-word mr-2"></i> Cover Letter
+                                                                </div>
+                                                                <a href="{{ asset('storage/'.$application->letter) }}" class="btn btn-sm btn-info">
+                                                                    <i class="fas fa-download"></i> Download
+                                                                </a>
+                                                            </li>
+                                                            <li
+                                                                class="list-group-item d-flex justify-content-between align-items-center">
+                                                                <div>
+                                                                    <i class="fas fa-file-image mr-2"></i> ID Card
+                                                                </div>
+                                                                <a href="{{ asset('storage/'.$application->id_card) }}" class="btn btn-sm btn-info">
+                                                                    <i class="fas fa-download"></i> Download
+                                                                </a>
+                                                            </li>
+                                                            @if ($application->additional)
+                                                                <li
+                                                                    class="list-group-item d-flex justify-content-between align-items-center">
+                                                                    <div>
+                                                                        <i class="fas fa-file-image mr-2"></i> ID Card
+                                                                    </div>
+                                                                    <a href="{{ asset('storage/'.$application->additional) }}" class="btn btn-sm btn-info">
+                                                                        <i class="fas fa-download"></i> Download
+                                                                    </a>
+                                                                </li>
+                                                            @endif
+                                                            </ul>
+                                                    </div>
+                                                </div>
+
+                                                <div class="text-right">
+                                                    <div class="btn-group">
+                                                        <button type="button" class="btn btn-danger" data-toggle="modal"
+                                                                data-target="#rejectModal{{$application->id}}">
+                                                                <i class="fas fa-users"></i> Reject
+                                                        </button>
+                                                        <button type="button" class="btn btn-success" data-toggle="modal"
+                                                                data-target="#acceptModal{{$application->id}}">
+                                                                <i class="fas fa-users"></i> Accept
+                                                        </button>
+                                                        {{-- <button type="button" class="btn btn-warning">Shortlist</button> --}}
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    @endforeach
 
-                                    <div class="tab-pane fade" id="applicant2" role="tabpanel">
-                                        <div class="p-3">
-                                            <div class="d-flex align-items-center mb-3">
-                                                <img src="{{asset('asset/img/avatar.png')}}" alt="Applicant"
-                                                    class="img-circle mr-3" style="width: 60px; height: 60px;">
-                                                <div>
-                                                    <h5 class="mb-0">Amina Bi Bongwa</h5>
-                                                    <p class="text-muted mb-0">Bamenda, NW Region</p>
-                                                </div>
-                                                <div class="ml-auto">
-                                                    <span class="badge badge-success">Qualified</span>
-                                                </div>
-                                            </div>
-
-                                            <div class="alert alert-info">
-                                                <i class="fas fa-info-circle"></i> Select an applicant to view their full
-                                                details.
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="tab-pane fade" id="applicant3" role="tabpanel">
-                                        <div class="p-3">
-                                            <div class="d-flex align-items-center mb-3">
-                                                <img src="{{asset('asset/img/avatar.png')}}" alt="Applicant"
-                                                    class="img-circle mr-3" style="width: 60px; height: 60px;">
-                                                <div>
-                                                    <h5 class="mb-0">Fonguh Patience Akwi</h5>
-                                                    <p class="text-muted mb-0">Yaounde, Centre Region</p>
-                                                </div>
-                                                <div class="ml-auto">
-                                                    <span class="badge badge-success">Qualified</span>
-                                                </div>
-                                            </div>
-
-                                            <div class="alert alert-info">
-                                                <i class="fas fa-info-circle"></i> Select an applicant to view their full
-                                                details.
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -1114,39 +1069,83 @@
                 </div>
             </div>
         </div>
+
+
+        @foreach ($post->applications as $application)
+            {{-- Delete Modal --}}
+            <div class="modal fade" id="acceptModal{{ $application->id }}" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header bg-info">
+                            <h5 class="modal-title">Accepting Application</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <form action="#">
+                            <div class="modal-body text-center">
+                                <div class="my-4 animate__animated animate__bounceIn">
+                                    <i class="fas fa-check-circle text-success" style="font-size: 4rem;"></i>
+                                </div>
+                                <h4>Accept Intern</h4>
+                                <p>{{$application->student->first_name}} {{$application->student->last_name}}</p>
+
+                                <textarea class="form-control" name="message" cols="4" required placeholder="Example: Get to us at the Office"></textarea>
+                                {{-- <div class="progress mt-3">
+                                    <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" style="width: 100%"></div>
+                                </div> --}}
+                                {{-- <p class="mt-2 text-muted">Estimated review time: 24-48 hours</p> --}}
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-success" data-dismiss="modal">Accept</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        @endforeach
     @endforeach
 
 
-    <!-- Success Modal -->
-    <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header bg-success">
-                    <h5 class="modal-title">Internship Posted Successfully!</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body text-center">
-                    <div class="my-4 animate__animated animate__bounceIn">
-                        <i class="fas fa-check-circle text-success" style="font-size: 4rem;"></i>
+
+                <!-- Success Modal -->
+    @if(session('success'))
+        <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header bg-success">
+                        <h5 class="modal-title">Internship Posted Successfully!</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
-                    <h4>Thank You!</h4>
-                    <p>Your internship posting has been submitted for review. You will be notified once it is approved and
-                        published.</p>
-                    <div class="progress mt-3">
-                        <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar"
-                            style="width: 100%"></div>
+                    <div class="modal-body text-center">
+                        <div class="my-4 animate__animated animate__bounceIn">
+                            <i class="fas fa-check-circle text-success" style="font-size: 4rem;"></i>
+                        </div>
+                        <h4>Thank You!</h4>
+                        <p>Your internship posting has been submitted for review. You will be notified once it is approved and published.</p>
+                        <div class="progress mt-3">
+                            <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" style="width: 100%"></div>
+                        </div>
+                        <p class="mt-2 text-muted">Estimated review time: 24-48 hours</p>
                     </div>
-                    <p class="mt-2 text-muted">Estimated review time: 24-48 hours</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-success" data-dismiss="modal">View My Internships</button>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        {{-- <button type="button" class="btn btn-success" data-dismiss="modal">View My Internships</button> --}}
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+
+        <script>
+            $(document).ready(function() {
+                $('#successModal').modal('show'); // Show the modal on page load
+            });
+        </script>
+    @endif
+
 
     <!-- Custom CSS -->
     <style>
@@ -1560,4 +1559,9 @@
             });
         });
     </script>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <!-- Bootstrap Bundle -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 @endsection

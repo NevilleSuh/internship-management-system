@@ -10,4 +10,8 @@ class ApplicationController extends Controller
     public function showApplications(){
         return view('institution.applications');
     }
+
+    public function acceptApplication(){}
+
+    public function declineApplication(){}
 }
