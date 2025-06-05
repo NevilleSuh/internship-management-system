@@ -414,9 +414,145 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-teal" data-toggle="modal" data-target="#applyModal"
+                        <button type="button" class="btn btn-teal" data-toggle="modal" data-target="#applyModal{{ $post->id }}"
                             data-dismiss="modal">Apply Now</button>
                     </div>
+                </div>
+            </div>
+        </div>
+
+
+        {{-- Application Modal --}}
+        <div class="modal fade" id="applyModal{{ $post->id }}" tabindex="-1" role="dialog" aria-labelledby="applyModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
+                <div class="modal-content">
+                    <div class="modal-header bg-teal">
+                        <h5 class="modal-title" id="applyModalLabel">Apply for {{ $post->title }} - {{ $post->institution->name }}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="applicationForm" action="{{ route('apply', $post->id) }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>First Name</label>
+                                        <input type="text" name="first_name" readonly value="{{ $student->first_name }}" class="form-control" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Last Name</label>
+                                        <input type="text" class="form-control" readonly name="last_name" value="{{ $student->last_name }}" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Email</label>
+                                        <input type="email" class="form-control" readonly name="email" value="{{ $student->email }}" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Phone</label>
+                                        <input type="tel" class="form-control" readonly name="tell" value="{{ $student->tell }}" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Education Level</label>
+                                <select class="form-control" name="education" required>
+                                    <option value="">Select Education Level</option>
+                                    <option value="primary_school" >Primary School</option>
+                                    <option value="secondary_school" >Secondary School</option>
+                                    <option value="high_school">High School</option>
+                                    <option value="bachelors">Bachelor's Degree</option>
+                                    <option value="masters">Master's Degree</option>
+                                    <option value="phd">PhD</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="row">
+
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Field of Study</label>
+                                        <input type="text" name="field" class="form-control" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card bg-light mt-4 mb-4">
+                                <div class="card-header">
+                                    <h5 class="mb-0">Required Documents</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label>Resume/CV</label>
+                                        <div class="custom-file">
+                                            <input type="file" name="cv" class="custom-file-input" id="resumeUpload" required>
+                                            <label class="custom-file-label" for="resumeUpload">Choose file</label>
+                                        </div>
+                                        <small class="form-text text-muted">PDF or Word document (Max 2MB)</small>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Cover Letter</label>
+                                        <div class="custom-file">
+                                            <input type="file" name="letter" class="custom-file-input" id="coverLetterUpload">
+                                            <label class="custom-file-label" for="coverLetterUpload">Choose file</label>
+                                        </div>
+                                        <small class="form-text text-muted">PDF or Word document (Max 2MB)</small>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>ID Card</label>
+                                        <div class="custom-file">
+                                            <input type="file" name="id" class="custom-file-input" id="idCardUpload" required>
+                                            <label class="custom-file-label" for="idCardUpload">Choose file</label>
+                                        </div>
+                                        <small class="form-text text-muted">JPG, PNG, or PDF format (Max 1MB)</small>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Additional Documents (Optional)</label>
+                                        <div class="custom-file">
+                                            <input type="file" name="additional" class="custom-file-input" id="additionalDocs" multiple>
+                                            <label class="custom-file-label" for="additionalDocs">Choose files</label>
+                                        </div>
+                                        <small class="form-text text-muted">Certificates, portfolios, or other relevant
+                                            documents (Max 5MB total)</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Why are you interested in this internship?</label>
+                                <textarea class="form-control" name="reason" rows="4" required></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Relevant Skills & Experience (Optional)</label>
+                                <textarea class="form-control" name="skill" rows="4" required></textarea>
+                            </div>
+
+                            <div class="form-group form-check">
+                                <input type="checkbox" class="form-check-input" id="termsCheck" required>
+                                <label class="form-check-label" for="termsCheck">I confirm that all information provided is
+                                    accurate and true</label>
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-teal" id="submitApplication">Submit Application</button>
+                    </div>
+                </form>
+
                 </div>
             </div>
         </div>
@@ -424,140 +560,7 @@
 
 
 
-    <div class="modal fade" id="applyModal" tabindex="-1" role="dialog" aria-labelledby="applyModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header bg-teal">
-                    <h5 class="modal-title" id="applyModalLabel">Apply for Software Development Intern - GilloTech</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form id="applicationForm">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>First Name</label>
-                                    <input type="text" class="form-control" required>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Last Name</label>
-                                    <input type="text" class="form-control" required>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Email</label>
-                                    <input type="email" class="form-control" required>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Phone</label>
-                                    <input type="tel" class="form-control" required>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label>Education Level</label>
-                            <select class="form-control" required>
-                                <option value="">Select Education Level</option>
-                                <option value="high_school">High School</option>
-                                <option value="bachelors">Bachelor's Degree</option>
-                                <option value="masters">Master's Degree</option>
-                                <option value="phd">PhD</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Institution</label>
-                                    <input type="text" class="form-control" required>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Field of Study</label>
-                                    <input type="text" class="form-control" required>
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="card bg-light mt-4 mb-4">
-                            <div class="card-header">
-                                <h5 class="mb-0">Required Documents</h5>
-                            </div>
-                            <div class="card-body">
-                                <div class="form-group">
-                                    <label>Resume/CV</label>
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="resumeUpload" required>
-                                        <label class="custom-file-label" for="resumeUpload">Choose file</label>
-                                    </div>
-                                    <small class="form-text text-muted">PDF or Word document (Max 2MB)</small>
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Cover Letter</label>
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="coverLetterUpload">
-                                        <label class="custom-file-label" for="coverLetterUpload">Choose file</label>
-                                    </div>
-                                    <small class="form-text text-muted">PDF or Word document (Max 2MB)</small>
-                                </div>
-
-                                <div class="form-group">
-                                    <label>ID Card</label>
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="idCardUpload" required>
-                                        <label class="custom-file-label" for="idCardUpload">Choose file</label>
-                                    </div>
-                                    <small class="form-text text-muted">JPG, PNG, or PDF format (Max 1MB)</small>
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Additional Documents (Optional)</label>
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="additionalDocs" multiple>
-                                        <label class="custom-file-label" for="additionalDocs">Choose files</label>
-                                    </div>
-                                    <small class="form-text text-muted">Certificates, portfolios, or other relevant
-                                        documents (Max 5MB total)</small>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Why are you interested in this internship?</label>
-                            <textarea class="form-control" rows="4" required></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Relevant Skills & Experience</label>
-                            <textarea class="form-control" rows="4" required></textarea>
-                        </div>
-
-                        <div class="form-group form-check">
-                            <input type="checkbox" class="form-check-input" id="termsCheck" required>
-                            <label class="form-check-label" for="termsCheck">I confirm that all information provided is
-                                accurate and true</label>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-teal" id="submitApplication">Submit Application</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -583,6 +586,17 @@
     </div>
 
     <script>
+
+        $(document).ready(function () {
+            bsCustomFileInput.init();
+
+            $('.custom-file-input').on('change', function () {
+                let fileName = $(this).val().split('\\').pop();
+                $(this).next('.custom-file-label').html(fileName);
+            });
+        });
+
+
         $(document).ready(function () {
             bsCustomFileInput.init();
 

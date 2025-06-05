@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{{asset('asset/css/adminlte.min.css')}}">
     <link rel="stylesheet" href="{{asset('asset/css/style.css')}}">
     <link rel="stylesheet" href="{{asset('asset/tables/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         .navbar-custom {
             background-color: #f8f9fa;
@@ -80,6 +81,8 @@
     <!-- jQuery -->
     <script src="{{asset('asset/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('asset/js/adminlte.js')}}"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
     <!-- jQuery -->
     <script src="{{asset('asset/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('asset/js/bootstrap.bundle.min.js')}}"></script>
@@ -89,6 +92,7 @@
     <script src="{{asset('asset/tables/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
     <script src="{{asset('asset/tables/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
     <script src="{{asset('asset/tables/datatables-buttons/js/buttons.bootstrap4.min.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bs-custom-file-input/1.3.4/bs-custom-file-input.min.js"></script>
     <script>
         $(function () {
             $("#example1").DataTable();
