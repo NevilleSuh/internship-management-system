@@ -918,9 +918,15 @@
                             <div class="col-md-4 border-right">
                                 <div class="list-group list-group-flush" id="applicant-list">
 
-                                   @foreach ($post->applications as $application)
-                                     <a href="#" class="list-group-item list-group-item-action active" data-toggle="list"
+                                   @foreach ($post->applications as $key => $application)
+                                     <a href="#" class="list-group-item list-group-item-action {{$key == 0 ? 'active': '' }}" data-toggle="list"
                                          data-target="#applicant{{ $application->id }}">
+
+                            
+
+                                         @php
+                                            $i = $application->id   
+                                         @endphp
                                          <div class="d-flex w-100 justify-content-between">
                                              <h6 class="mb-1">{{$application->student->first_name}}  {{$application->student->last_name}}</h6>
                                              <small>{{$application->created_at->format('F d, Y')}}</small>
@@ -936,126 +942,126 @@
                                 <div class="tab-content" id="applicant-tabContent">
 
 
-                                    @foreach ($post->applications as $application)
-                                        <div class="tab-pane fade show active" id="applicant{{ $application->id }}" role="tabpanel">
-                                            <div class="p-3">
-                                                <div class="d-flex align-items-center mb-3">
-                                                    <img src="{{asset('asset/img/avatar.png')}}" alt="Applicant"
-                                                        class="img-circle mr-3" style="width: 60px; height: 60px;">
-                                                    <div>
-                                                        <h5 class="mb-0">{{$application->student->first_name}} {{$application->student->last_name}}</h5>
-                                                        <p class="text-muted mb-0">{{$application->post->location}}</p>
+                                    @foreach ($post->applications as $key => $application)
+                                            <div class="tab-pane fade {{ $key == 0 ? 'show active' : '' }}" id="applicant{{ $application->id }}" role="tabpanel">
+                                                <div class="p-3">
+                                                    <div class="d-flex align-items-center mb-3">
+                                                        <img src="{{asset('asset/img/avatar.png')}}" alt="Applicant"
+                                                            class="img-circle mr-3" style="width: 60px; height: 60px;">
+                                                        <div>
+                                                            <h5 class="mb-0">{{$application->student->first_name}} {{$application->student->last_name}}</h5>
+                                                            <p class="text-muted mb-0">{{$application->post->location}}</p>
+                                                        </div>
+                                                        <div class="ml-auto">
+                                                            <span class="badge badge-info">Qualified</span>
+                                                        </div>
                                                     </div>
-                                                    <div class="ml-auto">
-                                                        <span class="badge badge-info">Qualified</span>
-                                                    </div>
-                                                </div>
 
-                                                <div class="row mb-3">
-                                                    <div class="col-md-6">
-                                                        <p><strong>Email:</strong>{{ $application->student->email }}</p>
-                                                        <p><strong>Phone:</strong> {{$application->student->tell}}</p>
+                                                    <div class="row mb-3">
+                                                        <div class="col-md-6">
+                                                            <p><strong>Email:</strong>{{ $application->student->email }}</p>
+                                                            <p><strong>Phone:</strong> {{$application->student->tell}}</p>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <p><strong>Education:</strong> {{$application->education}}</p>
+                                                            <p><strong>Applied:</strong> {{$application->created_at->format('F d, Y')}}</p>
+                                                        </div>
                                                     </div>
-                                                    <div class="col-md-6">
-                                                        <p><strong>Education:</strong> {{$application->education}}</p>
-                                                        <p><strong>Applied:</strong> {{$application->created_at->format('F d, Y')}}</p>
-                                                    </div>
-                                                </div>
 
-                                                <div class="card mb-3">
-                                                    <div class="card-header bg-light">
-                                                        <h6 class="mb-0">Skills</h6>
+                                                    <div class="card mb-3">
+                                                        <div class="card-header bg-light">
+                                                            <h6 class="mb-0">Skills</h6>
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <span class="badge badge-info mr-1">Python</span>
+                                                            <span class="badge badge-info mr-1">SQL</span>
+                                                            <span class="badge badge-info mr-1">HTML</span>
+                                                            <span class="badge badge-info mr-1">CSS</span>
+                                                            <span class="badge badge-info">JavaScript</span>
+                                                        </div>
                                                     </div>
-                                                    <div class="card-body">
-                                                        <span class="badge badge-info mr-1">Python</span>
-                                                        <span class="badge badge-info mr-1">SQL</span>
-                                                        <span class="badge badge-info mr-1">HTML</span>
-                                                        <span class="badge badge-info mr-1">CSS</span>
-                                                        <span class="badge badge-info">JavaScript</span>
-                                                    </div>
-                                                </div>
 
-                                                <div class="card mb-3">
-                                                    <div class="card-header bg-light">
-                                                        <h6 class="mb-0">Why interested in this internship?</h6>
+                                                    <div class="card mb-3">
+                                                        <div class="card-header bg-light">
+                                                            <h6 class="mb-0">Why interested in this internship?</h6>
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <p>{{$application->reason}}</p>
+                                                        </div>
                                                     </div>
-                                                    <div class="card-body">
-                                                        <p>{{$application->reason}}</p>
-                                                    </div>
-                                                </div>
 
-                                                <div class="card mb-3">
-                                                    <div class="card-header bg-light">
-                                                        <h6 class="mb-0">Relevant Experience</h6>
+                                                    <div class="card mb-3">
+                                                        <div class="card-header bg-light">
+                                                            <h6 class="mb-0">Relevant Experience</h6>
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <p>{{$application->skill}}</p>
+                                                        </div>
                                                     </div>
-                                                    <div class="card-body">
-                                                        <p>{{$application->skill}}</p>
-                                                    </div>
-                                                </div>
 
-                                                <div class="card mb-3">
-                                                    <div class="card-header bg-light">
-                                                        <h6 class="mb-0">Documents</h6>
-                                                    </div>
-                                                    <div class="card-body p-0">
-                                                        <ul class="list-group list-group-flush">
-                                                            <li
-                                                                class="list-group-item d-flex justify-content-between align-items-center">
-                                                                <div>
-                                                                    <i class="fas fa-file-pdf mr-2"></i> Resume/CV
-                                                                </div>
-                                                                <a href="{{ asset('storage/'.$application->cv) }}" class="btn btn-sm btn-info">
-                                                                    <i class="fas fa-download"></i> Download
-                                                                </a>
-                                                            </li>
-                                                            <li
-                                                                class="list-group-item d-flex justify-content-between align-items-center">
-                                                                <div>
-                                                                    <i class="fas fa-file-word mr-2"></i> Cover Letter
-                                                                </div>
-                                                                <a href="{{ asset('storage/'.$application->letter) }}" class="btn btn-sm btn-info">
-                                                                    <i class="fas fa-download"></i> Download
-                                                                </a>
-                                                            </li>
-                                                            <li
-                                                                class="list-group-item d-flex justify-content-between align-items-center">
-                                                                <div>
-                                                                    <i class="fas fa-file-image mr-2"></i> ID Card
-                                                                </div>
-                                                                <a href="{{ asset('storage/'.$application->id_card) }}" class="btn btn-sm btn-info">
-                                                                    <i class="fas fa-download"></i> Download
-                                                                </a>
-                                                            </li>
-                                                            @if ($application->additional)
+                                                    <div class="card mb-3">
+                                                        <div class="card-header bg-light">
+                                                            <h6 class="mb-0">Documents</h6>
+                                                        </div>
+                                                        <div class="card-body p-0">
+                                                            <ul class="list-group list-group-flush">
+                                                                <li
+                                                                    class="list-group-item d-flex justify-content-between align-items-center">
+                                                                    <div>
+                                                                        <i class="fas fa-file-pdf mr-2"></i> Resume/CV
+                                                                    </div>
+                                                                    <a href="{{ asset('storage/'.$application->cv) }}" class="btn btn-sm btn-info">
+                                                                        <i class="fas fa-download"></i> Download
+                                                                    </a>
+                                                                </li>
+                                                                <li
+                                                                    class="list-group-item d-flex justify-content-between align-items-center">
+                                                                    <div>
+                                                                        <i class="fas fa-file-word mr-2"></i> Cover Letter
+                                                                    </div>
+                                                                    <a href="{{ asset('storage/'.$application->letter) }}" class="btn btn-sm btn-info">
+                                                                        <i class="fas fa-download"></i> Download
+                                                                    </a>
+                                                                </li>
                                                                 <li
                                                                     class="list-group-item d-flex justify-content-between align-items-center">
                                                                     <div>
                                                                         <i class="fas fa-file-image mr-2"></i> ID Card
                                                                     </div>
-                                                                    <a href="{{ asset('storage/'.$application->additional) }}" class="btn btn-sm btn-info">
+                                                                    <a href="{{ asset('storage/'.$application->id_card) }}" class="btn btn-sm btn-info">
                                                                         <i class="fas fa-download"></i> Download
                                                                     </a>
                                                                 </li>
-                                                            @endif
-                                                            </ul>
+                                                                @if ($application->additional)
+                                                                    <li
+                                                                        class="list-group-item d-flex justify-content-between align-items-center">
+                                                                        <div>
+                                                                            <i class="fas fa-file-image mr-2"></i> Additional Document
+                                                                        </div>
+                                                                        <a href="{{ asset('storage/'.$application->additional) }}" class="btn btn-sm btn-info">
+                                                                            <i class="fas fa-download"></i> Download
+                                                                        </a>
+                                                                    </li>
+                                                                @endif
+                                                                </ul>
+                                                        </div>
                                                     </div>
-                                                </div>
 
-                                                <div class="text-right">
-                                                    <div class="btn-group">
-                                                        <button type="button" class="btn btn-danger" data-toggle="modal"
-                                                                data-target="#rejectModal{{$application->id}}">
-                                                                <i class="fas fa-users"></i> Reject
-                                                        </button>
-                                                        <button type="button" class="btn btn-success" data-toggle="modal"
-                                                                data-target="#acceptModal{{$application->id}}">
-                                                                <i class="fas fa-users"></i> Accept
-                                                        </button>
-                                                        {{-- <button type="button" class="btn btn-warning">Shortlist</button> --}}
+                                                    <div class="text-right">
+                                                        <div class="btn-group">
+                                                            <button type="button" class="btn btn-danger" data-toggle="modal"
+                                                                    data-target="#rejectModal{{$application->id}}">
+                                                                    <i class="fas fa-users"></i> Reject
+                                                            </button>
+                                                            <button type="button" class="btn btn-success" data-toggle="modal"
+                                                                    data-target="#acceptModal{{$application->id}}">
+                                                                    <i class="fas fa-users"></i> Accept
+                                                            </button>
+                                                            {{-- <button type="button" class="btn btn-warning">Shortlist</button> --}}
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
                                     @endforeach
 
                                 </div>

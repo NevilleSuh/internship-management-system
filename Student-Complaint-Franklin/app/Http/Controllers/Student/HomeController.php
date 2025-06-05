@@ -37,29 +37,42 @@ class HomeController extends Controller
             $file1 = $request->cv;
             $file2 = $request->letter;
             $file3 = $request->id;
-            $file4 = $request->additional;
 
 
             $name = date('d-m=y-H-m-i');
             $folder = 'files/'. $student->email;
 
-            $ext1 = $file1->getClientOriginalExtension();
-            $ext2 = $file2->getClientOriginalExtension();
-            $ext3 = $file3->getClientOriginalExtension();
-            $ext4 = $file4->getClientOriginalExtension();
 
             if(!Storage::disk('public')->exists($folder)){
                 Storage::disk('public')->makeDirectory($folder);
             }
 
+            if ($request->hasFile('additional')){
+                $file4 = $request->additional;
+                $ext4 = $file4->getClientOriginalExtension();
+
+                $path4 = $name. Str::random(10). '.' . $ext4;
+                $file4->storeAs($folder, $path4, 'public');
+
+                
+                $additional =  $folder. '/' . $path4;
+
+            }else{
+                $additional = null;
+            }
+
+            $ext1 = $file1->getClientOriginalExtension();
+            $ext2 = $file2->getClientOriginalExtension();
+            $ext3 = $file3->getClientOriginalExtension();
+
+
+
             $path1 = $name. Str::random(10). '.' . $ext1;
             $path2 = $name. Str::random(10). '.' . $ext2;
             $path3 = $name. Str::random(10). '.' . $ext3;
-            $path4 = $name. Str::random(10). '.' . $ext4;
             $file1->storeAs($folder, $path1, 'public');
             $file2->storeAs($folder, $path2, 'public');
             $file3->storeAs($folder, $path3, 'public');
-            $file4->storeAs($folder, $path4, 'public');
         }
 
         $application = Application::create([
@@ -68,7 +81,7 @@ class HomeController extends Controller
             'cv' => $folder. '/' . $path1,
             'letter' => $folder. '/' . $path2,
             'id_card' => $folder. '/' . $path3,
-            'additional' => $folder. '/' . $path4,
+            'additional' => $additional,
             'reason' => $request->reason,
             'skill' => $request->skill,
             'student_id' => $student->id,
