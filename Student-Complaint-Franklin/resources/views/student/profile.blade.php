@@ -30,21 +30,21 @@
                                     src="{{asset('asset/img/avatar.png')}}" alt="User profile picture">
                             </div>
 
-                            <h3 class="profile-username text-center mt-3">Nfon Andrew Abang</h3>
+                            <h3 class="profile-username text-center mt-3">{{$student->first_name}} {{$student->last_name}}</h3>
                             <p class="text-muted text-center">Student</p>
 
                             <ul class="list-group list-group-unbordered mb-3">
                                 <li class="list-group-item animate__animated animate__fadeIn" style="animation-delay: 0.1s">
-                                    <b>Applications</b> <a class="float-right">3</a>
+                                    <b>Applications</b> <a class="float-right">{{$student->applications->count()}}</a>
                                 </li>
                                 <li class="list-group-item animate__animated animate__fadeIn" style="animation-delay: 0.2s">
-                                    <b>Accepted</b> <a class="float-right">1</a>
+                                    <b>Accepted</b> <a class="float-right">{{$student->applications->where('status', 'selected')->count()}}</a>
                                 </li>
                                 <li class="list-group-item animate__animated animate__fadeIn" style="animation-delay: 0.3s">
-                                    <b>Pending</b> <a class="float-right">1</a>
+                                    <b>Pending</b> <a class="float-right">{{$student->applications->where('status', 'pending')->count()}}</a>
                                 </li>
                                 <li class="list-group-item animate__animated animate__fadeIn" style="animation-delay: 0.4s">
-                                    <b>Rejected</b> <a class="float-right">1</a>
+                                    <b>Rejected</b> <a class="float-right">{{$student->applications->where('status', 'declined')->count()}}</a>
                                 </li>
                             </ul>
 
@@ -176,42 +176,43 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr class="animate__animated animate__fadeIn" style="animation-delay: 0.1s">
-                                            <td>Software Dev Intern</td>
-                                            <td>GilloTech</td>
-                                            <td>May 15, 2025</td>
-                                            <td><span class="badge badge-info">Pending</span></td>
-                                            <td>
-                                                <button class="btn btn-xs btn-indigo" data-toggle="modal"
-                                                    data-target="#viewApplicationModal">
-                                                    <i class="fas fa-eye"></i> View
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr class="animate__animated animate__fadeIn" style="animation-delay: 0.2s">
-                                            <td>IT Support Intern</td>
-                                            <td>H4BF</td>
-                                            <td>May 10, 2025</td>
-                                            <td><span class="badge badge-success">Accepted</span></td>
-                                            <td>
-                                                <button class="btn btn-xs btn-indigo" data-toggle="modal"
-                                                    data-target="#viewApplicationModal">
-                                                    <i class="fas fa-eye"></i> View
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr class="animate__animated animate__fadeIn" style="animation-delay: 0.3s">
-                                            <td>Web Intern</td>
-                                            <td>Uncle Luke Digitals</td>
-                                            <td>April 28, 2025</td>
-                                            <td><span class="badge badge-danger">Rejected</span></td>
-                                            <td>
-                                                <button class="btn btn-xs btn-indigo" data-toggle="modal"
-                                                    data-target="#viewApplicationModal">
-                                                    <i class="fas fa-eye"></i> View
-                                                </button>
-                                            </td>
-                                        </tr>
+
+                                        @foreach ($student->applications as $application)
+                                            <tr class="animate__animated animate__fadeIn" style="animation-delay: 0.1s">
+                                                <td>{{$application->post->title}}</td>
+                                                <td>{{ $application->post->institution->name }}</td>
+                                                <td>{{$application->created_at->format('F d, Y')}}</td>
+                                                <td>
+
+                                                    @php
+                                                        $badgeClass = '';
+                                                        switch ($application->status) {
+                                                            case 'pending':
+                                                                $badgeClass = 'bg-warning';
+                                                                break;
+                                                            case 'selected':
+                                                                $badgeClass = 'bg-success';
+                                                                break;
+                                                            case 'declined':
+                                                                $badgeClass = 'bg-danger';
+                                                                break;
+                                                            default:
+                                                                $badgeClass = 'bg-secondary';
+                                                        }
+                                                    @endphp
+
+                                                    <span class="badge {{ $badgeClass }}">{{$application->status}}</span>
+
+                                                </td>
+                                                <td>
+                                                    <button class="btn btn-xs btn-indigo" data-toggle="modal"
+                                                        data-target="#viewApplicationModal{{ $application->id }}">
+                                                        <i class="fas fa-eye"></i> View
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+
                                     </tbody>
                                 </table>
                             </div>
@@ -319,6 +320,125 @@
         </div>
     </section>
 
+
+
+    @foreach ($student->applications as $application)
+        {{-- View application Modal --}}
+        <div class="modal fade" id="viewApplicationModal{{ $application->id }}" tabindex="-1" role="dialog"
+            aria-labelledby="viewApplicationModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header bg-indigo">
+                        <h5 class="modal-title" id="viewApplicationModalLabel">Application Details</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row mb-4">
+                            <div class="col-md-2">
+                                <img src="https://via.placeholder.com/80" alt="{{ $application->post->institution->name }}" class="img-fluid rounded shadow">
+                            </div>
+                            <div class="col-md-10">
+                                <h4>{{ $application->post->title }} - {{$application->post->institution->name}}</h4>
+                                <p class="text-muted">{{$application->post->location}}</p>
+                                <div>
+                                    <span class="badge badge-info">{{$application->post->type}}</span>
+                                    <span class="badge badge-success">{{ $application->post->compensation }}</span>
+                                    <span class="badge {{ $badgeClass }}">{{ $application->status }}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card card-outline card-indigo mb-4 animate__animated animate__fadeIn">
+                            <div class="card-header">
+                                <h3 class="card-title"><i class="fas fa-info-circle mr-1"></i> Application Summary</h3>
+                            </div>
+                            <div class="card-body">
+                                <dl class="row">
+                                    <dt class="col-sm-3">Applied On</dt>
+                                    <dd class="col-sm-9">{{$application->created_at->format('F d, Y')}}</dd>
+
+                                    <dt class="col-sm-3">Status</dt>
+                                    <dd class="col-sm-9"><span class="badge {{ $badgeClass }}">{{$application->status}}</span></dd>
+
+                                    <dt class="col-sm-3">Last Updated</dt>
+                                    <dd class="col-sm-9">{{$application->updated_at->format('F d, Y')}}</dd>
+                                </dl>
+                            </div>
+                        </div>
+
+                        <div class="card card-outline card-indigo mb-4 animate__animated animate__fadeIn animate__delay-1s">
+                            <div class="card-header">
+                                <h3 class="card-title"><i class="fas fa-file-alt mr-1"></i> Submitted Information</h3>
+                            </div>
+                            <div class="card-body">
+                                <h5>Why are you interested in this internship?</h5>
+                                <p>{{ $application->reason }}</p>
+
+                                <h5>Relevant Skills & Experience</h5>
+                                <p>{{$application->skill}}</p>
+                            </div>
+                        </div>
+
+                        <div class="card card-outline card-indigo animate__animated animate__fadeIn animate__delay-2s">
+                            <div class="card-header">
+                                <h3 class="card-title"><i class="fas fa-file-download mr-1"></i> Submitted Documents</h3>
+                            </div>
+                            <div class="card-body p-0">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <i class="fas fa-file-pdf text-danger mr-2"></i> Resume/CV
+                                        </div>
+                                        <a href="{{ asset('storage/'.$application->cv) }}" class="btn btn-sm btn-info">
+                                            <i class="fas fa-download"></i> Download
+                                        </a>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <i class="fas fa-file-word text-primary mr-2"></i> Cover Letter
+                                        </div>
+                                        <a href="{{ asset('storage/'.$application->letter) }}" class="btn btn-sm btn-info">
+                                            <i class="fas fa-download"></i> Download
+                                        </a>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <i class="fas fa-file-image text-success mr-2"></i> ID Card
+                                        </div>
+                                        <a href="{{ asset('storage/'.$application->id_card) }}" class="btn btn-sm btn-info">
+                                            <i class="fas fa-download"></i> Download
+                                        </a>
+                                    </li>
+                                    @if ($application->additional)
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <i class="fas fa-file-image text-success mr-2"></i> Additional Document
+                                            </div>
+                                            <a href="{{ asset('storage/'.$application->additional) }}" class="btn btn-sm btn-info">
+                                                <i class="fas fa-download"></i> Download
+                                            </a>
+                                        </li>
+                                    @endif
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-danger">
+                            <i class="fas fa-times"></i> Withdraw Application
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endforeach
+
+
+
     <div class="modal fade" id="editProfileModal" tabindex="-1" role="dialog" aria-labelledby="editProfileModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
@@ -421,115 +541,6 @@
                         </button>
                     </div>
                 </form>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="viewApplicationModal" tabindex="-1" role="dialog"
-        aria-labelledby="viewApplicationModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header bg-indigo">
-                    <h5 class="modal-title" id="viewApplicationModalLabel">Application Details</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="row mb-4">
-                        <div class="col-md-2">
-                            <img src="https://via.placeholder.com/80" alt="GilloTech" class="img-fluid rounded shadow">
-                        </div>
-                        <div class="col-md-10">
-                            <h4>Software Dev Intern - GilloTech</h4>
-                            <p class="text-muted">Bamenda, Up Station</p>
-                            <div>
-                                <span class="badge badge-info">Full-time</span>
-                                <span class="badge badge-success">Paid</span>
-                                <span class="badge badge-info">Pending</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card card-outline card-indigo mb-4 animate__animated animate__fadeIn">
-                        <div class="card-header">
-                            <h3 class="card-title"><i class="fas fa-info-circle mr-1"></i> Application Summary</h3>
-                        </div>
-                        <div class="card-body">
-                            <dl class="row">
-                                <dt class="col-sm-3">Applied On</dt>
-                                <dd class="col-sm-9">May 15, 2025</dd>
-
-                                <dt class="col-sm-3">Status</dt>
-                                <dd class="col-sm-9"><span class="badge badge-info">Pending</span></dd>
-
-                                <dt class="col-sm-3">Last Updated</dt>
-                                <dd class="col-sm-9">May 15, 2025</dd>
-                            </dl>
-                        </div>
-                    </div>
-
-                    <div class="card card-outline card-indigo mb-4 animate__animated animate__fadeIn animate__delay-1s">
-                        <div class="card-header">
-                            <h3 class="card-title"><i class="fas fa-file-alt mr-1"></i> Submitted Information</h3>
-                        </div>
-                        <div class="card-body">
-                            <h5>Why are you interested in this internship?</h5>
-                            <p>I am interested in this internship because it aligns perfectly with my academic background in
-                                Computer Science and my career aspirations in software development. I am particularly drawn
-                                to GilloTech's innovative approach to technology solutions in Bamenda, and I believe this
-                                opportunity would allow me to apply my theoretical knowledge in a practical setting while
-                                contributing to meaningful projects.</p>
-
-                            <h5>Relevant Skills & Experience</h5>
-                            <p>I have experience with Python, Java, and web development technologies (HTML, CSS,
-                                JavaScript). I have completed several course projects including a student management system
-                                and an e-commerce website. I also participated in a coding bootcamp where I developed a
-                                mobile-responsive web application. I am familiar with version control systems like Git and
-                                have basic knowledge of database management with SQL.</p>
-                        </div>
-                    </div>
-
-                    <div class="card card-outline card-indigo animate__animated animate__fadeIn animate__delay-2s">
-                        <div class="card-header">
-                            <h3 class="card-title"><i class="fas fa-file-download mr-1"></i> Submitted Documents</h3>
-                        </div>
-                        <div class="card-body p-0">
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <i class="fas fa-file-pdf text-danger mr-2"></i> Resume/CV
-                                    </div>
-                                    <a href="#" class="btn btn-sm btn-info">
-                                        <i class="fas fa-download"></i> Download
-                                    </a>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <i class="fas fa-file-word text-primary mr-2"></i> Cover Letter
-                                    </div>
-                                    <a href="#" class="btn btn-sm btn-info">
-                                        <i class="fas fa-download"></i> Download
-                                    </a>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <i class="fas fa-file-image text-success mr-2"></i> ID Card
-                                    </div>
-                                    <a href="#" class="btn btn-sm btn-info">
-                                        <i class="fas fa-download"></i> Download
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-danger">
-                        <i class="fas fa-times"></i> Withdraw Application
-                    </button>
-                </div>
             </div>
         </div>
     </div>

@@ -20,4 +20,13 @@ class Application extends Model
         'status',
         'message',
     ];
+
+
+    public function student(){
+        return $this->belongsTo(Student::class);
+    }
+
+    public function post(){
+        return $this->belongsTo(Post::class);
+    }
 }

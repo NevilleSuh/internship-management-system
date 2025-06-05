@@ -46,4 +46,8 @@ class Post extends Model
     public function institution(){
         return $this->belongsTo(Institution::class);
     }
+
+    public function applications(){
+        return $this->hasMany(Application::class);
+    }
 }
