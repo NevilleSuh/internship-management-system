@@ -9,19 +9,21 @@ use App\Http\Controllers\Admin\CategoryController;
 
 Route::prefix('admin')->group(function () {
 
-    Route::get('dashboard', [DashboardController::class, 'showDashboard'])->name('admin.dashboard');
+    Route::group(['middleware' => ['authenticate:admin']], function(){
+
+        Route::get('dashboard', [DashboardController::class, 'showDashboard'])->name('admin.dashboard');
 
 
-    // Institutions ROutes
-    Route::get('institution', [InstitutionController::class, 'showInstitution'])->name('admin.institution');
-    Route::post('add-institution', [InstitutionController::class, 'addInstitution'])->name('admin.add.institution');
-    Route::delete('delete-institution/{id}', [InstitutionController::class, 'deleteInstitution'])->name('admin.delete.institution');
+        // Institutions ROutes
+        Route::get('institution', [InstitutionController::class, 'showInstitution'])->name('admin.institution');
+        Route::post('add-institution', [InstitutionController::class, 'addInstitution'])->name('admin.add.institution');
+        Route::delete('delete-institution/{id}', [InstitutionController::class, 'deleteInstitution'])->name('admin.delete.institution');
 
 
-    // Institutions ROutes
-    Route::get('category', [CategoryController::class, 'showCategory'])->name('admin.category');
-    Route::post('add-category', [CategoryController::class, 'addCategory'])->name('admin.add.category');
-    Route::delete('delete-category/{id}', [CategoryController::class, 'deleteCategory'])->name('admin.delete.category');
-
+        // Institutions ROutes
+        Route::get('category', [CategoryController::class, 'showCategory'])->name('admin.category');
+        Route::post('add-category', [CategoryController::class, 'addCategory'])->name('admin.add.category');
+        Route::delete('delete-category/{id}', [CategoryController::class, 'deleteCategory'])->name('admin.delete.category');
+    });
 
 });

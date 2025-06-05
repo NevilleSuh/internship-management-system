@@ -41,6 +41,12 @@
                 </ul>
             </div>
         @endif
+
+        @if(session('error'))
+            <div class="alert alert-danger">
+                <p>{{session('error')}}</p>
+            </div>
+        @endif
         <div class="card card-outline card-warning">
             <div class="card-header text-center">
                 <a href="index.html" class="brand-link">
