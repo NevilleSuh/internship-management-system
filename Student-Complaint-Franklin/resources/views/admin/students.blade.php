@@ -44,93 +44,36 @@
                                         <th>Name</th>
                                         <th>Email</th>
                                         <th>Location</th>
-                                        <th>Highest Qualification</th>
+                                        <th>Tell</th>
                                         <th>Registered On</th>
                                         <th>Status</th>
-                                        <th>Actions</th>
+                                        {{-- <th>Actions</th> --}}
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>Nfon Andrew Abang</td>
-                                        <td>andrew.nfon@email.com</td>
-                                        <td>Buea, SW Region</td>
-                                        <td>BSc Computer Science</td>
-                                        <td>2024-05-20</td>
-                                        <td><span class="badge badge-success">Active</span></td>
-                                        <td>
-                                            <button class="btn btn-xs btn-primary" data-toggle="modal"
-                                                data-target="#viewUserModal" title="View Profile"><i
-                                                    class="fas fa-eye"></i></button>
-                                            <button class="btn btn-xs btn-warning" data-toggle="modal"
-                                                data-target="#editUserModal" title="Edit (Placeholder)"><i
-                                                    class="fas fa-edit"></i></button>
-                                            <button class="btn btn-xs btn-danger" data-toggle="modal"
-                                                data-target="#confirmUserActionModal" data-action="block"
-                                                data-name="Nfon Andrew Abang" title="Block User"><i
-                                                    class="fas fa-user-lock"></i></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Amina Bi Bongwa</td>
-                                        <td>amina.bongwa@email.com</td>
-                                        <td>Bamenda, NW Region</td>
-                                        <td>HND Marketing</td>
-                                        <td>2024-06-01</td>
-                                        <td><span class="badge badge-success">Active</span></td>
-                                        <td>
-                                            <button class="btn btn-xs btn-primary" data-toggle="modal"
-                                                data-target="#viewUserModal" title="View Profile"><i
-                                                    class="fas fa-eye"></i></button>
-                                            <button class="btn btn-xs btn-warning" data-toggle="modal"
-                                                data-target="#editUserModal" title="Edit (Placeholder)"><i
-                                                    class="fas fa-edit"></i></button>
-                                            <button class="btn btn-xs btn-danger" data-toggle="modal"
-                                                data-target="#confirmUserActionModal" data-action="block"
-                                                data-name="Amina Bi Bongwa" title="Block User"><i
-                                                    class="fas fa-user-lock"></i></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Etienne Moukoko</td>
-                                        <td>etienne.m@email.com</td>
-                                        <td>Douala, Littoral Region</td>
-                                        <td>Masters in Finance</td>
-                                        <td>2024-04-11</td>
-                                        <td><span class="badge badge-danger">Blocked</span></td>
-                                        <td>
-                                            <button class="btn btn-xs btn-primary" data-toggle="modal"
-                                                data-target="#viewUserModal" title="View Profile"><i
-                                                    class="fas fa-eye"></i></button>
-                                            <button class="btn btn-xs btn-warning" data-toggle="modal"
-                                                data-target="#editUserModal" title="Edit (Placeholder)"><i
-                                                    class="fas fa-edit"></i></button>
-                                            <button class="btn btn-xs btn-success" data-toggle="modal"
-                                                data-target="#confirmUserActionModal" data-action="unblock"
-                                                data-name="Etienne Moukoko" title="Unblock User"><i
-                                                    class="fas fa-unlock"></i></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Fonguh Patience Akwi</td>
-                                        <td>patience.fonguh@email.com</td>
-                                        <td>Yaounde, Centre Region</td>
-                                        <td>B.Eng Electrical Engineering</td>
-                                        <td>2024-05-05</td>
-                                        <td><span class="badge badge-success">Active</span></td>
-                                        <td>
-                                            <button class="btn btn-xs btn-primary" data-toggle="modal"
-                                                data-target="#viewUserModal" title="View Profile"><i
-                                                    class="fas fa-eye"></i></button>
-                                            <button class="btn btn-xs btn-warning" data-toggle="modal"
-                                                data-target="#editUserModal" title="Edit (Placeholder)"><i
-                                                    class="fas fa-edit"></i></button>
-                                            <button class="btn btn-xs btn-danger" data-toggle="modal"
-                                                data-target="#confirmUserActionModal" data-action="block"
-                                                data-name="Fonguh Patience Akwi" title="Block User"><i
-                                                    class="fas fa-user-lock"></i></button>
-                                        </td>
-                                    </tr>
+                                    @foreach ($students as $student)
+                                        <tr>
+                                            <td>{{$student->first_name}} {{$student->last_name}}</td>
+                                            <td>{{$student->email}}</td>
+                                            <td>Buea, SW Region</td>
+                                            <td>{{$student->tell}}</td>
+                                            <td>{{$student->created_at->format('F d, Y')}}</td>
+                                            <td><span class="badge badge-success">Active</span></td>
+                                            {{-- <td>
+                                                <button class="btn btn-xs btn-primary" data-toggle="modal"
+                                                    data-target="#viewUserModal" title="View Profile"><i
+                                                        class="fas fa-eye"></i></button>
+                                                <button class="btn btn-xs btn-warning" data-toggle="modal"
+                                                    data-target="#editUserModal" title="Edit (Placeholder)"><i
+                                                        class="fas fa-edit"></i></button>
+                                                <button class="btn btn-xs btn-danger" data-toggle="modal"
+                                                    data-target="#confirmUserActionModal" data-action="block"
+                                                    data-name="Nfon Andrew Abang" title="Block User"><i
+                                                        class="fas fa-user-lock"></i></button>
+                                            </td> --}}
+                                        </tr>
+                                    @endforeach
+
                                 </tbody>
                             </table>
                         </div>

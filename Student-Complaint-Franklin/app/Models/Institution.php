@@ -60,5 +60,10 @@ class Institution extends Authenticatable
     public function posts(){
         return $this->hasMany(Post::class);
     }
+
+    public function applications()
+    {
+        return $this->hasManyThrough(Application::class, Post::class);
+    }
 }
 

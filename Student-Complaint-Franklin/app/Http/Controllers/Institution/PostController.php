@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\Application;
 use Auth;
 
 class PostController extends Controller
@@ -13,9 +14,13 @@ class PostController extends Controller
     public function showPost(){
 
         $categories = Category::all();
-        $posts = Post::latest()->get();
+        $institution = Auth::guard('institution')->user();
+        $posts = $institution->posts;
 
-        return view('institution.post', compact(['posts', 'categories']));
+
+        $application = $institution->applications;
+
+        return view('institution.post', compact(['posts', 'categories', 'application']));
     }
 
     public function post(Request $request){

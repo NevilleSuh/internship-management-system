@@ -121,10 +121,10 @@
 
                         {{-- @if (Auth::guard('admin')->check() && Auth::guard('admin')->user()->role === 'super') --}}
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('admin.student') }}" class="nav-link">
                                 <img src="{{asset('asset/img/stakeholder.png')}}" width="30">
                                 <p>
-                                    Users
+                                    Students
                                 </p>
                             </a>
                         </li>

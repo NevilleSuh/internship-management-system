@@ -19,6 +19,7 @@ Route::prefix('student')->group(function () {
 
         Route::get('home', [HomeController::class, 'showHome'])->name('show.home');
         Route::post('apply/{id}', [HomeController::class, 'apply'])->name('apply');
+        Route::get('search', [HomeController::class, 'search'])->name('search');
 
         // Complaint Controller
         Route::get('profile', [ProfileController::class, 'showProfile'])->name('show.profile');

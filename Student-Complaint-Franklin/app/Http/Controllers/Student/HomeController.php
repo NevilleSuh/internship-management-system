@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use App\Models\Post;
 use App\Models\Application;
+use App\Models\Category;
 
 class HomeController extends Controller
 {
@@ -16,7 +17,8 @@ class HomeController extends Controller
     {
         $student = Auth::guard('student')->user();
         $posts = Post::all();
-        return view('student.home', compact(['student', 'posts']));
+        $categories = Category::all();
+        return view('student.home', compact(['student', 'posts', 'categories']));
     }
 
 
@@ -54,7 +56,7 @@ class HomeController extends Controller
                 $path4 = $name. Str::random(10). '.' . $ext4;
                 $file4->storeAs($folder, $path4, 'public');
 
-                
+
                 $additional =  $folder. '/' . $path4;
 
             }else{
@@ -95,6 +97,13 @@ class HomeController extends Controller
         return redirect()->back()->with('message', 'Application Sent Successfully');
 
 
+    }
+
+    public function search(Request $request){
+        // dd($request->all());
+        $posts = Post::where('category_id', $request->category)->get();
+
+        return view('student.home', compact('posts'));
     }
 
 }

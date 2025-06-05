@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\InstitutionController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\StudentController;
 
 
 
@@ -24,6 +25,11 @@ Route::prefix('admin')->group(function () {
         Route::get('category', [CategoryController::class, 'showCategory'])->name('admin.category');
         Route::post('add-category', [CategoryController::class, 'addCategory'])->name('admin.add.category');
         Route::delete('delete-category/{id}', [CategoryController::class, 'deleteCategory'])->name('admin.delete.category');
+
+
+        //Students
+        Route::get('students', [StudentController::class, 'showStudent'])->name('admin.student');
+
     });
 
 });

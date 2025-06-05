@@ -25,7 +25,7 @@
                 <div class="col-lg-3 col-6">
                     <div class="small-box bg-gradient-primary animate__animated animate__fadeInUp">
                         <div class="inner">
-                            <h3>3</h3>
+                            <h3>{{$posts->count()}}</h3>
                             <p>Active Internships</p>
                         </div>
                         <div class="icon">
@@ -38,7 +38,7 @@
                     <div class="small-box bg-gradient-success animate__animated animate__fadeInUp"
                         style="animation-delay: 0.1s">
                         <div class="inner">
-                            <h3>27</h3>
+                            <h3>{{$application->count()}}</h3>
                             <p>Total Applications</p>
                         </div>
                         <div class="icon">
@@ -51,7 +51,7 @@
                     <div class="small-box bg-gradient-warning animate__animated animate__fadeInUp"
                         style="animation-delay: 0.2s">
                         <div class="inner">
-                            <h3>5</h3>
+                            <h3>{{$application->where('status', 'pending')->count()}}</h3>
                             <p>Pending Reviews</p>
                         </div>
                         <div class="icon">
@@ -64,8 +64,8 @@
                     <div class="small-box bg-gradient-danger animate__animated animate__fadeInUp"
                         style="animation-delay: 0.3s">
                         <div class="inner">
-                            <h3>2</h3>
-                            <p>Positions Filled</p>
+                            <h3>{{$application->where('status', 'selected')->count()}}</h3>
+                            <p>Accepted Application</p>
                         </div>
                         <div class="icon">
                             <i class="fas fa-user-check"></i>

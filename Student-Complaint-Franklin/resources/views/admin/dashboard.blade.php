@@ -24,7 +24,7 @@
           <div class="col-lg-3 col-6">
             <div class="small-box bg-info">
                <div class="inner">
-                 <h3>15</h3>
+                 <h3>{{$institution}}</h3>
                  <p>Registered Companies</p>
                </div>
                <div class="icon">
@@ -36,8 +36,8 @@
           <div class="col-lg-3 col-6">
             <div class="small-box bg-success">
                <div class="inner">
-                 <h3>250</h3>
-                 <p>Registered Users (Applicants)</p>
+                 <h3>{{$student}}</h3>
+                 <p>Registered Students (Applicants)</p>
                </div>
                <div class="icon">
                  <i class="fas fa-users"></i>
@@ -48,7 +48,7 @@
           <div class="col-lg-3 col-6">
             <div class="small-box bg-warning">
                <div class="inner">
-                 <h3>44</h3>
+                 <h3>{{$post}}</h3>
                  <p>Open Internship Postings</p>
                </div>
                <div class="icon">
@@ -60,7 +60,7 @@
           <div class="col-lg-3 col-6">
             <div class="small-box bg-danger">
                <div class="inner">
-                 <h3>120</h3>
+                 <h3>{{$application}}</h3>
                  <p>Total Applications Received</p>
                </div>
                <div class="icon">
@@ -87,7 +87,7 @@
           <div class="col-lg-3 col-6">
             <div class="small-box bg-secondary">
                <div class="inner">
-                 <h3>8</h3>
+                 <h3>{{$pending}}</h3>
                  <p>Pending Internship Approvals</p>
                </div>
                <div class="icon">

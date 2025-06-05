@@ -35,27 +35,28 @@
                                                 placeholder="Skills, position, or company">
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label>Category</label>
-                                            <select class="form-control">
-                                                <option value="">All Categories</option>
-                                                <option value="technology">Technology</option>
-                                                <option value="business">Business</option>
-                                                <option value="healthcare">Healthcare</option>
-                                                <option value="education">Education</option>
-                                                <option value="engineering">Engineering</option>
-                                            </select>
+                                    <form action="{{ route('search') }}" method="GET">
+                                        @csrf
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Category</label>
+                                                <select class="form-control" required name="category">
+                                                    <option value="">All Categories</option>
+                                                    @foreach ($categories as $category)
+                                                        <option value="{{ $category->id }}">{{$category->name}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <label>&nbsp;</label>
-                                            <button type="submit" class="btn btn-indigo btn-block">
-                                                <i class="fas fa-search"></i> Search
-                                            </button>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>&nbsp;</label>
+                                                <button type="submit" class="btn btn-indigo btn-block">
+                                                    <i class="fas fa-search"></i> Search
+                                                </button>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </form>
                                 </div>
                             </form>
                         </div>
@@ -73,45 +74,49 @@
                             <div class="row">
 
 
-                                @foreach ($posts->slice(0, 6) as $post)
+                               @if (!$posts->isEmpty())
+                                 @foreach ($posts->slice(0, 6) as $post)
 
-                                    <div class="col-md-4">
-                                        <div class="card animate__animated animate__fadeInUp">
-                                            <div class="card-body">
-                                                <div class="d-flex align-items-center mb-3">
-                                                    <div class="mr-3">
-                                                        <img src="https://via.placeholder.com/60" alt="{{$post->institution->name}}"
-                                                            class="img-circle elevation-2" style="width: 60px; height: 60px;">
-                                                    </div>
-                                                    <div>
-                                                        <h5 class="mb-0">Software Development Intern</h5>
-                                                        <p class="text-muted mb-0">{{$post->institution->name}}</p>
-                                                    </div>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <span class="badge badge-teal mr-1">{{$post->type}}</span>
-                                                    <span class="badge badge-success mr-1">{{$post->compensation}}</span>
-                                                    {{-- <span class="badge badge-warning">Featured</span> --}}
-                                                </div>
-                                                <p><i class="fas fa-map-marker-alt mr-1"></i> {{$post->location}}</p>
-                                                <p class="text-truncate">Join our team to develop innovative solutions and gain
-                                                    hands-on experience with cutting-edge technologies in Bamenda.</p>
-                                                <div class="mb-3">
-                                                    @foreach ($post->skills as $skill)
-                                                        @foreach (explode("\r\n", $skill) as $line)
-                                                            <span class="badge bg-light text-dark mr-1">{{ trim($line) }}</span>
-                                                        @endforeach
-                                                    @endforeach
+                                     <div class="col-md-4">
+                                         <div class="card animate__animated animate__fadeInUp">
+                                             <div class="card-body">
+                                                 <div class="d-flex align-items-center mb-3">
+                                                     <div class="mr-3">
+                                                         <img src="https://via.placeholder.com/60" alt="{{$post->institution->name}}"
+                                                             class="img-circle elevation-2" style="width: 60px; height: 60px;">
+                                                     </div>
+                                                     <div>
+                                                         <h5 class="mb-0">Software Development Intern</h5>
+                                                         <p class="text-muted mb-0">{{$post->institution->name}}</p>
+                                                     </div>
+                                                 </div>
+                                                 <div class="mb-3">
+                                                     <span class="badge badge-teal mr-1">{{$post->type}}</span>
+                                                     <span class="badge badge-success mr-1">{{$post->compensation}}</span>
+                                                     {{-- <span class="badge badge-warning">Featured</span> --}}
+                                                 </div>
+                                                 <p><i class="fas fa-map-marker-alt mr-1"></i> {{$post->location}}</p>
+                                                 <p class="text-truncate">Join our team to develop innovative solutions and gain
+                                                     hands-on experience with cutting-edge technologies in Bamenda.</p>
+                                                 <div class="mb-3">
+                                                     @foreach ($post->skills as $skill)
+                                                         @foreach (explode("\r\n", $skill) as $line)
+                                                             <span class="badge bg-light text-dark mr-1">{{ trim($line) }}</span>
+                                                         @endforeach
+                                                     @endforeach
 
-                                                </div>
-                                                <button class="btn btn-outline-teal btn-block" data-toggle="modal"
-                                                    data-target="#internshipModal{{ $post->id }}">
-                                                    <i class="fas fa-eye"></i> View Details
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endforeach
+                                                 </div>
+                                                 <button class="btn btn-outline-teal btn-block" data-toggle="modal"
+                                                     data-target="#internshipModal{{ $post->id }}">
+                                                     <i class="fas fa-eye"></i> View Details
+                                                 </button>
+                                             </div>
+                                         </div>
+                                     </div>
+                                 @endforeach
+                               @else
+                                <p>No posts found for this category.</p>
+                               @endif
 
 
 
